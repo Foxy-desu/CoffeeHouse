@@ -1,0 +1,21 @@
+@import '../abstracts/mixins';
+@import '../abstracts/variables';
+
+body {
+    background-color: $BODY_COLOR;
+}
+
+.layout-container {
+    position: relative;
+    margin: 20px auto 40px auto;
+    display: grid;
+    grid: 60px 1fr 450px / 1fr;
+    max-width: 1440px;
+    width: 1440px; //temporary
+    height: 4388px; //temporary
+    border: 1px solid black;
+}
+
+.wrap-box {
+    padding: 0 40px;
+}
