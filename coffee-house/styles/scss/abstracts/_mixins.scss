@@ -1,3 +1,31 @@
-@mixin flex-box() {
-    display: flex;
+@mixin underscoreOnHover() {
+    @-webkit-keyframes appear {
+        from {
+            transform: scaleX(0);
+        }
+        to {
+            transform: scaleX(1);
+        }
+    }
+    @keyframes appear {
+        from {
+            transform: scaleX(0);
+        }
+        to {
+            transform: scaleX(1);
+        }
+    }
+
+    &:hover::after {
+        display: block;
+        // width: 100%;
+        content: '';
+        border: 2px solid $DARK_TEXT;
+        border-radius: 5px;
+        cursor: pointer;
+        -webkit-animation: appear 0.6s ease-out forwards;
+                animation: appear 0.6s ease-out forwards;
+
+    }
+
 }

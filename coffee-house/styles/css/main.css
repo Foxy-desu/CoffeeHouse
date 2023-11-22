@@ -9,10 +9,12 @@ body {
   display: grid;
   grid: 20px 1fr 40px/1fr minmax(380px, 1440px) 1fr;
   grid-template-areas: "... ... .." ".. cont .." ".. ... ..";
+  font-style: normal;
 }
 
 .layout-container {
   display: flex;
+  flex-direction: column;
   flex-basis: 1440px;
   flex-shrink: 1;
   flex-grow: 1;
@@ -22,4 +24,75 @@ body {
 
 .wrap-box {
   padding: 0 40px;
+}
+
+.header-block__header {
+  display: flex;
+}
+
+.header-block__wrap {
+  padding: 15px 0 0;
+}
+
+.header-block__nav-wrap {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.header-block__nav-list {
+  display: flex;
+  gap: 40px;
+  list-style-type: none;
+}
+
+.header-block__link,
+.header-block__button {
+  display: inline-block;
+  box-sizing: content-box;
+  padding: 5px 0 5px 0;
+  color: hsl(40, 2%, 25%);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+  text-decoration: none;
+  cursor: pointer;
+}
+.header-block__link::after,
+.header-block__button::after {
+  display: block;
+  content: "";
+  border: 2px solid hsla(40, 2%, 25%, 0);
+  border-radius: 5px;
+  transition: 0.6s ease;
+}
+@keyframes appear {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.header-block__link:hover::after,
+.header-block__button:hover::after {
+  display: block;
+  content: "";
+  border: 2px solid hsl(40, 2%, 25%);
+  border-radius: 5px;
+  cursor: pointer;
+  animation: appear 0.6s ease-out forwards;
+}
+
+.header-block__button {
+  display: inline-block;
+  position: relative;
+  width: 72px;
+  text-align: left;
+  vertical-align: bottom;
+  background-color: transparent;
+  background: url(../../images/svg/coffee-cup.svg) no-repeat right top 5px;
+  background-size: 20px;
+  border: none;
 }/*# sourceMappingURL=main.css.map */
