@@ -6,16 +6,17 @@
 
 body {
   background-color: hsl(28, 29%, 84%);
+  display: grid;
+  grid: 20px 1fr 40px/1fr minmax(380px, 1440px) 1fr;
+  grid-template-areas: "... ... .." ".. cont .." ".. ... ..";
 }
 
 .layout-container {
-  position: relative;
-  margin: 20px auto 40px auto;
-  display: grid;
-  grid: 60px 1fr 450px/1fr;
-  max-width: 1440px;
-  width: 1440px;
-  height: 4388px;
+  display: flex;
+  flex-basis: 1440px;
+  flex-shrink: 1;
+  flex-grow: 1;
+  grid-area: cont;
   border: 1px solid black;
 }
 

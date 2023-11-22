@@ -3,18 +3,31 @@
 
 body {
     background-color: $BODY_COLOR;
+
+    //test
+    display: grid;
+    grid: 20px 1fr 40px / 1fr minmax(380px, 1440px) 1fr;
+    grid-template-areas:
+    '... ... ..'
+    '.. cont ..'
+    '.. ... ..';
 }
 
 .layout-container {
-    position: relative;
-    margin: 20px auto 40px auto;
-    display: grid;
-    grid: 60px 1fr 450px / 1fr;
-    max-width: 1440px;
-    width: 1440px; //temporary
-    height: 4388px; //temporary
+//     position: relative;
+//     margin: 20px auto 40px auto;
+    display: flex;
+    flex-basis: 1440px;
+    flex-shrink: 1;
+    flex-grow: 1;
+//     grid: 60px 1fr 450px / 1fr;
+//     max-width: 1440px;
+    // width: 1440px; //temporary
+    // height: 4328px; //temporary
+    grid-area: cont;
     border: 1px solid black;
 }
+
 
 .wrap-box {
     padding: 0 40px;
