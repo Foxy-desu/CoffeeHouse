@@ -1,5 +1,6 @@
 @import '../abstracts/mixins';
 @import '../abstracts/variables';
+@import '../abstracts/placeholders';
 
 body {
     background-color: $BODY_COLOR;
@@ -13,76 +14,139 @@ body {
     '.. ... ..';
     font-style: normal;
 }
-
-.layout-container {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 1440px;
-    flex-shrink: 1;
-    flex-grow: 1;
-    grid-area: cont;
-    border: 1px solid black;
-}
-
 .wrap-box {
     padding: 0 40px;
 }
-
-.header-block__header {
-    display: flex;  
+.layout-container {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 1440px;
+        flex-shrink: 1;
+        flex-grow: 1;
+        grid-area: cont;
+        // border: 1px solid black;
 }
-
-.header-block__wrap {
-    padding: 15px 0 0;
+.accent-text {
+    @extend %accent-font;
 }
-
-.header-block__nav-wrap {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
+.block-description {
+    @include secondaryFont($LIGHT_TEXT);
 }
-
-.header-block__nav-list {
-    display: flex;
-    gap: 40px;
-    list-style-type: none;
-}
-
-.header-block__link,
-.header-block__button {
-    display: inline-block;
-    box-sizing: content-box;
-    padding: 5px 0 5px 0;
-    color: $DARK_TEXT;
-    font-family: Inter;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 150%;
-    text-decoration: none;
-    cursor: pointer;
-
-    &::after {
-        display: block;
-        content: '';
-        border: 2px solid hsla(40, 2%, 25%, 0);
-        border-radius: 5px;
-        transition: 0.6s ease
+.header-block {
+    margin-bottom: 20px;
+    
+    .header-block__header {
+        display: flex;
     }
     
-    @include underscoreOnHover();
+    .header-block__wrap {
+        padding: 15px 0 0;
+    }
+    
+    .header-block__nav-wrap {
+        display: flex;
+        justify-content: center;
+        flex-grow: 1;
+    }
+    
+    .header-block__nav-list {
+        display: flex;
+        gap: 40px;
+        list-style-type: none;
+    }
+    
+    .header-block__link,
+    .header-block__button {
+        @include secondaryFont($font-weight: 600);
+        @include underscoreOnHover();
+
+        display: inline-block;
+        box-sizing: content-box;
+        padding: 5px 0 5px 0;
+        text-decoration: none;
+        cursor: pointer;
+    
+        &::after {
+            display: block;
+            content: '';
+            border: 2px solid hsla(40, 2%, 25%, 0);
+            border-radius: 5px;
+            transition: 0.6s ease;
+        }
+        
+    }
+    
+    .header-block__button {
+        display: inline-block;
+        width: 72px;
+        text-align: left;
+        background-color: transparent;
+        background: url(../../images/svg/coffee-cup.svg) no-repeat right top 5px;
+        background-size: 20px;
+        border: none;
+    }
+}
+.enjoy-section {
+    margin-bottom: 100px;
+   .enjoy-section__banner {
+    width: 100%;
+    padding: 100px;
+    border-radius: 35px;
+    background: url(../../images/img-hero.jpg) no-repeat right;
+    background-size: cover;
+   }
+   
+   .enjoy-section__content-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 540px;
+   }
+
+   .enjoy-section__heading {
+    @include mainFont($lineHeight: 105%, $mainColor: $LIGHT_TEXT);
+   }
+
+   .enjoy-section__button {
+    @include rounded-button($bg-color: $BODY_COLOR);
+    @include secondaryFont($font-weight: 600, $line-height: 180%);
+    @extend %hovered;
+    position: relative;
+    transition: 0.6s;
+    
+    &::after {
+        display: inline-block;
+        content: '';
+        position: absolute;
+        top: 18px;
+        right: 58px;
+        width: 20px;
+        height: 20px;
+        background: url(../../images/svg/coffee-cup.svg) no-repeat right top 1px;
+        background-size: contain;
+        -webkit-filter: opacity(0);
+                filter: opacity(0);
+        transition: 0.6s ;
+    }
+
+    &:hover {
+        padding-right: 18px;
+    }
+
+    &:hover::after {
+        -webkit-filter: opacity(1);
+                filter: opacity(1);
+        
+    }
+
+
+
+   }
 }
 
-.header-block__button {
-    display: inline-block;
-    position: relative;
-    width: 72px;
-    text-align: left;
-    vertical-align: bottom;
-    background-color: transparent;
-    background: url(../../images/svg/coffee-cup.svg) no-repeat right top 5px;
-    background-size: 20px;
-    border: none;
-}
+
+
+
 
 
 
