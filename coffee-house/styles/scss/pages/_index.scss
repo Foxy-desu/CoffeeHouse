@@ -9,55 +9,56 @@ body {
     display: grid;
     grid: 20px 1fr 40px / 1fr minmax(380px, 1440px) 1fr;
     grid-template-areas:
-    '... ... ..'
-    '.. cont ..'
-    '.. ... ..';
+        '... ... ..'
+        '.. cont ..'
+        '.. ... ..';
     font-style: normal;
 }
+
 .wrap-box {
     padding: 0 40px;
 }
+
 .layout-container {
-        display: flex;
-        flex-direction: column;
-        flex-basis: 1440px;
-        flex-shrink: 1;
-        flex-grow: 1;
-        grid-area: cont;
-        // border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 1440px;
+    flex-shrink: 1;
+    flex-grow: 1;
+    grid-area: cont;
+    // border: 1px solid black;
 }
+
 .accent-text {
     @extend %accent-font;
 }
-.block-description {
-    @include secondaryFont($LIGHT_TEXT);
-}
+
 .header-block {
     margin-bottom: 20px;
-    
+
     .header-block__header {
         display: flex;
     }
-    
+
     .header-block__wrap {
         padding: 15px 0 0;
     }
-    
+
     .header-block__nav-wrap {
         display: flex;
         justify-content: center;
         flex-grow: 1;
     }
-    
+
     .header-block__nav-list {
         display: flex;
         gap: 40px;
         list-style-type: none;
     }
-    
+
     .header-block__link,
     .header-block__button {
-        @include secondaryFont($font-weight: 600);
+        @include secondaryFont($fontWeight: 600);
         @include underscoreOnHover();
 
         display: inline-block;
@@ -65,7 +66,7 @@ body {
         padding: 5px 0 5px 0;
         text-decoration: none;
         cursor: pointer;
-    
+
         &::after {
             display: block;
             content: '';
@@ -73,9 +74,9 @@ body {
             border-radius: 5px;
             transition: 0.6s ease;
         }
-        
+
     }
-    
+
     .header-block__button {
         display: inline-block;
         width: 72px;
@@ -86,67 +87,283 @@ body {
         border: none;
     }
 }
+
 .enjoy-section {
     margin-bottom: 100px;
-   .enjoy-section__banner {
-    width: 100%;
-    padding: 100px;
-    border-radius: 35px;
-    background: url(../../images/img-hero.jpg) no-repeat right;
-    background-size: cover;
-   }
-   
-   .enjoy-section__content-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    max-width: 540px;
-   }
 
-   .enjoy-section__heading {
-    @include mainFont($lineHeight: 105%, $mainColor: $LIGHT_TEXT);
-   }
-
-   .enjoy-section__button {
-    @include rounded-button($bg-color: $BODY_COLOR);
-    @include secondaryFont($font-weight: 600, $line-height: 180%);
-    @extend %hovered;
-    position: relative;
-    transition: 0.6s;
-    
-    &::after {
-        display: inline-block;
-        content: '';
-        position: absolute;
-        top: 18px;
-        right: 58px;
-        width: 20px;
-        height: 20px;
-        background: url(../../images/svg/coffee-cup.svg) no-repeat right top 1px;
-        background-size: contain;
-        -webkit-filter: opacity(0);
-                filter: opacity(0);
-        transition: 0.6s ;
+    .enjoy-section__banner {
+        width: 100%;
+        padding: 100px;
+        border-radius: 35px;
+        background: url(../../images/img-hero.jpg) no-repeat right;
+        background-size: cover;
     }
 
-    &:hover {
-        padding-right: 18px;
+    .enjoy-section__content-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        max-width: 540px;
     }
 
-    &:hover::after {
-        -webkit-filter: opacity(1);
-                filter: opacity(1);
+    .enjoy-section__heading {
+        @include mainFont($lineHeight: 105%, $mainColor: $LIGHT_TEXT, $fontSize: 72px);
+    }
+
+    .enjoy-section__desc {
+        @include secondaryFont($LIGHT_TEXT);
+    }
+
+    .enjoy-section__button {
+        @include rounded-button($bgColor: $BODY_COLOR);
+        @include secondaryFont($fontWeight: 600, $lineHeight: 180%);
+        @extend %hovered;
+        position: relative;
+        transition: 0.6s;
+
+        &::after {
+            display: inline-block;
+            content: '';
+            position: absolute;
+            top: 18px;
+            right: 58px;
+            width: 20px;
+            height: 20px;
+            background: url(../../images/svg/coffee-cup.svg) no-repeat right top 1px;
+            background-size: contain;
+            -webkit-filter: opacity(0);
+            filter: opacity(0);
+            transition: 0.6s;
+        }
+
+        &:hover {
+            padding-right: 18px;
+        }
+
+        &:hover::after {
+            -webkit-filter: opacity(1);
+            filter: opacity(1);
+
+        }
+
+
+
+    }
+}
+
+.favorites-coffee-section {
+    margin-bottom: 100px;
+
+    .favorites-coffee-section__heading {
+        @include mainFont();
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .favorites-coffee-section__slider {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .slider__represent-block {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .slider__button-wrap {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+    }
+
+    .slider__button {
+        @include rounded-button($width: 60px, $height: 60px, $bgColor: $BODY_COLOR, $border: 1px solid $DARK_BORDER);
+        @extend %hovered;
+        transition: 0.4s;
+        
+        &:hover {
+            background-color: $CONTAINER_COLOR;
+        }
+
+        &.button-left::before {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            content: '';
+            background: url(../../images/svg/arrow-left__dark.svg) no-repeat center;
+            transition: 0.4s;
+        }
+
+        &.button-right::after {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            content: '';
+            background: url(../../images/svg/arrow-right__dark.svg) no-repeat center;
+            transition: 0.4s;
+        }
+
+
+        &.button-right:hover::after,
+        &.button-left:hover:before {
+            @extend %invert-arrow-color;
+        }
+        
+
+
         
     }
 
+    .slider__content-wrap {
+        flex-grow: 1;
+    }
+
+    .slider__articles {
+        display: flex;
+        justify-content: center; //временно
+    }
+
+    .slider__article {
+        max-width: 480px; /*just like the picture width*/
+    }
+
+    .slider__image-wrap {
+        margin-bottom: 20px;
+    }
+
+    .slider__drink-info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .slider__drink-name,
+    .slider__drink-price {
+        @include secondaryFont($fontSize: 24px, $fontWeight: 600, $lineHeight: 125%)
+    }
+
+    .slider__drink-desk {
+        @include secondaryFont();
+    }
+
+    .slider__pagination-block {
+        display: flex;
+        justify-content: center;
+    }
+
+    .slider__pagination-buttons {
+        display: flex;
+        gap: 12px;
+    }
+
+    .slider__pagination-button {
+        display: inline-block;
+        width: 40px;
+        height: 4px;
+        background-color: $LIGHT_BORDER;
+        border-radius: 100px;
+
+        &.slider__pagination-button--active {
+            background-color: $DARK_BORDER;
+        }
+    }
 
 
-   }
+
+    
+
 }
 
+.about-section {
+    margin-bottom: 100px;
+
+    .about-section___desc {
+        @include mainFont();
+        margin-bottom: 40px;
+    }
+
+    .about-section___photos-wrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        height: 1060px;
+    }
+
+    .about-section___photo-container {
+        position: relative;
+        width: 660px;
+        border-radius: 20px;
+        overflow: hidden;
+
+        &.photo-big {
+            height: 590px;
+            grid-row: span 2
+        }
+        
+        &.photo-small {
+            height: 430px;
+            grid-row: span 1
+        }
+
+        &.photo1 {
+            order: 1;
+        }
+    
+        &.photo2 {
+            order: 5;
+        }
+    
+        &.photo3 {
+            order: 2;
+        }
+    
+        &.photo4 {
+            order: 4;
+        }
 
 
+    }
+
+    .about-section___photo {
+       position: absolute;
+       transition: 0.6s;
+
+        
+       &.image-1 {
+            top: -68px;
+            right: -34px;
+            transform: scale(100%);
+        }
+
+        &.image-2 {
+            top: -153px;
+            right: -34px;
+            transform: scale(100%);
+        }
+
+        &.image-3 {
+            top: -153px;
+            right: -32px;
+            transform: scale(100%);
+        }
+
+        &.image-4 {
+            top: -68px;
+            right: -34px;
+            transform: scale(100%);
+        }
+
+        &:hover {
+            transform: scale(91%);
+        }
+    }
+
+    
+    
 
 
-
+}
 

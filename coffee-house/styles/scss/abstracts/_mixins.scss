@@ -38,18 +38,18 @@
     line-height: $lineHeight;
 }
 
-@mixin secondaryFont($color: $DARK_TEXT, $font-size: 16px, $font-weight: 400, $line-height: 150%) {
+@mixin secondaryFont($color: $DARK_TEXT, $fontSize: 16px, $fontWeight: 400, $lineHeight: 150%) {
     font-family: Inter;
-    font-size: $font-size;
-    font-weight: $font-weight;
-    line-height: $line-height;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    line-height: $lineHeight;
     color: $color;
 }
 
-@mixin rounded-button($bg-color: rgba(1, 1, 1, 0), $width: 200px, $height: 60px, $border: 0 solid transparent) {
+@mixin rounded-button($bgColor: rgba(1, 1, 1, 0), $width: 200px, $height: 60px, $border: 0 solid transparent) {
     width: $width;
     height: $height;
-    background-color: $bg-color;
+    background-color: $bgColor;
     border: $border;
     border-radius: 100px;
 
