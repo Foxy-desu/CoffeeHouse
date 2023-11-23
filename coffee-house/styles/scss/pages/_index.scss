@@ -289,7 +289,7 @@ body {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
-        height: 1060px;
+        // height: 1060px;
     }
 
     .about-section___photo-container {
@@ -329,7 +329,7 @@ body {
 
     .about-section___photo {
        position: absolute;
-       transition: 0.6s;
+       transition: 0.9s;
 
         
        &.image-1 {
@@ -361,8 +361,57 @@ body {
         }
     }
 
+
     
     
+
+
+}
+
+.mobile-app-section {
+    margin-bottom: 100px;
+
+    .mobile-app-section__content-wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 100px;
+    }
+
+    .mobile-app-section__info-wrap {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .mobile-app-section__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 40px;
+    }
+
+    .mobile-app-section__heading {
+        @include mainFont();
+    }
+
+    .mobile-app-section__desc {
+        @include secondaryFont;
+    }
+
+    .mobile-app-section__buttons {
+        display: flex;
+        gap: 20px;
+    }
+
+    .mobile-app-section__button {
+        @extend %hovered;
+        @include rounded-button($bgColor: rgba(1, 1, 1, 0), $width: 200px, $height: 64px, $border: 1px solid $DARK_BORDER);
+
+        &.button-icon {
+            display: inline-block;
+            
+        }
+    }
 
 
 }

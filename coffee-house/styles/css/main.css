@@ -9,7 +9,7 @@
   font-style: italic;
 }
 
-.favorites-coffee-section .slider__button, .enjoy-section .enjoy-section__button {
+.mobile-app-section .mobile-app-section__button, .favorites-coffee-section .slider__button, .enjoy-section .enjoy-section__button {
   cursor: pointer;
   text-decoration: none;
 }
@@ -292,7 +292,6 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
-  height: 1060px;
 }
 .about-section .about-section___photo-container {
   position: relative;
@@ -322,7 +321,7 @@ body {
 }
 .about-section .about-section___photo {
   position: absolute;
-  transition: 0.6s;
+  transition: 0.9s;
 }
 .about-section .about-section___photo.image-1 {
   top: -68px;
@@ -346,4 +345,51 @@ body {
 }
 .about-section .about-section___photo:hover {
   transform: scale(91%);
+}
+
+.mobile-app-section {
+  margin-bottom: 100px;
+}
+.mobile-app-section .mobile-app-section__content-wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+}
+.mobile-app-section .mobile-app-section__info-wrap {
+  display: flex;
+  align-items: center;
+}
+.mobile-app-section .mobile-app-section__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+}
+.mobile-app-section .mobile-app-section__heading {
+  color: hsl(40, 2%, 25%);
+  font-family: Inter;
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 125%;
+}
+.mobile-app-section .mobile-app-section__desc {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+  color: hsl(40, 2%, 25%);
+}
+.mobile-app-section .mobile-app-section__buttons {
+  display: flex;
+  gap: 20px;
+}
+.mobile-app-section .mobile-app-section__button {
+  width: 200px;
+  height: 64px;
+  background-color: rgba(1, 1, 1, 0);
+  border: 1px solid hsl(35, 9%, 37%);
+  border-radius: 100px;
+}
+.mobile-app-section .mobile-app-section__button.button-icon {
+  display: inline-block;
 }/*# sourceMappingURL=main.css.map */
