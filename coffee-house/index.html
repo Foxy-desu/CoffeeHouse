@@ -22,15 +22,15 @@
                     <div class="header-block__nav-wrap header-block__wrap">
                         <nav class="header-block__nav">
                             <ul class="header-block__nav-list">
-                                <li class="header-block__nav-item"><a class="header-block__link" href="">Favorite coffee</a></li>
-                                <li class="header-block__nav-item"><a class="header-block__link" href="">About</a></li>
-                                <li class="header-block__nav-item"><a class="header-block__link" href="">Mobile app</a></li>
-                                <li class="header-block__nav-item"><a class="header-block__link" href="">Contact us</a></li>
+                                <li class="header-block__nav-item"><a class="header-block__link" href="#coffee">Favorite coffee</a></li>
+                                <li class="header-block__nav-item"><a class="header-block__link" href="#about">About</a></li>
+                                <li class="header-block__nav-item"><a class="header-block__link" href="#mobile">Mobile app</a></li>
+                                <li class="header-block__nav-item"><a class="header-block__link" href="#contact">Contact us</a></li>
                             </ul>
                         </nav>
                     </div>
                     <div class="header-block__menu-button-wrap header-block__wrap">
-                        <form><button class="header-block__button" type="button" formaction="./html/menu.html">Menu</button></form>
+                        <a href="./html/menu.html" target="_blank" rel="noopener"><button class="header-block__button">Menu</button></a>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
         <main class="main-block">
             <div class="main-wrap wrap-box">
                 <!--enjoy-section start-->
-                <section class="enjoy-section section">
+                <section class="enjoy-section">
                     <div class="enjoy-section__banner">
                         <div class="enjoy-section__content-wrap">
                             <h1 class="enjoy-section__heading">
@@ -53,13 +53,13 @@
                                 lovers and those seeking a warm and inviting space to enjoy 
                                 their favorite beverage. 
                             </p>
-                            <button class="enjoy-section__button">Menu</button>
+                            <a href="./html/menu.html" target="_blank" rel="noopener"><button class="enjoy-section__button">Menu</button></a>
                         </div>
                     </div>
                 </section>
                 <!--enjoy-section end-->
                 <!--favorites-coffee-section start-->
-                <section class="favorites-coffee-section section">
+                <section class="favorites-coffee-section" id="coffee">
                     <div class="favorites-coffee-section__content-wrap">
                         <h2 class="favorites-coffee-section__heading">
                             Choose your <span class="accent-text">favorite</span> coffee
@@ -106,7 +106,7 @@
                 </section>
                  <!--favorites-coffee-section end-->
                  <!--about-section start-->
-                <section class="about-section section">
+                <section class="about-section" id="about">
                     <div class="about-section____content-wrap">
                         <p class="about-section___desc">
                             Resource is <span class="accent-text">the perfect and cozy place</span> 
@@ -139,8 +139,28 @@
                 </section>
                 <!--about-section end-->
                 <!--mobile-app-section start-->
-                <section class="mobile-app-section section">
-                    
+                <section class="mobile-app-section" id="mobile">
+                    <div class="mobile-app-section__content-wrap">
+                        <div class="mobile-app-section__info-wrap">
+                            <div class="mobile-app-section__info">
+                                <h2 class="mobile-app-section__heading">
+                                    <span class="accent-text">Download</span> our apps to start ordering
+                                </h2>
+                                <p class="mobile-app-section__desc">
+                                    Download the Resource app today and experience the comfort 
+                                    of ordering your favorite coffee from wherever you are
+                                </p>
+                                <div class="mobile-app-section__buttons">
+                                    <button class="mobile-app-section__button"><span class="button-icon button-icon__ios-icon"></span><span class="button-text-small">Available on the<span class="button-text-big">App Store</span></span></button>
+                                    <button class="mobile-app-section__button"><span class="button-icon button-icon__android-icon"></span><span class="button-text-small">Available on<span class="button-text-big">Google Play</span></span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mobile-app-section__image-wrap">
+                            <img class="mobile-app-section__image" src="./images/png/mobile-screens.png" width="630" height="630" 
+                            alt="Two smartphones demonstrating application">
+                        </div>
+                    </div>
                 </section>
                 <!--mobile-app-section end-->
             </div>
@@ -148,9 +168,29 @@
         <!--main end-->
 
         <!--footer start-->
-        <footer class="footer-block">
+        <footer class="footer-block" id="contact">
             <div class="footer-wrap wrap-box">
+                <div class="footer-block__content-wrap">
+                    <div class="footer-block__socials">
+                        <h2 class="footer-block__heading">
+                            Sip, Savor, Smile. <span class="accent-text">It’s coffee time!</span>
+                        </h2>
+                        <div class="footer-block__buttons">
+                            <a href="https://twitter.com/" target="_blank" rel="noopener"><button class="footer-block__button"><span class="footer-block__button-twitter"></span></button></a>
+                           <a href="https://www.instagram.com/" target="_blank" rel="noopener"> <button class="footer-block__button"><span class="footer-block__button-instagram"></span></button></a>
+                            <a href="https://www.facebook.com/" target="_blank" rel="noopener"><button class="footer-block__button"><span class="footer-block__button-facebook"></span></button></a>
+                        </div>
+                    </div>
+                    <div class="footer-block__contact-us">
+                        <h3 class="footer-block__contact-us-heading">Contact us</h3>
+                        <div class="footer-block__contacts-wrap">
+                            <div class="footer-block__line-wrap"><span class="line-icon footer-block__location-icon"></span><a class=" footer-block__link" href="https://maps.app.goo.gl/A9f4LFAbrGVqifxd8" target="_blank" rel="noopener">8558 Green Rd.,  LA</a></div>
+                            <div class="footer-block__line-wrap"><span class="line-icon footer-block__phone-icon"></span><a class="footer-block__link" href="tel:+16035550123">+1 (603) 555-0123</a></div>
+                            <div class="footer-block__line-wrap"><span class="line-icon footer-block__clock-icon"></span>Mon-Sat: 9:00 AM – 23:00 PM</div>
+                        </div>
 
+                    </div>
+                </div>
             </div>
         </footer>
         <!--footer end-->

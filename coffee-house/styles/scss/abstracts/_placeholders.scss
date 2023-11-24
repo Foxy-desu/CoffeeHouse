@@ -12,3 +12,13 @@
     -webkit-filter: invert(97%) sepia(35%) saturate(472%) hue-rotate(302deg) brightness(200%) contrast(90%);
                     filter: invert(97%) sepia(35%) saturate(472%) hue-rotate(302deg) brightness(200%) contrast(90%);
 }
+
+%invert-color {
+    -webkit-filter: invert(95%) sepia(35%) saturate(415%) hue-rotate(678deg) brightness(129%) contrast(78%);
+            filter: invert(95%) sepia(35%) saturate(415%) hue-rotate(678deg) brightness(129%) contrast(78%);
+}
+
+%invert-to-dark {
+    -webkit-filter: invert(22%) sepia(6%) saturate(195%) hue-rotate(2deg) brightness(32%) contrast(91%);
+            filter: invert(22%) sepia(6%) saturate(195%) hue-rotate(2deg) brightness(32%) contrast(91%);
+}

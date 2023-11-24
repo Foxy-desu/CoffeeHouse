@@ -1,4 +1,4 @@
-@mixin underscoreOnHover() {
+@mixin underscoreOnHover($color: $DARK_TEXT, $size: 2px) {
     @-webkit-keyframes appear {
         from {
             transform: scaleX(0);
@@ -20,7 +20,7 @@
         display: block;
         // width: 100%;
         content: '';
-        border: 2px solid $DARK_TEXT;
+        border: $size solid $color;
         border-radius: 5px;
         cursor: pointer;
         -webkit-animation: appear 0.6s ease-out forwards;
