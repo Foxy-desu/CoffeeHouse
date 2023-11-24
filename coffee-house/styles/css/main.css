@@ -527,6 +527,7 @@ body {
 .footer-block__line-wrap {
   width: -moz-fit-content;
   width: fit-content;
+  list-style: none;
 }
 .footer-block__line-wrap .line-icon {
   position: relative;
