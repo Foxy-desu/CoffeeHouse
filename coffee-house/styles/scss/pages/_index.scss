@@ -2,6 +2,10 @@
 @import '../abstracts/variables';
 @import '../abstracts/placeholders';
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: $BODY_COLOR;
 
@@ -208,7 +212,7 @@ body {
 
         &.button-right:hover::after,
         &.button-left:hover:before {
-            @extend %invert-arrow-color;
+            @extend %invert-color ;
         }
         
 
@@ -406,12 +410,205 @@ body {
     .mobile-app-section__button {
         @extend %hovered;
         @include rounded-button($bgColor: rgba(1, 1, 1, 0), $width: 200px, $height: 64px, $border: 1px solid $DARK_BORDER);
+        display: flex;
+        gap: 8px;
+        padding: 12px 20px;
+        transition: 0.6s;
 
-        &.button-icon {
+        .button-icon {
+            display: block;
+            width: 36px;
+            height: 36px;
+
+            &__ios-icon {
+               background: url(../../images/svg/icon_ios.svg) no-repeat center top 0px;
+               background-size: 34px;
+            }
+
+            &__android-icon {
+                background: url(../../images/svg/icon_android__dark.svg) no-repeat center top 0px;
+               background-size: 34px;
+            }
+        }
+
+        .button-text-small {
+            @include secondaryFont($fontSize: 10px, $fontWeight: 600, $lineHeight: 140%);
+            display: block;
+            text-align: start;
+            
+        }
+
+        .button-text-big {
+            @include secondaryFont($fontSize: 16px, $fontWeight: 600, $lineHeight: 150%);
+            display: block;
+            text-align: start;
+            
+        }
+
+        &:hover {
+            background-color: $CONTAINER_COLOR;
+
+            .button-text-small,
+            .button-text-big {
+                color: $LIGHT_TEXT;
+            }
+
+            .button-icon {
+                &__ios-icon,
+                &__android-icon {
+                    @extend %invert-color;
+                }
+            }
+        }
+    }
+
+}
+
+.footer-block {
+
+    &__content-wrap {
+        display: flex;
+        flex-direction: row;
+        gap: 100px;
+        padding: 100px;
+        background-color: $CONTAINER_COLOR;
+        border-radius: 40px;
+    }
+
+    &__socials {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 40px;
+        max-width: 530px;
+    }
+
+    &__heading {
+        @include mainFont($mainColor: $LIGHT_TEXT);
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 12px;
+    }
+
+    &__button {
+        $buttonWidth: 60px;
+        $buttonHeight: 60px;
+
+        @extend %hovered;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $buttonWidth;
+        height: $buttonHeight;
+        background-color: $CONTAINER_COLOR;
+        border: 1px solid $LIGHT_BORDER;
+        border-radius: 100px;
+        transition: 0.6s;
+
+        &-twitter {
             display: inline-block;
+            width: $buttonWidth;
+            height: $buttonHeight;
+            background: url(../../images/svg/ico_twitter__light.svg) no-repeat center;
+            transition: 0.6s;
+
+            &:hover {
+                @extend %invert-to-dark;
+            }
+        }
+
+        &-instagram {
+            display: inline-block;
+            width: $buttonWidth;
+            height: $buttonHeight;
+            background: url(../../images/svg/icon_instagram__light.svg) no-repeat center;
+            transition: 0.6s;
+
+            &:hover {
+                @extend %invert-to-dark;
+            }
+        }
+
+        &-facebook {
+            display: inline-block;
+            width: $buttonWidth;
+            height: $buttonHeight;
+            background: url(../../images/svg/ico_facebook__light.svg) no-repeat center;
+            transition: 0.6s;
+
+            &:hover {
+                @extend %invert-to-dark;
+            }
+        }
+
+        &:hover {
+            background-color: $LIGHT_TEXT;
+        }
+    }
+
+    &__contact-us {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        padding: 32px 0;
+    }
+
+    &__contact-us-heading {
+        @include secondaryFont($fontSize: 24px, $color: $LIGHT_TEXT, $fontWeight: 600);
+    }
+
+    &__contacts-wrap {
+        @include secondaryFont($color: $LIGHT_TEXT, $fontWeight: 600);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__line-wrap {
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+
+        .line-icon {
+            position: relative;
+            top: 3px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+
+            &.footer-block__location-icon {
+                background: url(../../images/svg/pin-alt.svg) no-repeat center;
+            }
+
+            &.footer-block__phone-icon {
+                background: url(../../images/svg/ico_phone__light.svg) no-repeat center;
+            }
+
+            &.footer-block__clock-icon {
+                background: url(../../images/svg/ico_clock__light.svg) no-repeat center;
+            }
             
         }
     }
+
+    &__link {
+        @include underscoreOnHover($color: $LIGHT_TEXT, $size: 0.5px);
+        color: $LIGHT_TEXT;
+        text-decoration: none;
+        
+        &::after {
+            display: block;
+            content: '';
+            border: 0.5px solid hsla(40, 2%, 25%, 0);
+            border-radius: 5px;
+            transition: 0.6s ease;
+        }
+    }
+
+
 
 
 }
