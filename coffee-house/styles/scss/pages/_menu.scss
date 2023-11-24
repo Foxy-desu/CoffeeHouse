@@ -1,2 +1,173 @@
 @import '../abstracts/mixins';
 @import '../abstracts/variables';
+
+.header-block {
+    &__button--disabled {
+        @include secondaryFont($fontWeight: 600);
+
+        display: inline-block;
+        box-sizing: content-box;
+        width: 72px;
+        padding: 5px 0 5px 0;
+        text-align: left;
+        text-decoration: none;
+        background: url(../../images/svg/coffee-cup.svg) no-repeat right top 5px;
+        background-color: transparent;
+        background-size: 20px;
+        border: none;
+
+        &::after {
+            display: block;
+            // width: 100%;
+            content: '';
+            border: 2px solid $DARK_TEXT;
+            border-radius: 5px;
+        }
+
+        
+    }
+}
+
+.menu-section {
+    margin-bottom: 100px;
+
+    &__content-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    &__heading {
+        @include mainFont();
+        max-width: 800px;
+        text-align: center;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    &__button {
+        $smoothChange: 0.6s;
+
+        @include rounded-button($bgColor: $BODY_COLOR, $width: 200px, $height: 60px, $border: 1px solid $LIGHT_BORDER);
+        @include secondaryFont($color: $DARK_TEXT, $fontSize: 16px, $fontWeight: 600, $lineHeight: 150%);
+        display: flex;
+        gap: 8px;
+        width: 115px;
+        height: 46px;
+        padding: 8px;
+        transition: $smoothChange;
+
+        .button-inner-circle {
+            display: block;
+            width: 30px;
+            height: 30px;
+            padding: 0 7px;
+            background-color: $LIGHT_BORDER;
+            border-radius: 100px;
+            transition: $smoothChange;
+
+            &.coffee-circle {
+                background-image: url(../../images/svg/coffee_Vector.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            &.tea-circle {
+                background-image: url(../../images/svg/teapot_Vector.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            &.dessert-circle {
+                background-image: url(../../images/svg/dessert_Vector.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+
+        &-text {
+            display: block;
+            padding-top: 2px;
+            transition: $smoothChange;
+        }
+
+        &--active {
+            background-color: $CONTAINER_COLOR;
+
+            .button-inner-circle {
+                background-color: $BODY_COLOR;
+            }
+
+            .menu-section__button-text {
+                color: $LIGHT_TEXT;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: $CONTAINER_COLOR;
+
+            .button-inner-circle {
+                background-color: $BODY_COLOR;
+            }
+
+            .menu-section__button-text {
+                color: $LIGHT_TEXT;
+            }
+        }
+
+        &:disabled,
+            button[disabled] {
+                cursor: default;
+        }
+    }
+
+    &__articles {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 40px
+    }
+
+    &__article {
+        $article-rounded: 40px;
+        display: flex;
+        flex-direction: column;
+        border-radius: $article-rounded;
+        border: 1px solid $LIGHT_BORDER;
+
+        .menu-section__item-image-wrap {
+            overflow: hidden;
+            border-radius: $article-rounded;  
+        }
+
+        .menu-section__item-image {
+            transform: scale(115%);
+        }
+    }
+
+    &__item-info-wrap {
+        @include secondaryFont($fontSize: 24px, $fontWeight: 600, $lineHeight: 125%);
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        gap: 12px;
+        padding: 20px;
+
+        .menu-section__item-description {
+            @include secondaryFont($fontSize: 16px, $fontWeight: 400, $lineHeight: 150%);
+        }
+
+        .menu-section__item-price {
+            margin: auto 0 0 0
+        }
+
+    }
+
+
+}

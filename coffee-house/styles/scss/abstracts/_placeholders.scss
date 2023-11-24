@@ -3,7 +3,7 @@
     font-style: italic;
 }
 
-%hovered {
+%hovered:not(:disabled) {
     cursor: pointer;
     text-decoration: none;
 }

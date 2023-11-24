@@ -16,6 +16,11 @@
         }
     }
 
+    &:hover {
+        cursor: pointer;
+        text-decoration: none;
+    }
+
     &:hover::after {
         display: block;
         // width: 100%;
