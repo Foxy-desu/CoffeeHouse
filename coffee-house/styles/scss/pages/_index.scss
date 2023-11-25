@@ -190,6 +190,9 @@ body {
     .slider__button {
         @include rounded-button($width: 60px, $height: 60px, $bgColor: $BODY_COLOR, $border: 1px solid $DARK_BORDER);
         @extend %hovered;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         transition: 0.4s;
         
         &:hover {
