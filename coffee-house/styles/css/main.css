@@ -709,8 +709,10 @@ body {
 .menu-section__article {
   display: flex;
   flex-direction: column;
+  max-width: 310px;
   border-radius: 40px;
   border: 1px solid hsl(27, 14%, 72%);
+  transition: 0.6s;
 }
 .menu-section__article .menu-section__item-image-wrap {
   overflow: hidden;
@@ -718,6 +720,13 @@ body {
 }
 .menu-section__article .menu-section__item-image {
   transform: scale(115%);
+  transition: 0.6s;
+}
+.menu-section__article:hover {
+  cursor: pointer;
+}
+.menu-section__article:hover .menu-section__item-image {
+  transform: scale(100%);
 }
 .menu-section__item-info-wrap {
   font-family: Inter;

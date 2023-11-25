@@ -29,6 +29,7 @@
 }
 
 .menu-section {
+    $smoothChange: 0.6s;
     margin-bottom: 100px;
 
     &__content-wrap {
@@ -51,7 +52,6 @@
     }
 
     &__button {
-        $smoothChange: 0.6s;
 
         @include rounded-button($bgColor: $BODY_COLOR, $width: 200px, $height: 60px, $border: 1px solid $LIGHT_BORDER);
         @include secondaryFont($color: $DARK_TEXT, $fontSize: 16px, $fontWeight: 600, $lineHeight: 150%);
@@ -132,14 +132,17 @@
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
         gap: 40px
+        
     }
 
     &__article {
         $article-rounded: 40px;
         display: flex;
         flex-direction: column;
+        max-width: 310px;
         border-radius: $article-rounded;
         border: 1px solid $LIGHT_BORDER;
+        transition: $smoothChange;
 
         .menu-section__item-image-wrap {
             overflow: hidden;
@@ -148,6 +151,16 @@
 
         .menu-section__item-image {
             transform: scale(115%);
+            transition: $smoothChange;
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            .menu-section__item-image {
+                transform: scale(100%)
+            }
+
         }
     }
 
