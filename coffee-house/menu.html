@@ -10,6 +10,45 @@
 </head>
 
 <body>
+    <div class="backdrop">
+        <div class="popup">
+            <div class="popup__order-wrap">
+                <div class="popup__order-photo-wrap">
+                    <img src="./images/png/coffee-1.png" alt="Irish coffee photo">
+                </div>
+                <div class="popup__order-info-wrap">
+                    <h3 class="popup__item-name">
+                        Irish coffee
+                    </h3>
+                    <p class="popup__item-desc">
+                        Fragrant black coffee with Jameson Irish whiskey and whipped milk
+                    </p>
+                    <div class="popup__order-sizes">
+                        <h4 class="popup__order-heading">Size</h4>
+                        <button class="popup__order-size-button size-s">200 ml</button>
+                        <button class="popup__order-size-button size-m">300 ml</button>
+                        <button class="popup__order-size-button size-l">400 ml</button>
+                    </div>
+                    <div class="popup__order-additives">
+                        <h4 class="popup__order-heading">Additives</h4>
+                        <button class="popup__order-additives-button additive-sugar">Sugar</button>
+                        <button class="popup__order-additives-button additive-cinnamon">Cinnamon</button>
+                        <button class="popup__order-additives-button additive-syrup">Syrup</button>
+                    </div>
+                    <div class="popup__order-total-wrap">
+                        <span class="popup__order-total">Total:</span><span class="popup__order-price"></span>
+                        <div class="popup__order-total-warning">
+                            <p class="popup__warning-text">
+                                The cost is not final. Download our mobile app to see the final price 
+                                and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.
+                            </p>
+                        </div>
+                    </div>
+                    <button class="popup__order-button">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--layout container start-->
     <div class="layout-container">
 
@@ -215,9 +254,9 @@
                             Sip, Savor, Smile. <span class="accent-text">It’s coffee time!</span>
                         </h2>
                         <div class="footer-block__buttons">
-                           <button class="footer-block__button"><span class="footer-block__button-twitter"><a class="footer-block__button-link" href="https://twitter.com/" target="_blank" rel="noopener"></a></span></button>
-                           <button class="footer-block__button"><span class="footer-block__button-instagram"><a class="footer-block__button-link" href="https://www.instagram.com/" target="_blank" rel="noopener"></a></span></button>
-                           <button class="footer-block__button"><span class="footer-block__button-facebook"><a class="footer-block__button-link" href="https://www.facebook.com/" target="_blank" rel="noopener"></a></span></button>
+                           <a class="footer-block__button-link" href="https://twitter.com/" target="_blank" rel="noopener"><button class="footer-block__button"><span class="footer-block__button-twitter"></span></button></a>
+                           <a class="footer-block__button-link" href="https://www.instagram.com/" target="_blank" rel="noopener"><button class="footer-block__button"><span class="footer-block__button-instagram"></span></button></a>
+                           <a class="footer-block__button-link" href="https://www.facebook.com/" target="_blank" rel="noopener"><button class="footer-block__button"><span class="footer-block__button-facebook"></span></button></a>
                         </div>
                     </div>
                     <div class="footer-block__contact-us">

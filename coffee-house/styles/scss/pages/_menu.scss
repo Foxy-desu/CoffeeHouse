@@ -1,6 +1,29 @@
 @import '../abstracts/mixins';
 @import '../abstracts/variables';
 
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background: $BACKDROP_COLOR;
+
+    .popup {
+        display: block;
+        width: 800px;
+        height: 704px;
+        padding: 25px;
+        background: $BODY_COLOR;
+        border-radius: 40px;
+    }
+
+}
+
 .header-block {
     &__button--disabled {
         @include secondaryFont($fontWeight: 600);
