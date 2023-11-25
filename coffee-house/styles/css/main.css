@@ -228,6 +228,9 @@ body {
   background-color: hsl(28, 29%, 84%);
   border: 1px solid hsl(35, 9%, 37%);
   border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: 0.4s;
 }
 .favorites-coffee-section .slider__button:hover {
@@ -484,6 +487,7 @@ body {
   gap: 12px;
 }
 .footer-block__button {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
