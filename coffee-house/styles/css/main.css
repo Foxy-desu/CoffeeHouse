@@ -9,7 +9,7 @@
   font-style: italic;
 }
 
-.footer-block__button:not(:disabled), .mobile-app-section .mobile-app-section__button:not(:disabled), .favorites-coffee-section .slider__button:not(:disabled), .enjoy-section .enjoy-section__button:not(:disabled) {
+.footer-block__button:not(:disabled):hover, .mobile-app-section .mobile-app-section__button:not(:disabled), .favorites-coffee-section .slider__button:not(:disabled), .enjoy-section .enjoy-section__button:not(:disabled) {
   cursor: pointer;
   text-decoration: none;
 }
@@ -20,6 +20,19 @@
 
 .footer-block__button-facebook:hover, .footer-block__button-instagram:hover, .footer-block__button-twitter:hover {
   filter: invert(22%) sepia(6%) saturate(195%) hue-rotate(2deg) brightness(32%) contrast(91%);
+}
+
+.header-block .header-block__button-link, .footer-block__button-link, .enjoy-section .enjoy-section__button-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.footer-block__button-link, .enjoy-section .enjoy-section__button-link {
+  border-radius: inherit;
 }
 
 html {
@@ -110,6 +123,7 @@ body {
   transition: 0.6s ease;
 }
 .header-block .header-block__button {
+  position: relative;
   display: inline-block;
   width: 72px;
   text-align: left;
@@ -118,7 +132,6 @@ body {
   background-size: 20px;
   border: none;
 }
-
 .enjoy-section {
   margin-bottom: 100px;
 }
@@ -182,7 +195,6 @@ body {
 .enjoy-section .enjoy-section__button:hover::after {
   filter: opacity(1);
 }
-
 .favorites-coffee-section {
   margin-bottom: 100px;
 }
@@ -505,6 +517,9 @@ body {
 }
 .footer-block__button:hover {
   background-color: hsl(28, 29%, 84%);
+}
+.footer-block__button-link {
+  border-radius: 100px;
 }
 .footer-block__contact-us {
   display: flex;

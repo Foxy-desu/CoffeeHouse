@@ -22,3 +22,17 @@
     -webkit-filter: invert(22%) sepia(6%) saturate(195%) hue-rotate(2deg) brightness(32%) contrast(91%);
             filter: invert(22%) sepia(6%) saturate(195%) hue-rotate(2deg) brightness(32%) contrast(91%);
 }
+
+%button-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+%button-link-rounded {
+    @extend %button-link;
+    border-radius: inherit;
+}

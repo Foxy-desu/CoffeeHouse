@@ -82,6 +82,7 @@ body {
     }
 
     .header-block__button {
+        position: relative;
         display: inline-block;
         width: 72px;
         text-align: left;
@@ -89,6 +90,10 @@ body {
         background: url(../../images/svg/coffee-cup.svg) no-repeat right top 5px;
         background-size: 20px;
         border: none;
+
+        &-link {
+            @extend %button-link;
+        }
     }
 }
 
@@ -147,11 +152,11 @@ body {
         &:hover::after {
             -webkit-filter: opacity(1);
             filter: opacity(1);
-
         }
 
-
-
+        &-link {
+            @extend %button-link-rounded;
+        }
     }
 }
 
@@ -496,7 +501,6 @@ body {
         $buttonWidth: 60px;
         $buttonHeight: 60px;
 
-        @extend %hovered;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -544,7 +548,13 @@ body {
         }
 
         &:hover {
+            @extend %hovered;
             background-color: $LIGHT_TEXT;
+        }
+
+        &-link {
+            @extend %button-link-rounded;
+            border-radius: 100px;
         }
     }
 
