@@ -601,6 +601,10 @@ body {
   transition: 0.6s ease;
 }
 
+body [hidden] {
+  display: none;
+}
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -615,11 +619,171 @@ body {
 }
 .backdrop .popup {
   display: block;
+  position: absolute;
   width: 800px;
-  height: 704px;
-  padding: 25px;
+  height: auto;
+  padding: 16px;
   background: hsl(28, 29%, 84%);
   border-radius: 40px;
+  overflow: hidden;
+}
+.backdrop .popup__order-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+.backdrop .popup__order-photo-wrap {
+  display: block;
+  max-height: 310px;
+  max-width: 310px;
+  flex-shrink: 0;
+  border-radius: 40px;
+  overflow: hidden;
+}
+.backdrop .popup__order-photo {
+  border-radius: inherit;
+  transform: scale(115%);
+}
+.backdrop .popup__item-info-wrap {
+  max-width: 438px;
+  flex-shrink: 0;
+}
+.backdrop .popup__item-name {
+  color: hsl(40, 2%, 25%);
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 125%;
+  margin-bottom: 12px;
+}
+.backdrop .popup__order-info {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+  color: hsl(40, 2%, 25%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+.backdrop .popup__order-heading {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+  color: hsl(40, 2%, 25%);
+  margin-bottom: 8px;
+}
+.backdrop .popup__button-wrap {
+  display: flex;
+  gap: 8px;
+}
+.backdrop .popup__order-button {
+  width: auto;
+  height: auto;
+  background-color: hsl(28, 29%, 84%);
+  border: 1px solid hsl(27, 14%, 72%);
+  border-radius: 100px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+  color: hsl(40, 2%, 25%);
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 8px 16px 8px 8px;
+  transition: 0.6s;
+}
+.backdrop .popup__order-button .button-inner-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: hsl(27, 14%, 72%);
+  border-radius: 100px;
+  transition: 0.6s;
+}
+.backdrop .popup__order-button .button-text {
+  position: relative;
+  top: 3px;
+  transition: 0.6s;
+}
+.backdrop .popup__order-button--active {
+  background-color: hsl(35, 9%, 37%);
+  border-color: hsl(35, 9%, 37%);
+}
+.backdrop .popup__order-button--active .button-inner-circle {
+  background-color: hsl(28, 29%, 84%);
+}
+.backdrop .popup__order-button--active .button-text {
+  color: hsl(28, 29%, 84%);
+}
+.backdrop .popup__order-button:hover {
+  cursor: pointer;
+  background-color: hsl(35, 9%, 37%);
+  border-color: hsl(35, 9%, 37%);
+}
+.backdrop .popup__order-button:hover .button-inner-circle {
+  background-color: hsl(28, 29%, 84%);
+}
+.backdrop .popup__order-button:hover .button-text {
+  color: hsl(28, 29%, 84%);
+}
+.backdrop .popup__order-button:disabled,
+.backdrop .popup__order-button button[disabled] {
+  cursor: default;
+}
+.backdrop .popup__order-button.submit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.backdrop .popup__order-button.submit-button:hover {
+  color: hsl(28, 29%, 84%);
+}
+.backdrop .popup__order-total-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.backdrop .popup__order-total-container {
+  display: flex;
+}
+.backdrop .popup__order-total, .backdrop .popup__order-price {
+  color: hsl(40, 2%, 25%);
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 125%;
+}
+.backdrop .popup__order-price {
+  margin: 0 0 0 auto;
+}
+.backdrop .popup__order-total-warning {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding: 12px 0;
+  border-top: 1px solid hsl(27, 14%, 72%);
+}
+.backdrop .popup__warning-sign {
+  display: block;
+  width: 30px;
+  height: 16px;
+  background: url(../../images/svg/ico_info-empty.svg) no-repeat center;
+  background-size: cover;
+}
+.backdrop .popup__warning-text {
+  color: hsl(40, 2%, 25%);
+  font-family: Inter;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 140%;
 }
 
 .header-block__button--disabled {
