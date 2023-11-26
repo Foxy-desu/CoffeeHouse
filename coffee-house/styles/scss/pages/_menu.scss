@@ -1,5 +1,194 @@
 @import '../abstracts/mixins';
 @import '../abstracts/variables';
+$smoothChange: 0.6s;
+
+body [hidden] {
+    display: none;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background: $BACKDROP_COLOR;
+
+    .popup {
+        display: block;
+        position: absolute;
+        width: 800px;
+        height: auto;
+        padding: 16px;
+        background: $BODY_COLOR;
+        border-radius: 40px;
+        overflow: hidden;
+
+        &__order-wrap {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 20px;
+        }
+    
+        &__order-photo-wrap {
+            display: block;
+            max-height: 310px;
+            max-width: 310px;
+            flex-shrink: 0;
+            border-radius: 40px;
+            overflow: hidden;
+        }
+    
+        &__order-photo {
+            border-radius: inherit;
+            transform: scale(115%)
+        }
+
+        &__item-info-wrap {
+            max-width: 438px;
+            flex-shrink: 0;  
+        }
+
+        &__item-name {
+            @include mainFont($fontSize: 24px);
+            margin-bottom: 12px;
+        }
+
+        &__order-info {
+            @include secondaryFont();
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        &__order-heading {
+            @include secondaryFont();
+            margin-bottom: 8px ;
+        }
+
+        &__button-wrap {
+            display: flex;
+            gap: 8px;
+        }
+
+        &__order-button {
+            @include rounded-button($bgColor: $BODY_COLOR, $width: auto, $height: auto, $border: 1px solid $LIGHT_BORDER);
+            @include secondaryFont($color: $DARK_TEXT, $fontSize: 16px, $fontWeight: 600, $lineHeight: 150%);
+            display: flex;
+            justify-content: flex-start;
+            gap: 8px;
+            padding: 8px 16px 8px 8px;
+            transition: $smoothChange;
+
+            & .button-inner-circle {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 30px;
+                height: 30px;
+                background-color: $LIGHT_BORDER;
+                border-radius: 100px;
+                transition: $smoothChange;
+            }
+
+            & .button-text {
+                position: relative;
+                top: 3px;
+                transition: $smoothChange;
+            }
+
+            &--active {
+                background-color: $CONTAINER_COLOR;
+                border-color: $CONTAINER_COLOR;
+
+                .button-inner-circle {
+                    background-color: $BODY_COLOR;
+                 }
+
+                .button-text {
+                    color: $LIGHT_TEXT;
+                 }
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: $CONTAINER_COLOR;
+                border-color: $CONTAINER_COLOR;
+    
+                .button-inner-circle {
+                    background-color: $BODY_COLOR;
+                }
+    
+                .button-text {
+                    color: $LIGHT_TEXT;
+                }
+            }
+    
+            &:disabled,
+                button[disabled] {
+                    cursor: default;
+            }
+
+            &.submit-button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+
+                &:hover {
+                    color: $LIGHT_TEXT;
+                }
+            }
+
+        }
+
+        &__order-total-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        &__order-total-container {
+            display: flex;
+        }
+
+        &__order-total, 
+        &__order-price {
+            @include mainFont($fontSize: 24px); 
+        }
+
+        &__order-price {
+            margin: 0 0 0 auto;
+        }
+
+        &__order-total-warning {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            padding: 12px 0;
+            border-top: 1px solid $LIGHT_BORDER;
+        }
+
+        &__warning-sign {
+            display: block;
+            width: 30px;
+            height: 16px;
+            background: url(../../images/svg/ico_info-empty.svg) no-repeat center;
+            background-size: cover;
+            
+        }
+        
+        &__warning-text {
+            @include mainFont($fontSize: 10px, $lineHeight: 140%);
+        }
+    }
+}
 
 .header-block {
     &__button--disabled {
@@ -29,7 +218,6 @@
 }
 
 .menu-section {
-    $smoothChange: 0.6s;
     margin-bottom: 100px;
 
     &__content-wrap {
