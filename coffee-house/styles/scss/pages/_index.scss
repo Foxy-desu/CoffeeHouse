@@ -76,7 +76,7 @@ body {
             content: '';
             border: 2px solid hsla(40, 2%, 25%, 0);
             border-radius: 5px;
-            transition: 0.6s ease;
+            transition: $smoothChange;
         }
 
     }
@@ -127,8 +127,11 @@ body {
         @include rounded-button($bgColor: $BODY_COLOR);
         @include secondaryFont($fontWeight: 600, $lineHeight: 180%);
         @extend %hovered;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: relative;
-        transition: 0.6s;
+        transition: $smoothChange;
 
         &::after {
             display: inline-block;
@@ -142,7 +145,7 @@ body {
             background-size: contain;
             -webkit-filter: opacity(0);
             filter: opacity(0);
-            transition: 0.6s;
+            transition: $smoothChange;
         }
 
         &:hover {
@@ -193,7 +196,7 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: 0.4s;
+        transition: $smoothChange;
         
         &:hover {
             background-color: $CONTAINER_COLOR;
@@ -205,7 +208,7 @@ body {
             height: 24px;
             content: '';
             background: url(../../images/svg/arrow-left__dark.svg) no-repeat center;
-            transition: 0.4s;
+            transition: $smoothChange;
         }
 
         &.button-right::after {
@@ -214,7 +217,7 @@ body {
             height: 24px;
             content: '';
             background: url(../../images/svg/arrow-right__dark.svg) no-repeat center;
-            transition: 0.4s;
+            transition: $smoothChange;
         }
 
 
@@ -341,7 +344,7 @@ body {
 
     .about-section___photo {
        position: absolute;
-       transition: 0.9s;
+       transition: $smoothPhotoScale;
 
         
        &.image-1 {
@@ -421,7 +424,7 @@ body {
         display: flex;
         gap: 8px;
         padding: 12px 20px;
-        transition: 0.6s;
+        transition: $smoothChange;
 
         .button-icon {
             display: block;
@@ -513,14 +516,14 @@ body {
         background-color: $CONTAINER_COLOR;
         border: 1px solid $LIGHT_BORDER;
         border-radius: 100px;
-        transition: 0.6s;
+        transition: $smoothChange;
 
         &-twitter {
             display: inline-block;
             width: $buttonWidth;
             height: $buttonHeight;
             background: url(../../images/svg/ico_twitter__light.svg) no-repeat center;
-            transition: 0.6s;
+            transition: $smoothChange;
 
             &:hover {
                 @extend %invert-to-dark;
@@ -532,7 +535,7 @@ body {
             width: $buttonWidth;
             height: $buttonHeight;
             background: url(../../images/svg/icon_instagram__light.svg) no-repeat center;
-            transition: 0.6s;
+            transition: $smoothChange;
 
             &:hover {
                 @extend %invert-to-dark;
@@ -544,7 +547,7 @@ body {
             width: $buttonWidth;
             height: $buttonHeight;
             background: url(../../images/svg/ico_facebook__light.svg) no-repeat center;
-            transition: 0.6s;
+            transition: $smoothChange;
 
             &:hover {
                 @extend %invert-to-dark;
@@ -620,7 +623,7 @@ body {
             content: '';
             border: 0.5px solid hsla(40, 2%, 25%, 0);
             border-radius: 5px;
-            transition: 0.6s ease;
+            transition: $smoothChange;
         }
     }
 

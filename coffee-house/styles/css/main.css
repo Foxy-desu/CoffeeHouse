@@ -119,7 +119,7 @@ body {
   content: "";
   border: 2px solid hsla(40, 2%, 25%, 0);
   border-radius: 5px;
-  transition: 0.6s ease;
+  transition: 0.6s;
 }
 .header-block .header-block__button {
   position: relative;
@@ -172,6 +172,9 @@ body {
   font-weight: 600;
   line-height: 180%;
   color: hsl(40, 2%, 25%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   transition: 0.6s;
 }
@@ -230,7 +233,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 0.4s;
+  transition: 0.6s;
 }
 .favorites-coffee-section .slider__button:hover {
   background-color: hsl(35, 9%, 37%);
@@ -241,7 +244,7 @@ body {
   height: 24px;
   content: "";
   background: url(../../images/svg/arrow-left__dark.svg) no-repeat center;
-  transition: 0.4s;
+  transition: 0.6s;
 }
 .favorites-coffee-section .slider__button.button-right::after {
   display: inline-block;
@@ -249,7 +252,7 @@ body {
   height: 24px;
   content: "";
   background: url(../../images/svg/arrow-right__dark.svg) no-repeat center;
-  transition: 0.4s;
+  transition: 0.6s;
 }
 .favorites-coffee-section .slider__content-wrap {
   flex-grow: 1;
@@ -598,7 +601,7 @@ body {
   content: "";
   border: 0.5px solid hsla(40, 2%, 25%, 0);
   border-radius: 5px;
-  transition: 0.6s ease;
+  transition: 0.6s;
 }
 
 body [hidden] {
