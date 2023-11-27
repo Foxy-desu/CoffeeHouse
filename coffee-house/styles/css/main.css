@@ -635,6 +635,10 @@ body [hidden] {
   display: none;
 }
 
+body [hidden] {
+  display: none;
+}
+
 .backdrop {
   position: fixed;
   top: 0;
