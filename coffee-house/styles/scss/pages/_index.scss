@@ -9,7 +9,6 @@ html {
 body {
     background-color: $BODY_COLOR;
 
-    //test
     display: grid;
     grid: 20px 1fr 40px / 1fr minmax(380px, 1440px) 1fr;
     grid-template-areas:
@@ -38,20 +37,22 @@ body {
 }
 
 .header-block {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 
     .header-block__header {
         display: flex;
     }
 
     .header-block__wrap {
-        padding: 15px 0 0;
+        padding: 12px 0 0;
     }
 
     .header-block__nav-wrap {
+        position: relative;
         display: flex;
         justify-content: center;
         flex-grow: 1;
+        margin-left: -1px;
     }
 
     .header-block__nav-list {
@@ -73,9 +74,10 @@ body {
 
         &::after {
             display: block;
+            box-sizing: content-box;
+            padding-top: 1px;
             content: '';
-            border: 2px solid hsla(40, 2%, 25%, 0);
-            border-radius: 5px;
+            border-bottom: 2px solid hsla(40, 2%, 25%, 0);
             transition: $smoothChange;
         }
 
@@ -121,6 +123,7 @@ body {
 
     .enjoy-section__desc {
         @include secondaryFont($LIGHT_TEXT);
+        box-sizing: content-box;
     }
 
     .enjoy-section__button {
@@ -131,6 +134,7 @@ body {
         justify-content: center;
         align-items: center;
         position: relative;
+        height: 65px;
         transition: $smoothChange;
 
         &::after {
@@ -197,6 +201,7 @@ body {
         justify-content: center;
         align-items: center;
         transition: $smoothChange;
+        margin-top: -3px;
         
         &:hover {
             background-color: $CONTAINER_COLOR;
@@ -245,7 +250,7 @@ body {
     }
 
     .slider__image-wrap {
-        margin-bottom: 20px;
+        margin-bottom: 16px;
     }
 
     .slider__drink-info {
@@ -293,7 +298,7 @@ body {
 }
 
 .about-section {
-    margin-bottom: 100px;
+    margin-bottom: 99px;
 
     .about-section___desc {
         @include mainFont();
@@ -384,12 +389,21 @@ body {
 }
 
 .mobile-app-section {
-    margin-bottom: 100px;
+    margin-bottom: 95px;
 
     .mobile-app-section__content-wrap {
         display: flex;
         justify-content: space-between;
         gap: 100px;
+    }
+
+    .mobile-app-section__image-wrap {
+        position: relative;
+    }
+
+    .mobile-app-section__image {
+        position: relative;
+        margin-top: 2px;
     }
 
     .mobile-app-section__info-wrap {
@@ -416,10 +430,10 @@ body {
     .mobile-app-section__buttons {
         display: flex;
         gap: 20px;
+        margin-top: -3px;
     }
 
     .mobile-app-section__button {
-        @extend %hovered;
         @include rounded-button($bgColor: rgba(1, 1, 1, 0), $width: 200px, $height: 64px, $border: 1px solid $DARK_BORDER);
         display: flex;
         gap: 8px;
@@ -430,6 +444,8 @@ body {
             display: block;
             width: 36px;
             height: 36px;
+            margin-left: -1px;
+            margin-top: 1px;
 
             &__ios-icon {
                background: url(../../images/svg/icon_ios.svg) no-repeat center top 0px;
@@ -453,10 +469,12 @@ body {
             @include secondaryFont($fontSize: 16px, $fontWeight: 600, $lineHeight: 150%);
             display: block;
             text-align: start;
+            margin-top: 1px;
             
         }
 
         &:hover {
+            @extend %hovered;
             background-color: $CONTAINER_COLOR;
 
             .button-text-small,
@@ -490,7 +508,7 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: 40px;
+        gap: 30px;
         max-width: 530px;
     }
 
@@ -561,27 +579,28 @@ body {
 
     }
 
-    .footer-block__button-link {
-        @extend %button-link-rounded;
-        border-radius: 100px;
-    }
+    // .footer-block__button-link {
+    //     @extend %button-link-rounded;
+    //     border-radius: 100px;
+    // }
 
     &__contact-us {
         display: flex;
         flex-direction: column;
-        gap: 40px;
-        padding: 32px 0;
+        gap: 30px;
+        padding: 32px 0 35px 0;
     }
 
     &__contact-us-heading {
         @include secondaryFont($fontSize: 24px, $color: $LIGHT_TEXT, $fontWeight: 600);
+        margin-top: -2px;
     }
 
     &__contacts-wrap {
         @include secondaryFont($color: $LIGHT_TEXT, $fontWeight: 600);
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 15px;
     }
 
     &__line-wrap {
@@ -589,6 +608,10 @@ body {
         width: -moz-fit-content;
         width: fit-content;
         list-style: none;
+
+        &.location-line {
+            margin-top: 4px;
+        }
 
         .line-icon {
             position: relative;
@@ -600,29 +623,40 @@ body {
 
             &.footer-block__location-icon {
                 background: url(../../images/svg/pin-alt.svg) no-repeat center;
+                top: 3px;
             }
 
             &.footer-block__phone-icon {
                 background: url(../../images/svg/ico_phone__light.svg) no-repeat center;
+                top: 1px;
             }
 
             &.footer-block__clock-icon {
                 background: url(../../images/svg/ico_clock__light.svg) no-repeat center;
+                top: 1px;
             }
             
         }
+
+        .margin {
+            margin-left: 3px;
+        }
     }
 
+
+
     &__link {
-        @include underscoreOnHover($color: $LIGHT_TEXT, $size: 0.5px);
+        @include underscoreOnHover($color: $LIGHT_TEXT, $size: 1px);
         color: $LIGHT_TEXT;
         text-decoration: none;
         
         &::after {
             display: block;
+            box-sizing: content-box;
+            padding-top: 2px;
             content: '';
-            border: 0.5px solid hsla(40, 2%, 25%, 0);
-            border-radius: 5px;
+            border-bottom: 1px solid hsla(40, 2%, 25%, 0);
+            // border-radius: 5px;
             transition: $smoothChange;
         }
     }
