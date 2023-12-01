@@ -311,6 +311,7 @@ body {
         @media screen and (max-width: 680px) {
             display: none;
         }
+
     }
 
     .slider__button {
@@ -350,7 +351,20 @@ body {
             @extend %invert-color ;
         }
         
+        @media (hover: none) and (pointer: coarse) {
+            cursor: none;
+    
+            &.button-right:hover::after,
+            &.button-left:hover:before {
+               -webkit-filter: none ;
+                       filter: none ;
+            }
 
+            &:hover {
+                background-color: $BODY_COLOR;
+            }
+    
+        }
 
         
     }
@@ -523,6 +537,15 @@ body {
        &:hover {
         transform: scale(100%);
        }
+
+       @media (hover: none) and (pointer: coarse) {
+        cursor: none;
+
+        &:hover {
+            transform: scale(110%);
+        }
+
+        }
     }
 }
 
@@ -674,6 +697,29 @@ body {
                     @extend %invert-color;
                 }
             }
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            cursor: none;
+            background-color: $BODY_COLOR;
+    
+            &:hover .button-text-small,
+            &:hover .button-text-big {
+                color: $DARK_TEXT;
+            }
+
+            &:hover {
+                background-color: $BODY_COLOR;
+            }
+
+            &:hover .button-icon {
+                &__ios-icon,
+                &__android-icon {
+                   -webkit-filter: none;
+                           filter: none;
+                }
+            }
+    
         }
     }
 

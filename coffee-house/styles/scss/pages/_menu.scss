@@ -376,16 +376,26 @@ body [hidden] {
             transform: scale(110%);
             transition: $smoothChange;
         }
-
+        
+        
         &:hover {
             cursor: pointer;
-
+            
             .menu-section__item-image {
                 transform: scale(100%);
                 
             }
+            
+        }
+        @media (hover: none) and (pointer: coarse) {
+            cursor: none;
+
+            .menu-section__item-image:hover {
+                transform: scale(110%);
+            }
 
         }
+
     }
 
     &__item-info-wrap {
