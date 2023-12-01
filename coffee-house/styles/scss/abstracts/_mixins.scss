@@ -58,3 +58,15 @@
     border-radius: 100px;
 
 }
+
+@mixin adaptive-font-size($maxLayoutWidth: 1440, $pcFontSize, $mobileFontSize, $minLayoutWidth: 380) {
+    $addSize: $pcFontSize - $mobileFontSize;
+    $addMobileSize: $addSize + $addSize * 0.7;
+    @media screen and (max-width: 500px) {
+        font-size: calc(#{$mobileFontSize + px} + #{$addMobileSize} * ((100vw - #{$minLayoutWidth + px}) / #{$maxLayoutWidth}));
+    }
+
+    // @media (min-width: 767px) {
+    //     font-size: calc(#{$mobileFontSize + px} + #{$addSize} * (100vw / #{$maxLayoutWidth}));
+    // }
+}
