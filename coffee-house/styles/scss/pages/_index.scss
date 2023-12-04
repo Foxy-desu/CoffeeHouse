@@ -316,7 +316,6 @@ body {
 
     .slider__button {
         @include rounded-button($width: 60px, $height: 60px, $bgColor: $BODY_COLOR, $border: 1px solid $DARK_BORDER);
-        @extend %hovered;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -324,7 +323,9 @@ body {
         margin-top: -3px;
         
         &:hover {
+            @extend %hovered;
             background-color: $CONTAINER_COLOR;
+            
         }
 
         &.button-left::before {
@@ -347,23 +348,23 @@ body {
 
 
         &.button-right:hover::after,
-        &.button-left:hover:before {
+        &.button-left:hover::before {
             @extend %invert-color ;
+
         }
         
         @media (hover: none) and (pointer: coarse) {
-            cursor: none;
-    
-            &.button-right:hover::after,
-            &.button-left:hover:before {
-               -webkit-filter: none ;
-                       filter: none ;
-            }
 
             &:hover {
+                cursor: none;
                 background-color: $BODY_COLOR;
             }
-    
+
+            &.button-right:hover::after,
+            &.button-left:hover::before {
+                -webkit-filter: none !important; 
+                        filter: none !important;
+            }
         }
 
         
@@ -581,7 +582,7 @@ body {
         position: relative;
         margin-top: 2px;
 
-        @media screen and (max-width: 630px) {
+        @media screen and (max-width: 760px) {
             width: 100%;
             height: auto;
             -o-object-fit: cover;
@@ -715,8 +716,8 @@ body {
             &:hover .button-icon {
                 &__ios-icon,
                 &__android-icon {
-                   -webkit-filter: none;
-                           filter: none;
+                   -webkit-filter: none !important;
+                           filter: none !important;
                 }
             }
     

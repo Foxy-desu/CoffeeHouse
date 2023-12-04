@@ -70,3 +70,7 @@
     //     font-size: calc(#{$mobileFontSize + px} + #{$addSize} * (100vw / #{$maxLayoutWidth}));
     // }
 }
+
+@mixin menuInfoCardOver() {
+    height: auto;
+}

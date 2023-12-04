@@ -1,5 +1,6 @@
 @import '../abstracts/mixins';
 @import '../abstracts/variables';
+@import '../abstracts/placeholders';
 body [hidden] {
     display: none;
 }
@@ -218,13 +219,17 @@ body [hidden] {
 }
 
 .menu-section {
-    margin-bottom: 97px;
+    margin-bottom: 100px;
+
+    @media screen and (max-width: 768px) {
+        margin-bottom: 102.5px;
+    } 
 
     &__content-wrap {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 40.5px;
+        gap: 40px;
 
         @media screen and (max-width: 768px) {
             gap: 38px;  
@@ -233,7 +238,7 @@ body [hidden] {
 
     &__heading {
         @include mainFont();
-        @include adaptive-font-size($mobileFontSize: 42, $pcFontSize: 72);
+        @include adaptive-font-size($mobileFontSize: 32, $pcFontSize: 60);
         max-width: 800px;
         text-align: center;
     }
@@ -245,6 +250,10 @@ body [hidden] {
 
         @media screen and (max-width: 768px) {
             gap: 14px;  
+        }
+
+        @media screen and (max-width: 380px) {
+            gap: 0 7px;
         }
     }
 
@@ -322,6 +331,21 @@ body [hidden] {
             button[disabled] {
                 cursor: default;
         }
+
+        @media (hover: none) and (pointer: coarse) {
+            &:hover:not(:disabled) {
+                cursor: none;
+                background-color: $BODY_COLOR;
+    
+                .button-inner-circle {
+                    background-color: $LIGHT_BORDER;
+                }
+    
+                .menu-section__button-text {
+                    color: $DARK_TEXT;
+                }
+            }
+        }
     }
 
     &__articles {
@@ -334,18 +358,21 @@ body [hidden] {
         column-gap: 40px;
         row-gap: 39px;
         margin-top: -2px;
-        justify-items: center;
+        // justify-items: center;
         transition: 0.6s;
 
         @media screen and (max-width: 768px) {
             margin-top: 1px;
-            -moz-column-gap: 12px;
-                 column-gap: 12px;
-            row-gap: 40px;
+            gap: 40px;
+            padding: 0 14px;
 
             :nth-child(n + 5){
                 display: none;
             }
+        }
+
+        @media screen and (max-width: 380px) {
+            padding: 0 19px;
         }
         
     }
@@ -355,7 +382,8 @@ body [hidden] {
 
         display: flex;
         flex-direction: column;
-        max-width: 310px;
+        position: relative;
+        // max-width: 310px;
         height: 506px;
         border-radius: $article-rounded;
         border: 1px solid $LIGHT_BORDER;
@@ -390,41 +418,115 @@ body [hidden] {
         @media (hover: none) and (pointer: coarse) {
             cursor: none;
 
-            .menu-section__item-image:hover {
+            &:hover .menu-section__item-image {
                 transform: scale(110%);
             }
 
         }
 
+        @media screen and (max-width: 767px) and (min-width: 500px) {
+            height: auto;
+
+            .menu-section__item-info-wrap {
+                position: absolute;
+                transform: translateY(-50%);
+                top: 50%;
+                width: 100%;
+                background-color: $transparentBody;
+                color: $infoOnTopText;
+                text-align: center;
+                -webkit-backdrop-filter: blur(2px);
+                        backdrop-filter: blur(2px);
+
+                
+            }
+            
+        }
+
     }
 
     &__item-info-wrap {
-        @include secondaryFont($fontSize: 24px, $fontWeight: 600, $lineHeight: 125%);
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        gap: 12px;
-        padding: 20px 19px;
+            @include secondaryFont($fontSize: 24px, $fontWeight: 600, $lineHeight: 125%);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            gap: 12px;
+            padding: 20px 19px;
+    
+            @media screen and (max-width: 768px) {
+                padding: 20px 20px 18px;
+            }
+    
+            .menu-section__item-heading {
+                font-size: 24px;
+            }
+    
+            .menu-section__item-description {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 150%;
+            }
+    
+            .menu-section__item-price {
+                margin: auto 0 0 0
+            }
+    
+    }
+    
+    &__refresh {
+        display: none;
+        justify-content: center;
+    
+        .refresh-button {
+            $btnWidth: 60px;
+            $btnHeight: $btnWidth;
+            @include rounded-button($bgColor: $BODY_COLOR, $width: $btnWidth, $height: $btnHeight, $border: 1px solid $DARK_BORDER);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.4s;
+
+            &__image {
+                $imgWidth: 24px;
+                $imgHeight: $imgWidth;
+                display: inline-block;
+                width: $imgWidth;
+                height: $imgHeight;
+                background: center / cover no-repeat url(../../images/svg/refresh_dark.svg);
+                transition: 0.4s;
+            }
+
+            &:hover {
+                @extend %hovered;
+                background-color: $CONTAINER_COLOR;
+
+                :only-child {
+                    @extend %invert-color;
+                }
+            }
+
+            @media (hover: none) and (pointer: coarse) {
+                &:hover {
+                    cursor: pointer;
+                    background-color: initial;
+    
+                    :only-child {
+                        -webkit-filter: none;
+                                filter: none;
+                    }
+                }
+            }
+
+
+        }
 
         @media screen and (max-width: 768px) {
-            padding: 20px 20px 18px;
+            display: flex;
         }
-
-        .menu-section__item-heading {
-            font-size: 24px;
-        }
-
-        .menu-section__item-description {
-            font-size: 16px; 
-            font-weight: 400; 
-            line-height: 150%;
-        }
-
-        .menu-section__item-price {
-            margin: auto 0 0 0
-        }
-
+    
+    
     }
+
 
 
 }
