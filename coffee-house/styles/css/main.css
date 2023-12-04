@@ -819,6 +819,15 @@ body {
 .footer-block__button:hover {
   background-color: hsl(28, 29%, 84%);
 }
+@media (hover: none) and (pointer: coarse) {
+  .footer-block__button:hover {
+    cursor: none;
+    background-color: hsl(35, 9%, 37%);
+  }
+  .footer-block__button :hover:nth-child(n+1) {
+    filter: none;
+  }
+}
 .footer-block__contact-us {
   display: flex;
   flex-direction: column;
@@ -910,6 +919,28 @@ body {
   content: "";
   border-bottom: 1px solid hsla(40, 2%, 25%, 0);
   transition: 0.6s;
+}
+@media (hover: none) and (pointer: coarse) {
+  @keyframes appear {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  .footer-block__link:hover:hover {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .footer-block__link:hover:hover::after {
+    display: block;
+    box-sizing: content-box;
+    content: "";
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    animation: appear 0.6s ease-out forwards;
+  }
 }
 
 body [hidden] {

@@ -825,12 +825,20 @@ body {
             background-color: $LIGHT_TEXT;
         }
 
-    }
+        @media (hover: none) and (pointer: coarse) {
+            &:hover {
+                cursor: none;
+                background-color: $CONTAINER_COLOR;
+            }
+    
+            :hover:nth-child(n + 1) {
+                -webkit-filter: none;
+                        filter: none;
+            }
+    
+        }
 
-    // .footer-block__button-link {
-    //     @extend %button-link-rounded;
-    //     border-radius: 100px;
-    // }
+    }
 
     &__contact-us {
         display: flex;
@@ -910,6 +918,14 @@ body {
             border-bottom: 1px solid hsla(40, 2%, 25%, 0);
             // border-radius: 5px;
             transition: $smoothChange;
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            &:hover {
+                @include underscoreOnHover($color: transparent);
+
+            }
+    
         }
     }
 
