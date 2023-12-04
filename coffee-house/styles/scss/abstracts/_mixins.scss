@@ -1,4 +1,4 @@
-@mixin underscoreOnHover($color: $DARK_TEXT, $size: 2px) {
+@mixin underscoreOnHover($color: $DARK_TEXT, $size: 2px, $display: block) {
     @-webkit-keyframes appear {
         from {
             transform: scaleX(0);
@@ -22,7 +22,7 @@
     }
 
     &:hover::after {
-        display: block;
+        display: $display;
         box-sizing: content-box;
         content: '';
         border-bottom: $size solid $color;
@@ -57,4 +57,20 @@
     border: $border;
     border-radius: 100px;
 
+}
+
+@mixin adaptive-font-size($maxLayoutWidth: 1440, $pcFontSize, $mobileFontSize, $minLayoutWidth: 380) {
+    $addSize: $pcFontSize - $mobileFontSize;
+    $addMobileSize: $addSize + $addSize * 0.7;
+    @media screen and (max-width: 763px) {
+        font-size: calc(#{$mobileFontSize + px} + #{$addMobileSize} * ((100vw - #{$minLayoutWidth + px}) / #{$maxLayoutWidth}));
+    }
+
+    // @media (min-width: 767px) {
+    //     font-size: calc(#{$mobileFontSize + px} + #{$addSize} * (100vw / #{$maxLayoutWidth}));
+    // }
+}
+
+@mixin menuInfoCardOver() {
+    height: auto;
 }
