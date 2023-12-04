@@ -350,16 +350,18 @@ body [hidden] {
 
     &__articles {
         display: grid;
+        transition: 0.6s;
         width: 100%;
-        grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+        // grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+        grid-template-columns: repeat(auto-fill, 310px);
+        justify-content: center;
         grid-auto-rows: auto;
         grid-auto-flow: row;
         -moz-column-gap: 40px;
         column-gap: 40px;
         row-gap: 39px;
         margin-top: -2px;
-        // justify-items: center;
-        transition: 0.6s;
+        justify-items: center;
 
         @media screen and (max-width: 768px) {
             margin-top: 1px;
@@ -374,7 +376,7 @@ body [hidden] {
         @media screen and (max-width: 380px) {
             padding: 0 19px;
         }
-        
+
     }
 
     &__article {
@@ -383,7 +385,7 @@ body [hidden] {
         display: flex;
         flex-direction: column;
         position: relative;
-        // max-width: 310px;
+        max-width: 310px;
         height: 506px;
         border-radius: $article-rounded;
         border: 1px solid $LIGHT_BORDER;
@@ -424,24 +426,29 @@ body [hidden] {
 
         }
 
-        @media screen and (max-width: 767px) and (min-width: 500px) {
-            height: auto;
+        // @media screen and (max-width: 1439px) and (min-width: 1090px) {
+        //     &:nth-child(3n + 1) {
+        //         justify-self: end;
+        //     }
 
-            .menu-section__item-info-wrap {
-                position: absolute;
-                transform: translateY(-50%);
-                top: 50%;
-                width: 100%;
-                background-color: $transparentBody;
-                color: $infoOnTopText;
-                text-align: center;
-                -webkit-backdrop-filter: blur(2px);
-                        backdrop-filter: blur(2px);
+        //     &:nth-child(3n + 2) {
+        //         justify-self: center;
+        //     }
 
-                
-            }
-            
-        }
+        //     &:nth-child(3n + 3) {
+        //         justify-self: start;
+        //     }
+        // }
+
+        // @media screen and (max-width: 1089px) and (min-width: 769px) {
+        //     &:nth-child(odd) {
+        //         justify-self: end;
+        //     }
+
+        //     &:nth-child(even) {
+        //         justify-self: start;
+        //     }
+        // }
 
     }
 
