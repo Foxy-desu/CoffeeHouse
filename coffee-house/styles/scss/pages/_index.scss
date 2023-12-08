@@ -53,6 +53,7 @@ body {
     margin-bottom: 16.5px;
 
     &__header {
+        position: relative;
         display: flex;
         align-items: center;
     }
@@ -73,6 +74,10 @@ body {
         display: flex;
         gap: 40px;
         list-style-type: none;
+    }
+
+    &__menu-button_burger {
+        display: none;
     }
 
     &__link,
@@ -128,10 +133,64 @@ body {
     &__burger {
         display: none;
     }
+    &__nav-close {
+        display: none;
+    }
 
     @media screen and (max-width: 768px) {
-    
-        &__nav,
+        
+        &__logo-wrap {
+           position: relative;
+           z-index: 11; 
+        }
+        &__nav {
+            position: fixed;
+            top: 84px;
+            left: 0;
+            z-index: 5;
+            width: 100vw;
+            height: 100lvh;
+            background-color: $BODY_COLOR;
+            justify-content: center;
+            transform: translateX(100vw);
+            display: block;
+            transition: 0s;
+            transition: transform 0.4s; //translate smoothness?
+            // flex-direction: column;
+
+            .header-block__button,
+            .header-block__link {
+                @include mainFont($fontSize: 32px);
+                @media (hover: hover) {
+                    margin-bottom: -3px
+                }
+            }
+
+        }
+
+        &__nav-list {
+            position: absolute;
+            align-items: center;
+            width: 100%;
+            top: 71px;
+            flex-direction: column;
+            z-index: 6;
+        }
+
+        &__nav-item {
+            margin-bottom: 10px;
+        }
+
+        &__menu-button_burger {
+            display: block;
+            margin-top: 40px;
+
+            .header-block__button {
+                width: 143px;
+                background: url(../../images/svg/coffee-cup__burger-menu.svg) no-repeat right top 5px;
+            }
+        }
+
         &__menu-button-wrap {
             display: none;
         }
@@ -146,8 +205,10 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 11;
             @include rounded-button($width: 44px, $height: 44px, $border: 1px solid $DARK_BORDER);
-
+            transition: $fastChange;
+            
             &__line {
                 position: absolute;
                 display: block;
@@ -155,6 +216,7 @@ body {
                 height: 1px;
                 border-radius: 2px;
                 background-color: $DARK_TEXT;
+                transition: $fastChange;
 
                 &_first {
                     transform: translateY(-4px);
@@ -164,10 +226,58 @@ body {
                     transform: translateY(4px);
                 }
             }
+
+            @media (hover: hover) {
+                &:hover {
+                    cursor: pointer;
+                    background-color: $CONTAINER_COLOR;
+
+                    .burger__line {
+                        background-color: $BODY_COLOR;
+                    }
+                }
+            }
             
         }
-    
-    
+
+
+        // &__nav-close {
+        //     display: none;
+        //     position: absolute;
+        //     top: 28px;
+        //     right: 40px;
+
+        //     @media screen and (max-width: 540px) {
+        //         right: 16px;
+        //     }
+        // }
+        // .close-button {
+        //     position: relative;
+        //     display: flex;
+        //     justify-content: center;
+        //     align-items: center;
+        //     @include rounded-button($width: 44px, $height: 44px, $border: 1px solid $DARK_BORDER);
+
+        //     &__line {
+        //         position: absolute;
+        //         display: block;
+        //         width: 16px;
+        //         height: 1px;
+        //         border-radius: 2px;
+        //         background-color: $DARK_TEXT;
+
+        //         &_first {
+        //             transform: rotate(45deg);
+        //         }
+
+        //         &_second {
+        //             transform: rotate(-45deg);
+        //         }
+
+        //     }
+
+
+        // }
     }
 }
 
@@ -175,11 +285,13 @@ body {
     margin-bottom: 100px;
 
     .enjoy-section__banner {
+        position: relative;
         width: 100%;
         padding: 6.25rem;
         border-radius: 42px;
         background: url(../../images/img-hero.jpg) no-repeat right;
         background-size: cover;
+        overflow: hidden;
         transition: 0.6s;
 
         @media screen and (max-width: 800px) {
@@ -191,7 +303,18 @@ body {
         };
     }
 
+    #background-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+           object-fit: cover;
+    }
+
     .enjoy-section__content-wrap {
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: 39.6px;

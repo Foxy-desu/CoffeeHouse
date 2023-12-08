@@ -27,7 +27,7 @@
         content: '';
         border-bottom: $size solid $color;
         cursor: pointer;
-        -webkit-animation: appear 0.6s ease-out forwards;
+            -webkit-animation: appear 0.6s ease-out forwards;
                 animation: appear 0.6s ease-out forwards;
 
     }
