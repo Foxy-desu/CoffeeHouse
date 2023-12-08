@@ -138,6 +138,7 @@ body {
     }
 
     @media screen and (max-width: 768px) {
+        
         &__logo-wrap {
            position: relative;
            z-index: 11; 
@@ -151,23 +152,44 @@ body {
             height: 100lvh;
             background-color: $BODY_COLOR;
             justify-content: center;
+            transform: translateX(100vw);
             display: block;
             transition: 0s;
+            transition: transform 0.4s; //translate smoothness?
             // flex-direction: column;
+
+            .header-block__button,
+            .header-block__link {
+                @include mainFont($fontSize: 32px);
+            }
 
         }
 
         &__nav-list {
-            position: relative;
+            position: absolute;
             align-items: center;
             width: 100%;
-            top: 80px;
+            top: 157px;
             flex-direction: column;
             z-index: 6;
         }
 
+        &__nav-item {
+            margin-bottom: 10px;
+        }
+
         &__menu-button_burger {
             display: block;
+            margin-top: 40px;
+
+            .header-block__button {
+                width: 143px;
+                background: url(../../images/svg/coffee-cup__burger-menu.svg) no-repeat right;
+            }
+        }
+
+        &__menu-button-wrap {
+            display: none;
         }
 
         &__burger {
@@ -204,7 +226,7 @@ body {
         &__nav-close {
             display: block;
             position: absolute;
-            top: 20px;
+            top: 28px;
             right: 40px;
 
             @media screen and (max-width: 540px) {
