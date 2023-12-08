@@ -184,9 +184,6 @@ body {
   display: none;
 }
 @media screen and (max-width: 768px) {
-  .header-block .menu_active {
-    transform: translateX(0);
-  }
   .header-block__logo-wrap {
     position: relative;
     z-index: 11;
