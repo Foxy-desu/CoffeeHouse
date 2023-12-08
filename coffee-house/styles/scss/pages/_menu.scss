@@ -5,6 +5,36 @@ body [hidden] {
     display: none;
 }
 
+.no-animation {
+    &:hover::after {
+        -webkit-animation: none;
+                animation: none;
+    }
+
+    &:hover {
+        cursor: default;
+    }
+
+    &::after {
+        display: block;
+        border-color: $DARK_BORDER;
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+        
+        &:hover::after {
+            display: block;
+            border-color: $DARK_BORDER;
+            -webkit-animation: none;
+                animation: none;
+        }
+    }
+
+
+}
+
+
+
 .backdrop {
     position: fixed;
     top: 0;
@@ -215,8 +245,17 @@ body [hidden] {
         }
 
         
+        
+
+        
+    }
+
+    &__button-menu {
+        @include mainFont($fontSize: 32px);
     }
 }
+
+
 
 .menu-section {
     margin-bottom: 100px;

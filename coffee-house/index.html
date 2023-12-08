@@ -23,10 +23,11 @@
                     <div class="header-block__nav-wrap header-block__wrap">
                         <nav class="header-block__nav">
                             <ul class="header-block__nav-list">
-                                <li class="header-block__nav-item"><a class="header-block__link" href="#coffee">Favorite coffee</a></li>
-                                <li class="header-block__nav-item"><a class="header-block__link" href="#about">About</a></li>
-                                <li class="header-block__nav-item"><a class="header-block__link" href="#mobile">Mobile app</a></li>
-                                <li class="header-block__nav-item"><a class="header-block__link" href="#contact">Contact us</a></li>
+                                <li class="header-block__nav-item navigation-item"><a class="header-block__link" href="#coffee">Favorite coffee</a></li>
+                                <li class="header-block__nav-item navigation-item"><a class="header-block__link" href="#about">About</a></li>
+                                <li class="header-block__nav-item navigation-item"><a class="header-block__link" href="#mobile">Mobile app</a></li>
+                                <li class="header-block__nav-item navigation-item"><a class="header-block__link" href="#contact">Contact us</a></li>
+                                <li class="header-block__menu-button_burger navigation-item"><a class="header-block__button" href="./menu">Menu</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -50,6 +51,9 @@
                 <!--enjoy-section start-->
                 <section class="enjoy-section">
                     <div class="enjoy-section__banner">
+                        <video id="background-video" autoplay loop muted poster="./images/img-hero.jpg">
+                            <source src="./video/video (2160p).mp4" type="video/mp4">
+                        </video>
                         <div class="enjoy-section__content-wrap">
                             <h1 class="enjoy-section__heading">
                                 <span class="accent-text">Enjoy</span> premium coffee at our charming cafe
@@ -203,6 +207,9 @@
 
     </div>
     <!--layout container end-->
+    <!--script start-->
+    <script src="../dist/bundle.js"></script>
+    <!--script end-->
 </body>
 
 </html>
