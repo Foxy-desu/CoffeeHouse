@@ -37,3 +37,7 @@
     @extend %button-link;
     border-radius: 40px;
 }
+
+%transitionModified {
+    transition: 0.3s ease-in, 0.3s ease-in;
+}

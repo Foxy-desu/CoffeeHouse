@@ -145,7 +145,7 @@ body {
         }
         &__nav {
             position: fixed;
-            top: 0;
+            top: 84px;
             left: 0;
             z-index: 5;
             width: 100vw;
@@ -161,6 +161,9 @@ body {
             .header-block__button,
             .header-block__link {
                 @include mainFont($fontSize: 32px);
+                @media (hover: hover) {
+                    margin-bottom: -3px
+                }
             }
 
         }
@@ -169,7 +172,7 @@ body {
             position: absolute;
             align-items: center;
             width: 100%;
-            top: 157px;
+            top: 71px;
             flex-direction: column;
             z-index: 6;
         }
@@ -184,7 +187,7 @@ body {
 
             .header-block__button {
                 width: 143px;
-                background: url(../../images/svg/coffee-cup__burger-menu.svg) no-repeat right;
+                background: url(../../images/svg/coffee-cup__burger-menu.svg) no-repeat right top 5px;
             }
         }
 
@@ -202,8 +205,10 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 11;
             @include rounded-button($width: 44px, $height: 44px, $border: 1px solid $DARK_BORDER);
-
+            transition: $fastChange;
+            
             &__line {
                 position: absolute;
                 display: block;
@@ -211,6 +216,7 @@ body {
                 height: 1px;
                 border-radius: 2px;
                 background-color: $DARK_TEXT;
+                transition: $fastChange;
 
                 &_first {
                     transform: translateY(-4px);
@@ -220,46 +226,58 @@ body {
                     transform: translateY(4px);
                 }
             }
+
+            @media (hover: hover) {
+                &:hover {
+                    cursor: pointer;
+                    background-color: $CONTAINER_COLOR;
+
+                    .burger__line {
+                        background-color: $BODY_COLOR;
+                    }
+                }
+            }
             
         }
 
-        &__nav-close {
-            display: block;
-            position: absolute;
-            top: 28px;
-            right: 40px;
 
-            @media screen and (max-width: 540px) {
-                right: 16px;
-            }
-        }
-        .close-button {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            @include rounded-button($width: 44px, $height: 44px, $border: 1px solid $DARK_BORDER);
+        // &__nav-close {
+        //     display: none;
+        //     position: absolute;
+        //     top: 28px;
+        //     right: 40px;
 
-            &__line {
-                position: absolute;
-                display: block;
-                width: 16px;
-                height: 1px;
-                border-radius: 2px;
-                background-color: $DARK_TEXT;
+        //     @media screen and (max-width: 540px) {
+        //         right: 16px;
+        //     }
+        // }
+        // .close-button {
+        //     position: relative;
+        //     display: flex;
+        //     justify-content: center;
+        //     align-items: center;
+        //     @include rounded-button($width: 44px, $height: 44px, $border: 1px solid $DARK_BORDER);
 
-                &_first {
-                    transform: rotate(45deg);
-                }
+        //     &__line {
+        //         position: absolute;
+        //         display: block;
+        //         width: 16px;
+        //         height: 1px;
+        //         border-radius: 2px;
+        //         background-color: $DARK_TEXT;
 
-                &_second {
-                    transform: rotate(-45deg);
-                }
+        //         &_first {
+        //             transform: rotate(45deg);
+        //         }
 
-            }
+        //         &_second {
+        //             transform: rotate(-45deg);
+        //         }
+
+        //     }
 
 
-        }
+        // }
     }
 }
 
