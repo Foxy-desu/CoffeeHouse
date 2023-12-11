@@ -20,3 +20,26 @@
 .js-pagination-button_active {
     background-color: $DARK_BORDER!important;
 }
+
+
+.js-coloring {
+    -webkit-animation: coloring 6s ease-out forwards!important;
+                animation: coloring 6s ease-out forwards!important;
+
+    @-webkit-keyframes coloring {
+        0% {
+            width: 0%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+    @keyframes coloring {
+        0% {
+            width: 0%;
+        }
+            100% {
+                width: 100%;
+            }
+    }
+}

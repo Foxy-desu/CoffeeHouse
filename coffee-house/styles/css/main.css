@@ -420,6 +420,7 @@ body {
 .favorites-coffee-section .favorites-coffee-section__slider {
   display: flex;
   flex-direction: column;
+  max-height: 684px;
   gap: 40px;
 }
 @media screen and (max-width: 680px) {
@@ -487,39 +488,46 @@ body {
     filter: none !important;
   }
 }
+.favorites-coffee-section .slider__content {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
 .favorites-coffee-section .slider__content-wrap {
-  width: auto;
+  position: relative;
+  max-height: 640px;
   max-width: 480px;
   overflow: hidden;
-}
-.favorites-coffee-section .slider__line {
-  display: flex;
 }
 .favorites-coffee-section .slider__articles {
   position: relative;
   display: flex;
-  justify-content: start;
-  height: auto;
-  width: auto;
+  justify-content: center;
+  align-items: center;
 }
 .favorites-coffee-section .slider__article {
-  position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   width: auto;
   height: auto;
-  max-width: 480px;
-  min-width: 348px;
+  max-height: 640px;
+  flex-shrink: 1;
+  flex-basis: 480px;
 }
 .favorites-coffee-section .slider__image-wrap {
+  display: block;
+  width: 100%;
   margin-bottom: 16px;
 }
 .favorites-coffee-section .slider__image-wrap img {
+  display: block;
   width: 100%;
   height: auto;
   -o-object-fit: cover;
   object-fit: cover;
 }
 .favorites-coffee-section .slider__drink-info {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -554,6 +562,13 @@ body {
   height: 4px;
   background-color: hsl(27, 14%, 72%);
   border-radius: 100px;
+  overflow: hidden;
+}
+.favorites-coffee-section .slider__pagination-button .pagination-fill {
+  background-color: hsl(35, 9%, 37%);
+  display: block;
+  width: 0%;
+  height: 100%;
 }
 
 .about-section {
@@ -1581,4 +1596,16 @@ body [hidden] {
 
 .js-pagination-button_active {
   background-color: hsl(35, 9%, 37%) !important;
+}
+
+.js-coloring {
+  animation: coloring 6s ease-out forwards !important;
+}
+@keyframes coloring {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }/*# sourceMappingURL=main.css.map */
