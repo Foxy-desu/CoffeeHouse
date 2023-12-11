@@ -409,6 +409,7 @@ body {
     .favorites-coffee-section__slider {
         display: flex;
         flex-direction: column;
+        max-height: 684px;
         gap: 40px;
 
         @media screen and (max-width: 680px) {
@@ -494,38 +495,43 @@ body {
         
     }
 
-    .slider__content-wrap {
-        width: auto;
-        max-width: 480px;
-        overflow: hidden;
+    .slider__content {
+        display: flex;
+        justify-content: center;
+        flex-grow: 1;
     }
 
-    .slider__line {
-        display: flex;
+    .slider__content-wrap {
+        position: relative;
+        max-height: 640px;
+        max-width: 480px;
+        overflow: hidden;
     }
 
     .slider__articles {
         position: relative;
         display: flex;
-        justify-content: start; //временно
-        height: auto;
-        width: auto;
+        justify-content: center;
+        align-items: center;
     }
 
     .slider__article {
-        position: relative;
-        display: block;
-        width: auto;
+        display: flex;
+        flex-direction: column;
+       width: auto;
         height: auto;
-        max-width: 480px;
-        min-width: 348px;
-        
+        max-height: 640px;
+        flex-shrink: 1;
+        flex-basis: 480px;
     }
 
     .slider__image-wrap {
+        display:block;
+        width:100%; 
         margin-bottom: 16px;
         img {
-            width: 100%;
+            display:block;
+            width:100%; 
             height: auto;
             -o-object-fit: cover;
                 object-fit: cover;
@@ -534,6 +540,7 @@ body {
     }
 
     .slider__drink-info {
+        width: 100%;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -565,7 +572,17 @@ body {
         height: 4px;
         background-color: $LIGHT_BORDER;
         border-radius: 100px;
+        overflow: hidden;
+
+        .pagination-fill {
+            background-color: $DARK_BORDER;
+            display: block;
+            width: 0%;
+            height: 100%;
+        }
     }
+
+    
 
 
 
