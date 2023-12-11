@@ -16,3 +16,7 @@
         transform: rotate(-45deg);
     }
 }
+
+.js-pagination-button_active {
+    background-color: $DARK_BORDER!important;
+}
