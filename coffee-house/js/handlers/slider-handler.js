@@ -94,34 +94,38 @@ function sliderHandler() {
         let posX1 = 0,
             posInt = 0,
             posX2 = 0,
-            slideIndex = 0,
-            posFinal = 0,
-            slideWidth = width, //one article = slider content wrap width
-            posThreshold = slideWidth * .35, 
-            trfRegExp = /[-0-9.]+(?=px)/;
-
-        let slide = function() {
-            rollSlider(); 
-        }
-
-        let getEvent = function() {
+            posFinal = 0;
+        
+        function getEvent () {
             return event.type.search('touch') !== -1 ? event.touches[0] : event;
         }
-
        
         if('ontouchstart' in window) {
+            swipeArea.addEventListener('touchstart', swipeStart);
+            swipeArea.addEventListener('touchmove', swipeAction);
+            swipeArea.addEventListener('touchend', swipeEnd);
+
             //function on touchStart
-            function swipeStart() {
+            function swipeStart(event) {
+                event.preventDefault();
                 let evt = getEvent();
-                posInt = posX1 = evt.clientX; //initial position of the cursor
+                posInt = posX1 = evt.clientX; //initial position of the cursor 
             }
 
             //function on touchChange
-            function swipeAction() {
-                let evt = getEvent(),
+            function swipeAction(event) {
+                let evt = getEvent();
+                event.preventDefault();
 
                 posX2 = posX1 - evt.clientX;
                 posX1 = evt.clientX;
+                
+            }
+
+            //function on touchEnd
+            function swipeEnd(event) {
+                event.preventDefault();
+                // posFinal = posInt - posX1;
 
                 if(posX2 < 0) {
                     count--;
@@ -132,8 +136,9 @@ function sliderHandler() {
                     rollSlider();
                     clearInterval(timerId);
                     timerId = setInterval(automatic, 6000);
-                    setInterval(timerId)
+                    setInterval(timerId) 
                 }
+
                 if(posX2 > 0) {
                     count++;
                     if(count >= articlesArray.length) {
@@ -145,27 +150,11 @@ function sliderHandler() {
                     timerId = setInterval(automatic, 6000);
                     setInterval(timerId)
                 }
-                
             }
-
-            //function on touchEnd
-            function swipeEnd() {
-
-            }
-
-            //add event listeners
-            swipeArea.addEventListener('touchmove', swipeAction);
-            swipeArea.addEventListener('touchend', swipeEnd);
-            swipeArea.addEventListener('mousemove', swipeAction);
-            swipeArea.addEventListener('mouseup', swipeEnd);
             
         }
     }
     mobileSwipe();
-
-
-    
-
 
 }
 
