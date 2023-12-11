@@ -6,7 +6,7 @@ module.exports = {
   entry: './coffee-house/js/index.js',
 
   output: {
-    path: path.resolve(__dirname, 'coffee-house/dist'),
+    path: path.resolve(__dirname, 'coffee-house/js'),
     publicPath: '',
     filename: 'bundle.js'
   },

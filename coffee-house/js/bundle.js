@@ -20,13 +20,27 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+
+/***/ "./coffee-house/js/handlers/slider-handler.js":
+/*!****************************************************!*\
+  !*** ./coffee-house/js/handlers/slider-handler.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction sliderHandler() {\n  //slider consts\n  var slider = document.querySelector('.slider__content-wrap'),\n    articlesArray = document.querySelectorAll('.slider__article'),\n    sliderLine = document.querySelector('.slider__articles'),\n    sliderPaginationPoints = document.querySelectorAll('.slider__pagination-button'),\n    sliderBtnNext = document.querySelector('.button-right'),\n    sliderBtnPrev = document.querySelector('.button-left');\n\n  //slider variables\n  var sliderCount = 0,\n    width,\n    itemWidth,\n    offset = 0;\n\n  //make slider change with the window resizing\n\n  //adaptive slider size \n  function sliderAdaptize() {\n    width = slider.offsetWidth;\n    itemWidth = width;\n    articlesArray.forEach(function (item) {\n      item.style.width = \"\".concat(itemWidth, \"px\");\n      item.style.height = 'auto';\n    });\n    sliderLine.style.width = \"\".concat(itemWidth * articlesArray.length, \"px\");\n  }\n  ;\n  sliderAdaptize();\n  window.addEventListener('resize', sliderAdaptize);\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sliderHandler);\n\n//# sourceURL=webpack://coffee-house/./coffee-house/js/handlers/slider-handler.js?");
+
+/***/ }),
+
+
 /***/ "./coffee-house/js/index.js":
 /*!**********************************!*\
   !*** ./coffee-house/js/index.js ***!
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _handlers_burger_menu_handler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./handlers/burger-menu-handler */ \"./coffee-house/js/handlers/burger-menu-handler.js\");\n\n\n// //burger handler variables\n// const body = document.body;\n// const buttonOpen = document.querySelector('.burger');\n// const buttonClose = document.querySelector('.close-button');\n// const menu = document.querySelector('.header-block__nav');\n// const menuItems = menu.querySelectorAll('.navigation-item');\n\n// //event\n// buttonOpen.addEventListener('click', (event)=> {\n//     console.log(event.target);\n//     menu.classList.add('js-menu_active');\n//     body.classList.add('js-body_no-scroll');\n// });\n\n// buttonClose.addEventListener('click', (event)=> {\n//     console.log(event.target);\n//     menu.classList.remove('js-menu_active');\n//     body.classList.remove('js-body_no-scroll');\n// });\n\n(0,_handlers_burger_menu_handler__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n\n//# sourceURL=webpack://coffee-house/./coffee-house/js/index.js?");
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _handlers_burger_menu_handler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./handlers/burger-menu-handler */ \"./coffee-house/js/handlers/burger-menu-handler.js\");\n/* harmony import */ var _handlers_slider_handler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./handlers/slider-handler */ \"./coffee-house/js/handlers/slider-handler.js\");\n\n\n(0,_handlers_burger_menu_handler__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_handlers_slider_handler__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n\n//# sourceURL=webpack://coffee-house/./coffee-house/js/index.js?");
+
 
 /***/ })
 

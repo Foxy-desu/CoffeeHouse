@@ -488,25 +488,36 @@ body {
   }
 }
 .favorites-coffee-section .slider__content-wrap {
-  flex-grow: 1;
+  width: auto;
+  max-width: 480px;
+  overflow: hidden;
+}
+.favorites-coffee-section .slider__line {
+  display: flex;
 }
 .favorites-coffee-section .slider__articles {
+  position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  height: auto;
+  width: auto;
 }
 .favorites-coffee-section .slider__article {
-  max-width: 480px; /*just like the picture width*/
+  position: relative;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 480px;
+  min-width: 348px;
 }
 .favorites-coffee-section .slider__image-wrap {
   margin-bottom: 16px;
 }
-@media screen and (max-width: 680px) {
-  .favorites-coffee-section .slider__image-wrap img {
-    width: 100%;
-    height: auto;
-    -o-object-fit: cover;
-    object-fit: cover;
-  }
+.favorites-coffee-section .slider__image-wrap img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 .favorites-coffee-section .slider__drink-info {
   display: flex;
@@ -543,9 +554,6 @@ body {
   height: 4px;
   background-color: hsl(27, 14%, 72%);
   border-radius: 100px;
-}
-.favorites-coffee-section .slider__pagination-button.slider__pagination-button--active {
-  background-color: hsl(35, 9%, 37%);
 }
 
 .about-section {
@@ -1569,4 +1577,8 @@ body [hidden] {
 }
 .js-burger-button_become-close .burger__line_second {
   transform: rotate(-45deg);
+}
+
+.js-pagination-button_active {
+  background-color: hsl(35, 9%, 37%) !important;
 }/*# sourceMappingURL=main.css.map */

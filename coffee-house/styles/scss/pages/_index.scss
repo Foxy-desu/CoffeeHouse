@@ -420,6 +420,7 @@ body {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        // gap: 40px;
     }
 
     .slider__button-wrap {
@@ -494,30 +495,42 @@ body {
     }
 
     .slider__content-wrap {
-        flex-grow: 1;
+        width: auto;
+        max-width: 480px;
+        overflow: hidden;
+    }
+
+    .slider__line {
+        display: flex;
     }
 
     .slider__articles {
+        position: relative;
         display: flex;
-        justify-content: center; //временно
+        justify-content: start; //временно
+        height: auto;
+        width: auto;
     }
 
     .slider__article {
-        max-width: 480px; /*just like the picture width*/
+        position: relative;
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 480px;
+        min-width: 348px;
+        
     }
 
     .slider__image-wrap {
         margin-bottom: 16px;
-
-        @media screen and (max-width: 680px) {
-           
-            img {
-                width: 100%;
-                height: auto;
-                -o-object-fit: cover;
-                   object-fit: cover;
-            }
+        img {
+            width: 100%;
+            height: auto;
+            -o-object-fit: cover;
+                object-fit: cover;
         }
+        
     }
 
     .slider__drink-info {
@@ -552,10 +565,6 @@ body {
         height: 4px;
         background-color: $LIGHT_BORDER;
         border-radius: 100px;
-
-        &.slider__pagination-button--active {
-            background-color: $DARK_BORDER;
-        }
     }
 
 
