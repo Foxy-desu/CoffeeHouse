@@ -94,13 +94,17 @@ function sliderHandler() {
         let posX1 = 0,
             posInt = 0,
             posX2 = 0,
-            posFinal = 0;
+            slideIndex = 0,
+            posFinal = 0,
+            slideWidth = width, //one article = slider content wrap width
+            posThreshold = slideWidth * .35, 
+            trfRegExp = /[-0-9.]+(?=px)/;
+
         
         function getEvent () {
             return event.type.search('touch') !== -1 ? event.touches[0] : event;
         }
-       
-        if('ontouchstart' in window) {
+
             swipeArea.addEventListener('touchstart', swipeStart);
             swipeArea.addEventListener('touchmove', swipeAction);
             swipeArea.addEventListener('touchend', swipeEnd);
@@ -118,14 +122,13 @@ function sliderHandler() {
                 event.preventDefault();
 
                 posX2 = posX1 - evt.clientX;
-                posX1 = evt.clientX;
-                
+                posX1 = evt.clientX;                
             }
 
             //function on touchEnd
             function swipeEnd(event) {
                 event.preventDefault();
-                // posFinal = posInt - posX1;
+                posFinal = posInt - posX1;
 
                 if(posX2 < 0) {
                     count--;
@@ -151,10 +154,12 @@ function sliderHandler() {
                     setInterval(timerId)
                 }
             }
-            
-        }
     }
     mobileSwipe();
+
+
+    
+
 
 }
 
