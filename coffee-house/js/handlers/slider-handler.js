@@ -136,8 +136,6 @@ function sliderHandler() {
                         clearInterval(timerId);
                         timerId = setInterval(automatic, 6000);
                         setInterval(timerId);
-
-                        console.log(posX1, posInt);
                     }
 
                     if (posX2 > 0) {
@@ -150,8 +148,6 @@ function sliderHandler() {
                         clearInterval(timerId);
                         timerId = setInterval(automatic, 6000);
                         setInterval(timerId);
-
-                        console.log(posX1, posInt);
                     }
                 }
                 else return;
