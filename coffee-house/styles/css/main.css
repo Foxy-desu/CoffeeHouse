@@ -315,6 +315,15 @@ body {
   -o-object-fit: cover;
   object-fit: cover;
 }
+.enjoy-section .video-screen {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.359);
+}
 .enjoy-section .enjoy-section__content-wrap {
   position: relative;
   display: flex;
