@@ -124,29 +124,33 @@ function sliderHandler() {
             function swipeEnd(event) {
                 // event.preventDefault();
 
-                if (posX2 < 0) {
-                    count--;
-                    if (count < 0) {
-                        count = articlesArray.length - 1;
+                if(posX1 !== posInt){
+                    
+                    if (posX2 < 0) {
+                        count--;
+                        if (count < 0) {
+                            count = articlesArray.length - 1;
+                        }
+                        currentSlide(count);
+                        rollSlider();
+                        clearInterval(timerId);
+                        timerId = setInterval(automatic, 6000);
+                        setInterval(timerId);
                     }
-                    currentSlide(count);
-                    rollSlider();
-                    clearInterval(timerId);
-                    timerId = setInterval(automatic, 6000);
-                    setInterval(timerId)
-                }
 
-                if (posX2 > 0) {
-                    count++;
-                    if (count >= articlesArray.length) {
-                        count = 0;
+                    if (posX2 > 0) {
+                        count++;
+                        if (count >= articlesArray.length) {
+                            count = 0;
+                        }
+                        currentSlide(count);
+                        rollSlider();
+                        clearInterval(timerId);
+                        timerId = setInterval(automatic, 6000);
+                        setInterval(timerId);
                     }
-                    currentSlide(count);
-                    rollSlider();
-                    clearInterval(timerId);
-                    timerId = setInterval(automatic, 6000);
-                    setInterval(timerId)
                 }
+                else return;
             }
         }
         mobileSwipe();
