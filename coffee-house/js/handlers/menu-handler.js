@@ -140,13 +140,23 @@ function menuHandler() {
             function hideLoadMoreBtn(){
                 categoryBtnsBlock.addEventListener('click', ()=> {
                     console.log(currentCategory);
-                    if(currentCategory.length <= 4) {
+                    if(currentCategory.length <= 4 || window.innerWidth > 768) {
 
                         loadMoreBtn.style.display = 'none';
                     }
                     else {
                         loadMoreBtn.style.display = 'inline-block';
                     }
+                })
+
+                window.addEventListener('resize', ()=> {
+                    if (window.innerWidth > 768 || currentCategory.length <= 4) {
+                        loadMoreBtn.style.display = 'none';
+                    }
+                    else {
+                        loadMoreBtn.style.display = 'inline-block';
+                    }
+                    
                 })
             }
             hideLoadMoreBtn();
