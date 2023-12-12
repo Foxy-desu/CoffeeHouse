@@ -14,12 +14,40 @@ function menuHandler() {
         const categoryBtns = document.querySelectorAll('.menu-section__button');
         const defaultBtn = categoryBtnsBlock.firstElementChild; //shown as active on  page load
 
+        //menu elements
+        const menu = document.querySelector('.menu-section__articles');
+        const menuCards = document.querySelectorAll('.menu-section__article');
+
         //variables;
         let currentCategory = coffeeList;
         let currentBtn = defaultBtn;
 
+        //on page load current category should be displayed;
+
         //show the right category of products
         function showItems() {
+            //card template will work in a cycle with current category elems
+            // const card = `
+            // <!--article start-->
+            // <article class="menu-section__article">
+            //     <div class="menu-section__item-image-wrap">
+            //         <img class="menu-section__item-image menu-section__image1" src="${elem.thumbnail || ''}" alt="a photo of ${elem.name || ''}">
+            //     </div>
+            //     <div class="menu-section__item-info-wrap">
+            //         <h3 class="menu-section__item-heading">
+            //             ${elem.name || ''}
+            //         </h3>
+            //         <p class="menu-section__item-description">
+            //             ${elem.description || ''}
+            //         </p>
+            //         <p class="menu-section__item-price">
+            //             $${elem.price || ''}
+            //         </p>
+            //     </div>
+            // </article>
+            // <!--article end-->
+            // `;
+            const menuCards = menu.childNodes;
            
             function currentCategoryChange() {
                 //click changes current category
@@ -29,24 +57,20 @@ function menuHandler() {
                     switch(target) {
                         case 'coffee-btn': {
                             currentCategory = coffeeList;
-                            console.log(currentCategory);//for debug
                             break
                         };
                         case 'tea-btn': {
                             currentCategory = teaList;
-                            console.log(currentCategory);//for debug
                             break
                         };
                         case 'dessert-btn': {
-                            currentCategory = dessertList;//for debug
-                            console.log(currentCategory);
+                            currentCategory = dessertList;
                             break
                         };
                         default: {
                             break
                         };
                     };
-                    console.log(target);
                 },)
             
             }
@@ -62,6 +86,7 @@ function menuHandler() {
 
                     }
                     colorizeCurrentBtn();
+                    showItems();
                 })
             }
             currentBtnChange();
@@ -76,6 +101,35 @@ function menuHandler() {
                     }
                 })
             };
+
+            Array.from(menuCards).forEach((elem)=> {
+                elem.remove();
+            });
+
+            currentCategory.map((elem) => {
+                menu.insertAdjacentHTML('beforeend',
+                `
+                <!--article start-->
+                <article class="menu-section__article">
+                    <div class="menu-section__item-image-wrap">
+                        <img class="menu-section__item-image menu-section__image1" src="${elem.thumbnail || ''}" alt="a photo of ${elem.name || ''}">
+                    </div>
+                    <div class="menu-section__item-info-wrap">
+                        <h3 class="menu-section__item-heading">
+                            ${elem.name || ''}
+                        </h3>
+                        <p class="menu-section__item-description">
+                            ${elem.description || ''}
+                        </p>
+                        <p class="menu-section__item-price">
+                            $${elem.price || ''}
+                        </p>
+                    </div>
+                </article>
+                <!--article end-->
+                `
+                );
+            });
         }
         showItems();
 
