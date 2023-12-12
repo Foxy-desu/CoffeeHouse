@@ -14,7 +14,6 @@ function sliderHandler() {
 
         //slider variables
         let count = 0,
-            slideWidth,
             width;
 
 
@@ -94,8 +93,7 @@ function sliderHandler() {
             //some usefull variables
             let posX1 = 0,
                 posInt = 0,
-                posX2 = 0,
-                posFinal = 0;
+                posX2 = 0;
 
 
             function getEvent() {
