@@ -9,14 +9,17 @@ function menuHandler() {
         const teaList = store.menuPage.tea;
         const dessertList = store.menuPage.dessert;
 
+        
+
         //controls
         const categoryBtnsBlock = document.querySelector('.menu-section__buttons');
         const categoryBtns = document.querySelectorAll('.menu-section__button');
         const defaultBtn = categoryBtnsBlock.firstElementChild; //shown as active on  page load
+        const loadMoreBtn = document.querySelector('.menu-section__refresh');
 
         //menu elements
         const menu = document.querySelector('.menu-section__articles');
-        const menuCards = document.querySelectorAll('.menu-section__article');
+        // const menuCards = document.querySelectorAll('.menu-section__article');
 
         //variables;
         let currentCategory = coffeeList;
@@ -47,7 +50,7 @@ function menuHandler() {
             // </article>
             // <!--article end-->
             // `;
-            const menuCards = menu.childNodes;
+            const menuCards = Array.from(menu.childNodes);
            
             function currentCategoryChange() {
                 //click changes current category
@@ -87,6 +90,7 @@ function menuHandler() {
                     }
                     colorizeCurrentBtn();
                     showItems();
+                    hideMoreItems();
                 })
             }
             currentBtnChange();
@@ -102,9 +106,11 @@ function menuHandler() {
                 })
             };
 
-            Array.from(menuCards).forEach((elem)=> {
+            if(menuCards.length !== 0){
+                menuCards.forEach((elem)=> {
                 elem.remove();
-            });
+            })
+            };
 
             currentCategory.map((elem) => {
                 menu.insertAdjacentHTML('beforeend',
@@ -130,8 +136,40 @@ function menuHandler() {
                 `
                 );
             });
+
+            function hideLoadMoreBtn(){
+                categoryBtnsBlock.addEventListener('click', ()=> {
+                    console.log(currentCategory);
+                    if(currentCategory.length <= 4) {
+
+                        loadMoreBtn.style.display = 'none';
+                    }
+                    else {
+                        loadMoreBtn.style.display = 'inline-block';
+                    }
+                })
+            }
+            hideLoadMoreBtn();
         }
         showItems();
+
+        function showMoreItems() {
+            loadMoreBtn.addEventListener('click', (event)=> {
+                menu.classList.add('js-expose-hidden-cards');
+                loadMoreBtn.classList.add('js-hide');
+            })
+        }
+        showMoreItems();
+
+        function hideMoreItems() {
+            menu.classList.remove('js-expose-hidden-cards');
+            loadMoreBtn.classList.remove('js-hide'); 
+        };
+
+        function hideMoreItemsOnResize() {
+            window.addEventListener('resize', hideMoreItems)
+        }
+        hideMoreItemsOnResize();
 
     }
 };
