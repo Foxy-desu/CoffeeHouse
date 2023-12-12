@@ -40,13 +40,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./coffee-house/js/handlers/video-handler.js":
+/*!***************************************************!*\
+  !*** ./coffee-house/js/handlers/video-handler.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction videoHandler() {\n  if (document.querySelector('.enjoy-section')) {\n    var video = document.querySelector('#background-video');\n    video.addEventListener('contextmenu', function (event) {\n      event.preventDefault();\n    });\n  }\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (videoHandler);\n\n//# sourceURL=webpack://coffee-house/./coffee-house/js/handlers/video-handler.js?");
+
+/***/ }),
+
 /***/ "./coffee-house/js/index.js":
 /*!**********************************!*\
   !*** ./coffee-house/js/index.js ***!
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _handlers_burger_menu_handler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./handlers/burger-menu-handler */ \"./coffee-house/js/handlers/burger-menu-handler.js\");\n/* harmony import */ var _handlers_slider_handler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./handlers/slider-handler */ \"./coffee-house/js/handlers/slider-handler.js\");\n/* harmony import */ var _handlers_menu_handler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./handlers/menu-handler */ \"./coffee-house/js/handlers/menu-handler.js\");\n\n\n\n(0,_handlers_burger_menu_handler__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_handlers_slider_handler__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_handlers_menu_handler__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n\n//# sourceURL=webpack://coffee-house/./coffee-house/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _handlers_burger_menu_handler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./handlers/burger-menu-handler */ \"./coffee-house/js/handlers/burger-menu-handler.js\");\n/* harmony import */ var _handlers_slider_handler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./handlers/slider-handler */ \"./coffee-house/js/handlers/slider-handler.js\");\n/* harmony import */ var _handlers_menu_handler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./handlers/menu-handler */ \"./coffee-house/js/handlers/menu-handler.js\");\n/* harmony import */ var _handlers_video_handler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./handlers/video-handler */ \"./coffee-house/js/handlers/video-handler.js\");\n\n\n\n\n(0,_handlers_burger_menu_handler__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_handlers_slider_handler__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_handlers_menu_handler__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n(0,_handlers_video_handler__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n\n//# sourceURL=webpack://coffee-house/./coffee-house/js/index.js?");
 
 /***/ }),
 
