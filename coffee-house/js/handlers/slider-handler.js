@@ -124,29 +124,37 @@ function sliderHandler() {
             function swipeEnd(event) {
                 // event.preventDefault();
 
-                if (posX2 < 0) {
-                    count--;
-                    if (count < 0) {
-                        count = articlesArray.length - 1;
-                    }
-                    currentSlide(count);
-                    rollSlider();
-                    clearInterval(timerId);
-                    timerId = setInterval(automatic, 6000);
-                    setInterval(timerId)
-                }
+                if(posX1 !== posInt){
+                    
+                    if (posX2 < 0) {
+                        count--;
+                        if (count < 0) {
+                            count = articlesArray.length - 1;
+                        }
+                        currentSlide(count);
+                        rollSlider();
+                        clearInterval(timerId);
+                        timerId = setInterval(automatic, 6000);
+                        setInterval(timerId);
 
-                if (posX2 > 0) {
-                    count++;
-                    if (count >= articlesArray.length) {
-                        count = 0;
+                        console.log(posX1, posInt);
                     }
-                    currentSlide(count);
-                    rollSlider();
-                    clearInterval(timerId);
-                    timerId = setInterval(automatic, 6000);
-                    setInterval(timerId)
+
+                    if (posX2 > 0) {
+                        count++;
+                        if (count >= articlesArray.length) {
+                            count = 0;
+                        }
+                        currentSlide(count);
+                        rollSlider();
+                        clearInterval(timerId);
+                        timerId = setInterval(automatic, 6000);
+                        setInterval(timerId);
+
+                        console.log(posX1, posInt);
+                    }
                 }
+                else return;
             }
         }
         mobileSwipe();
