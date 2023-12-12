@@ -43,3 +43,14 @@
             }
     }
 }
+
+.js-expose-hidden-cards {
+    
+    :nth-child(n + 5){
+        display: block!important;
+    }
+}
+
+.js-hide {
+    display: none!important;
+}
