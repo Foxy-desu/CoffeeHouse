@@ -3,185 +3,299 @@ import store from "../products/products";
 function menuHandler() {
     //check if the right page is displayed
     if(document.querySelector('.menu-section')) {
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                                         MENU VARIABLES AND CONSTANTS                                       //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //lists of menu items
-        const coffeeList = store.menuPage.coffee;
-        const teaList = store.menuPage.tea;
-        const dessertList = store.menuPage.dessert;
+        const coffeeList = store.menuPage.coffee,
+            teaList = store.menuPage.tea,
+            dessertList = store.menuPage.dessert;
 
-        
-
-        //controls
-        const categoryBtnsBlock = document.querySelector('.menu-section__buttons');
-        const categoryBtns = document.querySelectorAll('.menu-section__button');
-        const defaultBtn = categoryBtnsBlock.firstElementChild; //shown as active on  page load
-        const loadMoreBtn = document.querySelector('.menu-section__refresh');
+        //menu controls
+        const categoryBtnsBlock = document.querySelector('.menu-section__buttons'),
+            categoryBtns = document.querySelectorAll('.menu-section__button'),
+            defaultBtn = categoryBtnsBlock.firstElementChild, //shown as active on  page load
+            loadMoreBtn = document.querySelector('.menu-section__refresh');
 
         //menu elements
         const menu = document.querySelector('.menu-section__articles');
-        // const menuCards = document.querySelectorAll('.menu-section__article');
 
         //variables;
-        let currentCategory = coffeeList;
-        let currentBtn = defaultBtn;
+        let currentCategory = coffeeList,
+            currentBtn = defaultBtn;
+        
+        let currCard,
+            currItemName,
+            currObj;
 
-        //on page load current category should be displayed;
-
-        //show the right category of products
-        function showItems() {
-            //card template will work in a cycle with current category elems
-            // const card = `
-            // <!--article start-->
-            // <article class="menu-section__article">
-            //     <div class="menu-section__item-image-wrap">
-            //         <img class="menu-section__item-image menu-section__image1" src="${elem.thumbnail || ''}" alt="a photo of ${elem.name || ''}">
-            //     </div>
-            //     <div class="menu-section__item-info-wrap">
-            //         <h3 class="menu-section__item-heading">
-            //             ${elem.name || ''}
-            //         </h3>
-            //         <p class="menu-section__item-description">
-            //             ${elem.description || ''}
-            //         </p>
-            //         <p class="menu-section__item-price">
-            //             $${elem.price || ''}
-            //         </p>
-            //     </div>
-            // </article>
-            // <!--article end-->
-            // `;
-            const menuCards = Array.from(menu.childNodes);
-           
-            function currentCategoryChange() {
-                //click changes current category
-                categoryBtnsBlock.addEventListener('click', (event)=> {
-                    let target = event.target.dataset.btnType;
-
-                    switch(target) {
-                        case 'coffee-btn': {
-                            currentCategory = coffeeList;
-                            break
-                        };
-                        case 'tea-btn': {
-                            currentCategory = teaList;
-                            break
-                        };
-                        case 'dessert-btn': {
-                            currentCategory = dessertList;
-                            break
-                        };
-                        default: {
-                            break
-                        };
-                    };
-                },)
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                                         POPUP VARIABLES AND CONSTANTS                                      //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             
-            }
-            currentCategoryChange();
+        //backdrop blocks
+        const backdrop = document.querySelector('.backdrop');
+        const popUpBox = document.querySelector('.popup');
+        const darkScreen = document.querySelector('.backdrop__dark-screen');
 
-            function currentBtnChange() {
-                //click changes current button
-                categoryBtnsBlock.addEventListener('click', (event)=> {
-                    let element = event.target;
-                    
-                    if(element.dataset.btnType) {
-                        currentBtn = element.closest('button');
+        //popup elements
+        const photoBlock = document.querySelector('.popup__order-photo');
+        const itemName = document.querySelector('.popup__item-name');
+        const itemDescription = document.querySelector('.popup__item-desc');
+        const selectButtonsClasters = document.querySelectorAll('.popup__button-wrap');
+        const sizeBtns = selectButtonsClasters[0];
+        const additivesBtns = selectButtonsClasters[1];
+        const totalPrice = document.querySelector('.popup__order-price');
+        const popupContent = popUpBox.children;
+        
+        //buttons
+        const closeBtn = document.querySelector('.submit-button');
 
-                    }
-                    colorizeCurrentBtn();
-                    showItems();
-                    hideMoreItems();
-                })
-            }
-            currentBtnChange();
+        const sizeSBtn = document.querySelector('.popup__order-button.size-s');
+        const sizeMBtn = document.querySelector('.popup__order-button.size-m');
+        const sizeLBtn = document.querySelector('.popup__order-button.size-l');
 
-            function colorizeCurrentBtn() {
-                categoryBtns.forEach((button) => {
-                    button.classList.remove('menu-section__button--active');
-                    button.removeAttribute('disabled');
-                    if(button === currentBtn) {
-                        button.classList.add('menu-section__button--active');
-                        button.setAttribute('disabled', '');
-                    }
-                })
-            };
+        const additiveOneBtn = document.querySelector('.popup__order-button.first-button');
+        const additiveTwoBtn = document.querySelector('.popup__order-button.second-button');
+        const additiveThreeBtn = document.querySelector('.popup__order-button.third-button');
 
-            if(menuCards.length !== 0){
-                menuCards.forEach((elem)=> {
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                                                  MENU HANDLING                                              //
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //event listening:
+        categoryBtnsBlock.addEventListener('click', currentCategoryChange);
+        categoryBtnsBlock.addEventListener('click', currentBtnChange);
+        categoryBtnsBlock.addEventListener('click', colorizeCurrentBtn);
+        categoryBtnsBlock.addEventListener('click', hideMoreItems);
+        categoryBtnsBlock.addEventListener('click', renderItems);
+        categoryBtnsBlock.addEventListener('click', hideLoadMoreBtn);
+        //windoe event
+        window.addEventListener('resize', hideLoadMoreBtn);
+        window.addEventListener('resize', hideMoreItems);
+        window.addEventListener('DOMContentLoaded', renderItems);
+        //load more btn events
+        loadMoreBtn.addEventListener('click', showMoreItems);
+
+        //show Items
+        function renderItems() {
+            const menuCards = Array.from(menu.childNodes);
+
+            console.log(currentCategory);
+            menuCards.forEach((elem)=> {
                 elem.remove();
-            })
-            };
-
+            });
+            //not only add cards to the menu block, but also assign event listeners to them as created
             currentCategory.map((elem) => {
-                menu.insertAdjacentHTML('beforeend',
-                `
+                const cardTemplate = `
                 <!--article start-->
-                <article class="menu-section__article">
+                <article class="menu-section__article" data-item-category="${elem.category}" data-item-name="${elem.name}">
                     <div class="menu-section__item-image-wrap">
-                        <img class="menu-section__item-image menu-section__image1" src="${elem.thumbnail || ''}" alt="a photo of ${elem.name || ''}">
+                        <img class="menu-section__item-image menu-section__image1" src="${elem.thumbnail}" alt="a photo of ${elem.name}">
                     </div>
                     <div class="menu-section__item-info-wrap">
                         <h3 class="menu-section__item-heading">
-                            ${elem.name || ''}
+                            ${elem.name}
                         </h3>
                         <p class="menu-section__item-description">
-                            ${elem.description || ''}
+                            ${elem.description}
                         </p>
                         <p class="menu-section__item-price">
-                            $${elem.price || ''}
+                            $${elem.price}
                         </p>
                     </div>
                 </article>
                 <!--article end-->
-                `
-                );
+                `;
+                menu.insertAdjacentHTML('beforeend', cardTemplate);
+                const cards = Array.from(menu.children);
+                cards.forEach((card) => {
+                    card.addEventListener('click', openPopUp);
+                    card.addEventListener('click', renderPopUp);
+                });
             });
 
-            function hideLoadMoreBtn(){
-                categoryBtnsBlock.addEventListener('click', ()=> {
-                    console.log(currentCategory);
-                    if(currentCategory.length <= 4 || window.innerWidth > 768) {
+            if(popupContent){
+                darkScreen.addEventListener('click', closePopUp);
+                closeBtn.addEventListener('click',  closePopUp);
+            };
+        };
 
-                        loadMoreBtn.style.display = 'none';
-                    }
-                    else {
-                        loadMoreBtn.style.display = 'inline-block';
-                    }
-                })
+        //change current category
+        function currentCategoryChange() {
+            let target = event.target.dataset.btnType;
 
-                window.addEventListener('resize', ()=> {
-                    if (window.innerWidth > 768 || currentCategory.length <= 4) {
-                        loadMoreBtn.style.display = 'none';
-                    }
-                    else {
-                        loadMoreBtn.style.display = 'inline-block';
-                    }
-                    
-                })
+            switch(target) {
+                case 'coffee-btn': {
+                    currentCategory = coffeeList;
+                    break
+                };
+                case 'tea-btn': {
+                    currentCategory = teaList;
+                    break
+                };
+                case 'dessert-btn': {
+                    currentCategory = dessertList;
+                    break
+                };
+                default: {
+                    break
+                };
             }
-            hideLoadMoreBtn();
-        }
-        showItems();
+        
+        };
 
-        function showMoreItems() {
-            loadMoreBtn.addEventListener('click', (event)=> {
-                menu.classList.add('js-expose-hidden-cards');
-                loadMoreBtn.classList.add('js-hide');
+        //change current button
+        function currentBtnChange() {
+            let element = event.target;
+            
+            if(element.dataset.btnType) {
+                currentBtn = element.closest('button');
+
+            }
+        };
+
+        //colorize btns
+        function colorizeCurrentBtn() {
+            categoryBtns.forEach((button) => {
+                button.classList.remove('menu-section__button--active');
+                button.removeAttribute('disabled');
+                if(button === currentBtn) {
+                    button.classList.add('menu-section__button--active');
+                    button.setAttribute('disabled', '');
+                }
             })
-        }
-        showMoreItems();
+        };
 
+        //hide extra elems
+        function hideLoadMoreBtn(){
+            // console.log(currentCategory);
+            if(currentCategory.length <= 4 || window.innerWidth > 768) {
+
+                loadMoreBtn.style.display = 'none';
+            }
+            else {
+                loadMoreBtn.style.display = 'inline-block';
+            }
+        }
+
+        //handle load more button to show more
+        function showMoreItems() {
+            menu.classList.add('js-expose-hidden-cards');
+            loadMoreBtn.classList.add('js-hide');
+        }
+
+         //handle load more button to hide more
         function hideMoreItems() {
             menu.classList.remove('js-expose-hidden-cards');
             loadMoreBtn.classList.remove('js-hide'); 
         };
 
-        function hideMoreItemsOnResize() {
-            window.addEventListener('resize', hideMoreItems)
-        }
-        hideMoreItemsOnResize();
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //                                         POPUP HANDLING                                                     //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // darkScreen.addEventListener('click', closePopUp);
+        // closeBtn.addEventListener('click',  closePopUp);
 
-    }
+        //open backdrop block on card click
+        function openPopUp() {
+            backdrop.classList.remove('js-hide');
+        };
+
+        //close popup
+        function closePopUp() {
+           {console.log(darkScreen, backdrop, popupContent)
+            backdrop.classList.add('js-hide');
+            Array.from(popupContent).forEach(elem => elem.remove())
+            }
+        };
+
+        function renderPopUp() {
+
+            currCard = event.target.closest('.menu-section__article');
+            currItemName = currCard.dataset.itemName;
+            
+            function findItemObj() {
+
+                currentCategory.forEach((elem)=> {
+                    if(elem.name === currItemName) {
+                        currObj = JSON.parse(JSON.stringify(elem));
+                        console.log(elem);
+                        console.log(currObj.name);
+
+                        function renderContent() {
+                            const name = currObj.name,
+                                thumbnail = currObj.thumbnail,
+                                description = currObj.description,
+                                price = currObj.price,
+                                cizeS = currObj.sizes.s.size,
+                                sizeM = currObj.sizes.m.size,
+                                sizeL = currObj.sizes.l.size,
+                                addOne = currObj.additives[0].name,
+                                addTwo = currObj.additives[1].name,
+                                addThree= currObj.additives[2].name,
+
+                                popupContentTemplate = `
+                        <div class="popup__order-wrap">
+                            <div class="popup__order-photo-wrap">
+                                <img class="popup__order-photo" src="${thumbnail}" alt="${name} photo">
+                            </div>
+                            <div class="popup__item-info-wrap">
+                                <h3 class="popup__item-name">
+                                    ${name}
+                                </h3>
+                                <div class="popup__order-info">
+                                    <p class="popup__item-desc">
+                                    ${description}
+                                    </p>
+                                    <form name="order:${name}">
+                                        <div class="order-options">
+                                            <div class="popup__order-sizes">
+                                                <p for class="popup__order-heading">Size</p>
+                                                <div class="popup__button-wrap">
+                                                    <button class="popup__order-button size-s popup__order-button--active" type="button" disabled><span class="button-inner-circle">S</span><span class="button-text">${cizeS}</span></button>
+                                                    <button class="popup__order-button size-m" type="button"><span class="button-inner-circle">M</span><span class="button-text">${sizeM}</span></button>
+                                                    <button class="popup__order-button size-l" type="button"><span class="button-inner-circle">L</span><span class="button-text">${sizeL}</span></button>
+                                                </div>
+                                            </div>
+                                            <div class="popup__order-additives">
+                                                <p class="popup__order-heading">Additives</p>
+                                                <div class="popup__button-wrap">
+                                                    <button class="popup__order-button first-button" type="button"><span class="button-inner-circle">1</span><span class="button-text">${addOne}</span></button>
+                                                    <button class="popup__order-button second-button" type="button"><span class="button-inner-circle">2</span><span class="button-text">${addTwo}</span></button>
+                                                    <button class="popup__order-button third-button" type="button"><span class="button-inner-circle">3</span><span class="button-text">${addThree}</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="popup__order-total-wrap">
+                                        <div class="popup__order-total-container">
+                                            <span class="popup__order-total">Total:</span>
+                                            <span class="popup__order-price">$${price}</span>
+                                        </div>
+                                        <div class="popup__order-total-warning">
+                                            <div class="popup__warning-sign"></div>
+                                            <p class="popup__warning-text">
+                                                The cost is not final. Download our mobile app to see the final price
+                                                and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <button form="order:${name}" class="popup__order-button submit-button">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                        popUpBox.insertAdjacentHTML('beforeend', popupContentTemplate);
+                        }
+                        renderContent();
+                    }
+                })
+            }
+            findItemObj();
+        };
+
+    };
 };
 
 
