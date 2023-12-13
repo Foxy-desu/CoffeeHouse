@@ -198,7 +198,6 @@ function menuHandler() {
         function openPopUp() {
             
             backdrop.classList.remove('js-hide');
-            body.classList.add('js-body_no-scroll');
             
             
         };
