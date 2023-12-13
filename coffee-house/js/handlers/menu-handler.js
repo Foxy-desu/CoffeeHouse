@@ -6,6 +6,7 @@ function menuHandler() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //                                         MENU VARIABLES AND CONSTANTS                                       //
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        const body = document.body;
 
         //lists of menu items
         const coffeeList = store.menuPage.coffee,
@@ -49,7 +50,7 @@ function menuHandler() {
         const popupContent = popUpBox.children;
         
         //buttons
-        const closeBtn = document.querySelector('.submit-button');
+        const closeBtn = document.getElementsByClassName('submit-button');
 
         const sizeSBtn = document.querySelector('.popup__order-button.size-s');
         const sizeMBtn = document.querySelector('.popup__order-button.size-m');
@@ -115,10 +116,14 @@ function menuHandler() {
                 });
             });
 
-            if(popupContent){
-                darkScreen.addEventListener('click', closePopUp);
-                closeBtn.addEventListener('click',  closePopUp);
-            };
+                // if(darkScreen){
+                //     darkScreen.addEventListener('click', closePopUp);
+                // Array.from(closeBtn).forEach((elem) => {
+                //     elem.addEventListener('click', closePopUp)
+                //     console.log(elem)
+                // });
+                // }
+
         };
 
         //change current category
@@ -194,18 +199,21 @@ function menuHandler() {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //                                         POPUP HANDLING                                                     //
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // darkScreen.addEventListener('click', closePopUp);
-        // closeBtn.addEventListener('click',  closePopUp);
 
         //open backdrop block on card click
         function openPopUp() {
+            
             backdrop.classList.remove('js-hide');
+            body.classList.add('js-body_no-scroll');
+            
+            
         };
 
         //close popup
         function closePopUp() {
            {console.log(darkScreen, backdrop, popupContent)
             backdrop.classList.add('js-hide');
+            body.classList.remove('js-body_no-scroll');
             Array.from(popupContent).forEach(elem => elem.remove())
             }
         };
@@ -293,6 +301,15 @@ function menuHandler() {
                 })
             }
             findItemObj();
+
+            if(darkScreen){
+                darkScreen.addEventListener('click', closePopUp);
+            Array.from(closeBtn).forEach((elem) => {
+                elem.addEventListener('click', closePopUp)
+                console.log(elem)
+            });
+            }
+
         };
 
     };
