@@ -37,28 +37,29 @@ function popupHandler() {
         
 
         //open backdrop block on card click
-        function togglePopUp() {
-            function assignListenerToCards() {
-
-                Array.from(menuCards).forEach((card) => {
-                    card.addEventListener('click', function clickCard() {
-                        console.log(Array.from(menuCards))
-                        backdrop.classList.remove('js-hide');
-                    })
-                });
-            }
-            assignListenerToCards();
+        // function openPopUp() {
            
-            
 
-            const closeElements = [darkScreen, closeBtn];
-            closeElements.forEach((element) => {
-                element.addEventListener('click', (event) => {
-                    backdrop.classList.add('js-hide');
-                });
-            });
-        }
-        togglePopUp();
+        //     Array.from(menuCards).forEach((card) => {
+        //             card.addEventListener('click', function clickCard() {
+        //                 backdrop.classList.remove('js-hide');
+        //             })
+        //         });
+         
+           
+        // }
+        // togglePopUp();
+
+        //close popup
+        // function closePopUp() {
+        //     const closeElements = [darkScreen, closeBtn];
+
+        //     closeElements.forEach((element) => {
+        //         element.addEventListener('click', (event) => {
+        //             backdrop.classList.add('js-hide');
+        //         });
+        //     });
+        // }
 
     }
 };
