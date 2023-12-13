@@ -46,6 +46,9 @@ function burgerMenuHandler() {
     const mobileWidthMediaQuery = window.matchMedia('(max-width: 768px)');
     mobileWidthMediaQuery.addEventListener('change', ()=> {
         body.classList.remove('js-body_no-scroll');
+        menu.classList.remove('js-menu_active');
+        buttonOpen.classList.remove('js-burger-button_become-close');
+        menu.classList.remove('js-reveal');
     })
 };
 
