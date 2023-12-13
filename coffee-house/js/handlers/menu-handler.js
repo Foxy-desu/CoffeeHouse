@@ -60,6 +60,9 @@ function menuHandler() {
         const additiveTwoBtn = document.querySelector('.popup__order-button.second-button');
         const additiveThreeBtn = document.querySelector('.popup__order-button.third-button');
 
+        const sizeButtons = document.getElementById('size-buttons');
+        const addButtons = document.getElementById('additive-buttons');
+
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //                                                  MENU HANDLING                                              //
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -115,15 +118,6 @@ function menuHandler() {
                     card.addEventListener('click', renderPopUp);
                 });
             });
-
-                // if(darkScreen){
-                //     darkScreen.addEventListener('click', closePopUp);
-                // Array.from(closeBtn).forEach((elem) => {
-                //     elem.addEventListener('click', closePopUp)
-                //     console.log(elem)
-                // });
-                // }
-
         };
 
         //change current category
@@ -218,6 +212,7 @@ function menuHandler() {
             }
         };
 
+        //renderPopup
         function renderPopUp() {
 
             currCard = event.target.closest('.menu-section__article');
@@ -260,7 +255,7 @@ function menuHandler() {
                                         <div class="order-options">
                                             <div class="popup__order-sizes">
                                                 <p for class="popup__order-heading">Size</p>
-                                                <div class="popup__button-wrap">
+                                                <div class="popup__button-wrap" id="size-buttons">
                                                     <button class="popup__order-button size-s popup__order-button--active" type="button" disabled><span class="button-inner-circle">S</span><span class="button-text">${cizeS}</span></button>
                                                     <button class="popup__order-button size-m" type="button"><span class="button-inner-circle">M</span><span class="button-text">${sizeM}</span></button>
                                                     <button class="popup__order-button size-l" type="button"><span class="button-inner-circle">L</span><span class="button-text">${sizeL}</span></button>
@@ -268,7 +263,7 @@ function menuHandler() {
                                             </div>
                                             <div class="popup__order-additives">
                                                 <p class="popup__order-heading">Additives</p>
-                                                <div class="popup__button-wrap">
+                                                <div class="popup__button-wrap" id="additives-buttons">
                                                     <button class="popup__order-button first-button" type="button"><span class="button-inner-circle">1</span><span class="button-text">${addOne}</span></button>
                                                     <button class="popup__order-button second-button" type="button"><span class="button-inner-circle">2</span><span class="button-text">${addTwo}</span></button>
                                                     <button class="popup__order-button third-button" type="button"><span class="button-inner-circle">3</span><span class="button-text">${addThree}</span></button>
@@ -310,7 +305,26 @@ function menuHandler() {
             });
             }
 
+            // Array.from(sizeBtns).forEach((buttons)=> {
+            //     buttons.addEventListener('click',(e) => {
+            //         if(e.target.closest('button')) {
+            //         Array.from(sizeButtons).forEach((button)=> {
+            //             button.classList.remove('menu-section__button--active');
+            //             button.removeAttribute('disabled');
+            //             button.classList.add('menu-section__button--active');
+            //             button.setAttribute('disabled', '');
+            //         })}});
+            // })
+
         };
+
+        //order calculations
+        function calculatePrice() {
+            let currentSizeBtn;
+            
+            const addButtons = document.getElementById('additive-buttons');
+
+        }
 
     };
 };

@@ -154,7 +154,7 @@ body {
             background-color: $BODY_COLOR;
             justify-content: center;
             transform: translateX(100vw);
-            display: block;
+            display: none;
             transition: 0s;
             transition: transform 0.4s; //translate smoothness?
             // flex-direction: column;

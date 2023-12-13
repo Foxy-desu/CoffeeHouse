@@ -199,7 +199,7 @@ body {
     background-color: hsl(28, 29%, 84%);
     justify-content: center;
     transform: translateX(100vw);
-    display: block;
+    display: none;
     transition: 0s;
     transition: transform 0.4s;
   }
@@ -1637,4 +1637,8 @@ body [hidden] {
 
 .js-hide {
   display: none !important;
+}
+
+.js-reveal {
+  display: block !important;
 }/*# sourceMappingURL=main.css.map */
