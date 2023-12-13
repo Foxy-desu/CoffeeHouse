@@ -45,7 +45,14 @@ body [hidden] {
     justify-content: center;
     align-items: center;
     z-index: 100;
-    background: $BACKDROP_COLOR;
+    
+
+    &__dark-screen {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: $BACKDROP_COLOR;
+    }
 
     .popup {
         display: block;
@@ -94,6 +101,12 @@ body [hidden] {
             flex-direction: column;
             justify-content: space-between;
             gap: 20px;
+        }
+
+        .order-options {
+            display: flex;
+            flex-direction: column;
+            gap: 20px
         }
 
         &__order-heading {
