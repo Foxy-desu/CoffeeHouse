@@ -196,19 +196,15 @@ function menuHandler() {
 
         //open backdrop block on card click
         function openPopUp() {
-            
             backdrop.classList.remove('js-hide');
-            
-            
+            body.classList.add('js-body_no-scroll');
         };
 
         //close popup
         function closePopUp() {
-           {console.log(darkScreen, backdrop, popupContent)
             backdrop.classList.add('js-hide');
             body.classList.remove('js-body_no-scroll');
             Array.from(popupContent).forEach(elem => elem.remove())
-            }
         };
 
         //renderPopup
@@ -303,28 +299,10 @@ function menuHandler() {
                 console.log(elem)
             });
             }
-
-            // Array.from(sizeBtns).forEach((buttons)=> {
-            //     buttons.addEventListener('click',(e) => {
-            //         if(e.target.closest('button')) {
-            //         Array.from(sizeButtons).forEach((button)=> {
-            //             button.classList.remove('menu-section__button--active');
-            //             button.removeAttribute('disabled');
-            //             button.classList.add('menu-section__button--active');
-            //             button.setAttribute('disabled', '');
-            //         })}});
-            // })
-
         };
 
         //order calculations
-        function calculatePrice() {
-            let currentSizeBtn;
-            
-            const addButtons = document.getElementById('additive-buttons');
-
-        }
-
+        
     };
 };
 
