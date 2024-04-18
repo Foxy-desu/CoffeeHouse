@@ -461,13 +461,12 @@ function sliderHandler() {
     //set another interval after the previous one runs once by using set timeout and default 6000ms
     var automaticWithPause = function automaticWithPause() {
       var timeLeft = 0;
-      var currCount;
       slider.addEventListener('mouseenter', function () {
         clearTimeout(timeOutId);
-        currCount = count;
         timeLeft = 6000 - (Date.now() - start);
         clearInterval(timerId);
-        console.log(timeLeft);
+        sliderPaginationPoints[count].classList.add('js-paused');
+        console.log(sliderPaginationPoints[count]);
       });
       slider.addEventListener('mouseleave', function () {
         timerId = setInterval(automatic, timeLeft);
@@ -475,7 +474,8 @@ function sliderHandler() {
           clearInterval(timerId);
           timerId = setInterval(automatic, 6000);
         }, timeLeft);
-        console.log(timeLeft);
+        sliderPaginationPoints[count].classList.remove('js-paused');
+        console.log(sliderPaginationPoints[count]);
       });
     };
     //mobile devices swiping 
