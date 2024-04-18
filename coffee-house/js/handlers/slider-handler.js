@@ -16,11 +16,18 @@ function sliderHandler() {
         let count = 0,
             width;
 
+        //some variables for automatic
+        //start variable for checking when a slide has automatically changed
+        //timeoutId variable for further timeout clearing
+        let start = Date.now();
+        let timeOutId;
 
         //make slider change with the window resizing
-        window.addEventListener('resize', resize);
-        window.addEventListener('resize', currentSlide(count));
-
+        window.addEventListener('resize', ()=> {
+            resize();
+            currentSlide(count);
+        });
+        
         //slider move 
         function rollSlider() {
             sliderLine.style.transform = 'translateX(-' + count * width + 'px)';
@@ -50,7 +57,8 @@ function sliderHandler() {
                 rollSlider();
                 clearInterval(timerId);
                 timerId = setInterval(automatic, 6000);
-                setInterval(timerId)
+                setInterval(timerId);
+                start = Date.now();
             });
             sliderBtnNext.addEventListener('click', (event) => {
                 count++;
@@ -61,7 +69,8 @@ function sliderHandler() {
                 rollSlider();
                 clearInterval(timerId);
                 timerId = setInterval(automatic, 6000);
-                setInterval(timerId)
+                setInterval(timerId);
+                start = Date.now();
             });
         }
         buttonClick();
@@ -75,17 +84,51 @@ function sliderHandler() {
         currentSlide(count);
 
         // nobody controls that, it's totally automatic
-        function automatic() {
+        //automatically change slides with certain interval and change start variable
+        function automatic(interval) {
             count++;
             if (count >= articlesArray.length) {
                 count = 0;
             }
             currentSlide(count);
             rollSlider();
+            start = Date.now();
 
-            setInterval(timerId, 0);
+            interval ?? setInterval(interval, 0);
         };
-        automatic();
+
+        // on mouseenter
+        // clear previously set timeout (if any exists) to prevent setting new interval
+        // memorize current element (count index), 
+        // calculate and memorize how much time of the interrupted interval is left
+        // clear previously set interval to pause scrolling
+
+        //on mouseleave
+        //set new interval equal to the time left
+        //set another interval after the previous one runs once by using set timeout and default 6000ms
+        function automaticWithPause() {
+            let timeLeft = 0;
+
+            slider.addEventListener('mouseenter', ()=> {
+                clearTimeout(timeOutId);
+                timeLeft = 6000 - (Date.now() - start);
+                clearInterval(timerId);
+                sliderPaginationPoints[count].classList.add('js-paused');
+                console.log(sliderPaginationPoints[count]);
+            });
+            
+            slider.addEventListener('mouseleave', ()=> {
+                timerId = setInterval(automatic, timeLeft);
+                timeOutId = setTimeout(()=> {
+                    clearInterval(timerId);
+                    timerId = setInterval(automatic, 6000);
+                }, timeLeft);
+                sliderPaginationPoints[count].classList.remove('js-paused');
+                console.log(sliderPaginationPoints[count]);
+                
+            });
+        }
+        automaticWithPause();
 
         //mobile devices swiping 
         function mobileSwipe() {

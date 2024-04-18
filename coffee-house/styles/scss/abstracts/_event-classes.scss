@@ -24,7 +24,8 @@
 
 .js-coloring {
     -webkit-animation: coloring 6s ease-out forwards!important;
-                animation: coloring 6s ease-out forwards!important;
+    animation: coloring 6s ease-out forwards!important;
+    animation-play-state: running;
 
     @-webkit-keyframes coloring {
         0% {
@@ -38,10 +39,20 @@
         0% {
             width: 0%;
         }
-            100% {
-                width: 100%;
-            }
+        100% {
+            width: 100%;
+        }
     }
+}
+
+.js-paused {
+    -webkit-animation: coloring 6s ease-out forwards!important;
+    animation: coloring 6s ease-out forwards!important;
+    -webkit-animation-play-state:paused !important; /* Safari and Chrome */
+    -moz-animation-play-state: paused !important;
+    -o-animation-play-state: paused !important;
+    animation-play-state:paused !important;
+    
 }
 
 .js-expose-hidden-cards {

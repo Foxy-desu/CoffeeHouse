@@ -1620,6 +1620,7 @@ body [hidden] {
 
 .js-coloring {
   animation: coloring 6s ease-out forwards !important;
+  animation-play-state: running;
 }
 @keyframes coloring {
   0% {
@@ -1628,6 +1629,11 @@ body [hidden] {
   100% {
     width: 100%;
   }
+}
+
+.js-paused {
+  animation: coloring 6s ease-out forwards !important; /* Safari and Chrome */
+  animation-play-state: paused !important;
 }
 
 .js-expose-hidden-cards :nth-child(n+5) {
