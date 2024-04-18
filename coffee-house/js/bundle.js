@@ -1,11 +1,3 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -16,10 +8,62 @@
   \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction burgerMenuHandler() {\n  //burger handler variables\n  var body = document.body;\n  var buttonOpen = document.querySelector('.burger');\n  var menu = document.querySelector('.header-block__nav');\n  var menuItems = menu.querySelectorAll('.navigation-item');\n\n  //event with buttons (close/open)\n  buttonOpen.addEventListener('click', function (event) {\n    buttonOpen.classList.toggle('js-burger-button_become-close');\n    if (menu.classList.contains('js-menu_active')) {\n      menu.classList.toggle('js-menu_active');\n      body.classList.toggle('js-body_no-scroll');\n      setTimeout(function () {\n        menu.classList.toggle('js-reveal');\n      }, 600);\n    } else {\n      menu.classList.toggle('js-reveal');\n      setTimeout(function () {\n        menu.classList.toggle('js-menu_active');\n        body.classList.toggle('js-body_no-scroll');\n      }, 0);\n    }\n    // menu.classList.toggle('js-menu_active');\n    // body.classList.toggle('js-body_no-scroll');\n  });\n\n  //event with menu items\n  menuItems.forEach(function (element) {\n    element.addEventListener('click', function (event) {\n      menu.classList.remove('js-menu_active');\n      buttonOpen.classList.remove('js-burger-button_become-close');\n      body.classList.remove('js-body_no-scroll');\n      setTimeout(function () {\n        menu.classList.remove('js-reveal');\n      }, 100);\n    });\n  });\n\n  //resize window\n  var mobileWidthMediaQuery = window.matchMedia('(max-width: 768px)');\n  mobileWidthMediaQuery.addEventListener('change', function () {\n    body.classList.remove('js-body_no-scroll');\n    menu.classList.remove('js-menu_active');\n    buttonOpen.classList.remove('js-burger-button_become-close');\n    menu.classList.remove('js-reveal');\n  });\n}\n;\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (burgerMenuHandler);\n\n//# sourceURL=webpack://coffee-house/./coffee-house/js/handlers/burger-menu-handler.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function burgerMenuHandler() {
+  //burger handler variables
+  var body = document.body;
+  var buttonOpen = document.querySelector('.burger');
+  var menu = document.querySelector('.header-block__nav');
+  var menuItems = menu.querySelectorAll('.navigation-item');
+
+  //event with buttons (close/open)
+  buttonOpen.addEventListener('click', function (event) {
+    buttonOpen.classList.toggle('js-burger-button_become-close');
+    if (menu.classList.contains('js-menu_active')) {
+      menu.classList.toggle('js-menu_active');
+      body.classList.toggle('js-body_no-scroll');
+      setTimeout(function () {
+        menu.classList.toggle('js-reveal');
+      }, 600);
+    } else {
+      menu.classList.toggle('js-reveal');
+      setTimeout(function () {
+        menu.classList.toggle('js-menu_active');
+        body.classList.toggle('js-body_no-scroll');
+      }, 0);
+    }
+    // menu.classList.toggle('js-menu_active');
+    // body.classList.toggle('js-body_no-scroll');
+  });
+
+  //event with menu items
+  menuItems.forEach(function (element) {
+    element.addEventListener('click', function (event) {
+      menu.classList.remove('js-menu_active');
+      buttonOpen.classList.remove('js-burger-button_become-close');
+      body.classList.remove('js-body_no-scroll');
+      setTimeout(function () {
+        menu.classList.remove('js-reveal');
+      }, 100);
+    });
+  });
+
+  //resize window
+  var mobileWidthMediaQuery = window.matchMedia('(max-width: 768px)');
+  mobileWidthMediaQuery.addEventListener('change', function () {
+    body.classList.remove('js-body_no-scroll');
+    menu.classList.remove('js-menu_active');
+    buttonOpen.classList.remove('js-burger-button_become-close');
+    menu.classList.remove('js-reveal');
+  });
+}
+;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (burgerMenuHandler);
 
 /***/ }),
-
 
 /***/ "./coffee-house/js/handlers/menu-handler.js":
 /*!**************************************************!*\
@@ -27,7 +71,237 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _products_products__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../products/products */ \"./coffee-house/js/products/products.js\");\n\nfunction menuHandler() {\n  //check if the right page is displayed\n  if (document.querySelector('.menu-section')) {\n    //show Items\n    var renderItems = function renderItems() {\n      var menuCards = Array.from(menu.childNodes);\n      console.log(currentCategory);\n      menuCards.forEach(function (elem) {\n        elem.remove();\n      });\n      //not only add cards to the menu block, but also assign event listeners to them as created\n      currentCategory.map(function (elem) {\n        var cardTemplate = \"\\n                <!--article start-->\\n                <article class=\\\"menu-section__article\\\" data-item-category=\\\"\".concat(elem.category, \"\\\" data-item-name=\\\"\").concat(elem.name, \"\\\">\\n                    <div class=\\\"menu-section__item-image-wrap\\\">\\n                        <img class=\\\"menu-section__item-image menu-section__image1\\\" src=\\\"\").concat(elem.thumbnail, \"\\\" alt=\\\"a photo of \").concat(elem.name, \"\\\">\\n                    </div>\\n                    <div class=\\\"menu-section__item-info-wrap\\\">\\n                        <h3 class=\\\"menu-section__item-heading\\\">\\n                            \").concat(elem.name, \"\\n                        </h3>\\n                        <p class=\\\"menu-section__item-description\\\">\\n                            \").concat(elem.description, \"\\n                        </p>\\n                        <p class=\\\"menu-section__item-price\\\">\\n                            $\").concat(elem.price, \"\\n                        </p>\\n                    </div>\\n                </article>\\n                <!--article end-->\\n                \");\n        menu.insertAdjacentHTML('beforeend', cardTemplate);\n        var cards = Array.from(menu.children);\n        cards.forEach(function (card) {\n          card.addEventListener('click', openPopUp);\n          card.addEventListener('click', renderPopUp);\n        });\n      });\n    };\n    //change current category\n    var currentCategoryChange = function currentCategoryChange() {\n      var target = event.target.dataset.btnType;\n      switch (target) {\n        case 'coffee-btn':\n          {\n            currentCategory = coffeeList;\n            break;\n          }\n          ;\n        case 'tea-btn':\n          {\n            currentCategory = teaList;\n            break;\n          }\n          ;\n        case 'dessert-btn':\n          {\n            currentCategory = dessertList;\n            break;\n          }\n          ;\n        default:\n          {\n            break;\n          }\n          ;\n      }\n    };\n    //change current button\n    var currentBtnChange = function currentBtnChange() {\n      var element = event.target;\n      if (element.dataset.btnType) {\n        currentBtn = element.closest('button');\n      }\n    };\n    //colorize btns\n    var colorizeCurrentBtn = function colorizeCurrentBtn() {\n      categoryBtns.forEach(function (button) {\n        button.classList.remove('menu-section__button--active');\n        button.removeAttribute('disabled');\n        if (button === currentBtn) {\n          button.classList.add('menu-section__button--active');\n          button.setAttribute('disabled', '');\n        }\n      });\n    };\n    //hide extra elems\n    var hideLoadMoreBtn = function hideLoadMoreBtn() {\n      // console.log(currentCategory);\n      if (currentCategory.length <= 4 || window.innerWidth > 768) {\n        loadMoreBtn.style.display = 'none';\n      } else {\n        loadMoreBtn.style.display = 'inline-block';\n      }\n    }; //handle load more button to show more\n    var showMoreItems = function showMoreItems() {\n      menu.classList.add('js-expose-hidden-cards');\n      loadMoreBtn.classList.add('js-hide');\n    }; //handle load more button to hide more\n    var hideMoreItems = function hideMoreItems() {\n      menu.classList.remove('js-expose-hidden-cards');\n      loadMoreBtn.classList.remove('js-hide');\n    };\n    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    //                                         POPUP HANDLING                                                     //\n    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    //open backdrop block on card click\n    var openPopUp = function openPopUp() {\n      backdrop.classList.remove('js-hide');\n      body.classList.add('js-body_no-scroll');\n    };\n    //close popup\n    var closePopUp = function closePopUp() {\n      backdrop.classList.add('js-hide');\n      body.classList.remove('js-body_no-scroll');\n      Array.from(popupContent).forEach(function (elem) {\n        return elem.remove();\n      });\n    };\n    //renderPopup\n    var renderPopUp = function renderPopUp() {\n      currCard = event.target.closest('.menu-section__article');\n      currItemName = currCard.dataset.itemName;\n      function findItemObj() {\n        currentCategory.forEach(function (elem) {\n          if (elem.name === currItemName) {\n            var renderContent = function renderContent() {\n              var name = currObj.name,\n                thumbnail = currObj.thumbnail,\n                description = currObj.description,\n                price = currObj.price,\n                cizeS = currObj.sizes.s.size,\n                sizeM = currObj.sizes.m.size,\n                sizeL = currObj.sizes.l.size,\n                addOne = currObj.additives[0].name,\n                addTwo = currObj.additives[1].name,\n                addThree = currObj.additives[2].name,\n                popupContentTemplate = \"\\n                        <div class=\\\"popup__order-wrap\\\">\\n                            <div class=\\\"popup__order-photo-wrap\\\">\\n                                <img class=\\\"popup__order-photo\\\" src=\\\"\".concat(thumbnail, \"\\\" alt=\\\"\").concat(name, \" photo\\\">\\n                            </div>\\n                            <div class=\\\"popup__item-info-wrap\\\">\\n                                <h3 class=\\\"popup__item-name\\\">\\n                                    \").concat(name, \"\\n                                </h3>\\n                                <div class=\\\"popup__order-info\\\">\\n                                    <p class=\\\"popup__item-desc\\\">\\n                                    \").concat(description, \"\\n                                    </p>\\n                                    <form name=\\\"order:\").concat(name, \"\\\">\\n                                        <div class=\\\"order-options\\\">\\n                                            <div class=\\\"popup__order-sizes\\\">\\n                                                <p for class=\\\"popup__order-heading\\\">Size</p>\\n                                                <div class=\\\"popup__button-wrap\\\" id=\\\"size-buttons\\\">\\n                                                    <button class=\\\"popup__order-button size-s popup__order-button--active\\\" type=\\\"button\\\" disabled><span class=\\\"button-inner-circle\\\">S</span><span class=\\\"button-text\\\">\").concat(cizeS, \"</span></button>\\n                                                    <button class=\\\"popup__order-button size-m\\\" type=\\\"button\\\"><span class=\\\"button-inner-circle\\\">M</span><span class=\\\"button-text\\\">\").concat(sizeM, \"</span></button>\\n                                                    <button class=\\\"popup__order-button size-l\\\" type=\\\"button\\\"><span class=\\\"button-inner-circle\\\">L</span><span class=\\\"button-text\\\">\").concat(sizeL, \"</span></button>\\n                                                </div>\\n                                            </div>\\n                                            <div class=\\\"popup__order-additives\\\">\\n                                                <p class=\\\"popup__order-heading\\\">Additives</p>\\n                                                <div class=\\\"popup__button-wrap\\\" id=\\\"additives-buttons\\\">\\n                                                    <button class=\\\"popup__order-button first-button\\\" type=\\\"button\\\"><span class=\\\"button-inner-circle\\\">1</span><span class=\\\"button-text\\\">\").concat(addOne, \"</span></button>\\n                                                    <button class=\\\"popup__order-button second-button\\\" type=\\\"button\\\"><span class=\\\"button-inner-circle\\\">2</span><span class=\\\"button-text\\\">\").concat(addTwo, \"</span></button>\\n                                                    <button class=\\\"popup__order-button third-button\\\" type=\\\"button\\\"><span class=\\\"button-inner-circle\\\">3</span><span class=\\\"button-text\\\">\").concat(addThree, \"</span></button>\\n                                                </div>\\n                                            </div>\\n                                        </div>\\n                                    </form>\\n                                    <div class=\\\"popup__order-total-wrap\\\">\\n                                        <div class=\\\"popup__order-total-container\\\">\\n                                            <span class=\\\"popup__order-total\\\">Total:</span>\\n                                            <span class=\\\"popup__order-price\\\">$\").concat(price, \"</span>\\n                                        </div>\\n                                        <div class=\\\"popup__order-total-warning\\\">\\n                                            <div class=\\\"popup__warning-sign\\\"></div>\\n                                            <p class=\\\"popup__warning-text\\\">\\n                                                The cost is not final. Download our mobile app to see the final price\\n                                                and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.\\n                                            </p>\\n                                        </div>\\n                                    </div>\\n                                    <button form=\\\"order:\").concat(name, \"\\\" class=\\\"popup__order-button submit-button\\\">Close</button>\\n                                </div>\\n                            </div>\\n                        </div>\\n                        \");\n              popUpBox.insertAdjacentHTML('beforeend', popupContentTemplate);\n            };\n            currObj = JSON.parse(JSON.stringify(elem));\n            console.log(elem);\n            console.log(currObj.name);\n            renderContent();\n          }\n        });\n      }\n      findItemObj();\n      if (darkScreen) {\n        darkScreen.addEventListener('click', closePopUp);\n        Array.from(closeBtn).forEach(function (elem) {\n          elem.addEventListener('click', closePopUp);\n          console.log(elem);\n        });\n      }\n    };\n    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    //                                         MENU VARIABLES AND CONSTANTS                                       //\n    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    var body = document.body;\n\n    //lists of menu items\n    var coffeeList = _products_products__WEBPACK_IMPORTED_MODULE_0__[\"default\"].menuPage.coffee,\n      teaList = _products_products__WEBPACK_IMPORTED_MODULE_0__[\"default\"].menuPage.tea,\n      dessertList = _products_products__WEBPACK_IMPORTED_MODULE_0__[\"default\"].menuPage.dessert;\n\n    //menu controls\n    var categoryBtnsBlock = document.querySelector('.menu-section__buttons'),\n      categoryBtns = document.querySelectorAll('.menu-section__button'),\n      defaultBtn = categoryBtnsBlock.firstElementChild,\n      //shown as active on  page load\n      loadMoreBtn = document.querySelector('.menu-section__refresh');\n\n    //menu elements\n    var menu = document.querySelector('.menu-section__articles');\n\n    //variables;\n    var currentCategory = coffeeList,\n      currentBtn = defaultBtn;\n    var currCard, currItemName, currObj;\n\n    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    //                                         POPUP VARIABLES AND CONSTANTS                                      //\n    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\n    //backdrop blocks\n    var backdrop = document.querySelector('.backdrop');\n    var popUpBox = document.querySelector('.popup');\n    var darkScreen = document.querySelector('.backdrop__dark-screen');\n\n    //popup elements\n    var photoBlock = document.querySelector('.popup__order-photo');\n    var itemName = document.querySelector('.popup__item-name');\n    var itemDescription = document.querySelector('.popup__item-desc');\n    var selectButtonsClasters = document.querySelectorAll('.popup__button-wrap');\n    var sizeBtns = selectButtonsClasters[0];\n    var additivesBtns = selectButtonsClasters[1];\n    var totalPrice = document.querySelector('.popup__order-price');\n    var popupContent = popUpBox.children;\n\n    //buttons\n    var closeBtn = document.getElementsByClassName('submit-button');\n    var sizeSBtn = document.querySelector('.popup__order-button.size-s');\n    var sizeMBtn = document.querySelector('.popup__order-button.size-m');\n    var sizeLBtn = document.querySelector('.popup__order-button.size-l');\n    var additiveOneBtn = document.querySelector('.popup__order-button.first-button');\n    var additiveTwoBtn = document.querySelector('.popup__order-button.second-button');\n    var additiveThreeBtn = document.querySelector('.popup__order-button.third-button');\n    var sizeButtons = document.getElementById('size-buttons');\n    var addButtons = document.getElementById('additive-buttons');\n\n    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n    //                                                  MENU HANDLING                                              //\n    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\n    //event listening:\n    categoryBtnsBlock.addEventListener('click', currentCategoryChange);\n    categoryBtnsBlock.addEventListener('click', currentBtnChange);\n    categoryBtnsBlock.addEventListener('click', colorizeCurrentBtn);\n    categoryBtnsBlock.addEventListener('click', hideMoreItems);\n    categoryBtnsBlock.addEventListener('click', renderItems);\n    categoryBtnsBlock.addEventListener('click', hideLoadMoreBtn);\n    //windoe event\n    window.addEventListener('resize', hideLoadMoreBtn);\n    window.addEventListener('resize', hideMoreItems);\n    window.addEventListener('DOMContentLoaded', renderItems);\n    //load more btn events\n    loadMoreBtn.addEventListener('click', showMoreItems);\n    ;\n    ;\n    ;\n    ;\n    ;\n    ;\n    ;\n    ;\n\n    //order calculations\n  }\n  ;\n}\n;\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (menuHandler);\n\n//# sourceURL=webpack://coffee-house/./coffee-house/js/handlers/menu-handler.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _products_products__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../products/products */ "./coffee-house/js/products/products.js");
+
+function menuHandler() {
+  //check if the right page is displayed
+  if (document.querySelector('.menu-section')) {
+    //show Items
+    var renderItems = function renderItems() {
+      var menuCards = Array.from(menu.childNodes);
+      console.log(currentCategory);
+      menuCards.forEach(function (elem) {
+        elem.remove();
+      });
+      //not only add cards to the menu block, but also assign event listeners to them as created
+      currentCategory.map(function (elem) {
+        var cardTemplate = "\n                <!--article start-->\n                <article class=\"menu-section__article\" data-item-category=\"".concat(elem.category, "\" data-item-name=\"").concat(elem.name, "\">\n                    <div class=\"menu-section__item-image-wrap\">\n                        <img class=\"menu-section__item-image menu-section__image1\" src=\"").concat(elem.thumbnail, "\" alt=\"a photo of ").concat(elem.name, "\">\n                    </div>\n                    <div class=\"menu-section__item-info-wrap\">\n                        <h3 class=\"menu-section__item-heading\">\n                            ").concat(elem.name, "\n                        </h3>\n                        <p class=\"menu-section__item-description\">\n                            ").concat(elem.description, "\n                        </p>\n                        <p class=\"menu-section__item-price\">\n                            $").concat(elem.price, "\n                        </p>\n                    </div>\n                </article>\n                <!--article end-->\n                ");
+        menu.insertAdjacentHTML('beforeend', cardTemplate);
+        var cards = Array.from(menu.children);
+        cards.forEach(function (card) {
+          card.addEventListener('click', openPopUp);
+          card.addEventListener('click', renderPopUp);
+        });
+      });
+    };
+    //change current category
+    var currentCategoryChange = function currentCategoryChange() {
+      var target = event.target.dataset.btnType;
+      switch (target) {
+        case 'coffee-btn':
+          {
+            currentCategory = coffeeList;
+            break;
+          }
+          ;
+        case 'tea-btn':
+          {
+            currentCategory = teaList;
+            break;
+          }
+          ;
+        case 'dessert-btn':
+          {
+            currentCategory = dessertList;
+            break;
+          }
+          ;
+        default:
+          {
+            break;
+          }
+          ;
+      }
+    };
+    //change current button
+    var currentBtnChange = function currentBtnChange() {
+      var element = event.target;
+      if (element.dataset.btnType) {
+        currentBtn = element.closest('button');
+      }
+    };
+    //colorize btns
+    var colorizeCurrentBtn = function colorizeCurrentBtn() {
+      categoryBtns.forEach(function (button) {
+        button.classList.remove('menu-section__button--active');
+        button.removeAttribute('disabled');
+        if (button === currentBtn) {
+          button.classList.add('menu-section__button--active');
+          button.setAttribute('disabled', '');
+        }
+      });
+    };
+    //hide extra elems
+    var hideLoadMoreBtn = function hideLoadMoreBtn() {
+      // console.log(currentCategory);
+      if (currentCategory.length <= 4 || window.innerWidth > 768) {
+        loadMoreBtn.style.display = 'none';
+      } else {
+        loadMoreBtn.style.display = 'inline-block';
+      }
+    }; //handle load more button to show more
+    var showMoreItems = function showMoreItems() {
+      menu.classList.add('js-expose-hidden-cards');
+      loadMoreBtn.classList.add('js-hide');
+    }; //handle load more button to hide more
+    var hideMoreItems = function hideMoreItems() {
+      menu.classList.remove('js-expose-hidden-cards');
+      loadMoreBtn.classList.remove('js-hide');
+    };
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                                         POPUP HANDLING                                                     //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //open backdrop block on card click
+    var openPopUp = function openPopUp() {
+      backdrop.classList.remove('js-hide');
+      body.classList.add('js-body_no-scroll');
+    };
+    //close popup
+    var closePopUp = function closePopUp() {
+      backdrop.classList.add('js-hide');
+      body.classList.remove('js-body_no-scroll');
+      Array.from(popupContent).forEach(function (elem) {
+        return elem.remove();
+      });
+    };
+    //renderPopup
+    var renderPopUp = function renderPopUp() {
+      currCard = event.target.closest('.menu-section__article');
+      currItemName = currCard.dataset.itemName;
+      function findItemObj() {
+        currentCategory.forEach(function (elem) {
+          if (elem.name === currItemName) {
+            var renderContent = function renderContent() {
+              var name = currObj.name,
+                thumbnail = currObj.thumbnail,
+                description = currObj.description,
+                price = currObj.price,
+                cizeS = currObj.sizes.s.size,
+                sizeM = currObj.sizes.m.size,
+                sizeL = currObj.sizes.l.size,
+                addOne = currObj.additives[0].name,
+                addTwo = currObj.additives[1].name,
+                addThree = currObj.additives[2].name,
+                popupContentTemplate = "\n                        <div class=\"popup__order-wrap\">\n                            <div class=\"popup__order-photo-wrap\">\n                                <img class=\"popup__order-photo\" src=\"".concat(thumbnail, "\" alt=\"").concat(name, " photo\">\n                            </div>\n                            <div class=\"popup__item-info-wrap\">\n                                <h3 class=\"popup__item-name\">\n                                    ").concat(name, "\n                                </h3>\n                                <div class=\"popup__order-info\">\n                                    <p class=\"popup__item-desc\">\n                                    ").concat(description, "\n                                    </p>\n                                    <form name=\"order:").concat(name, "\">\n                                        <div class=\"order-options\">\n                                            <div class=\"popup__order-sizes\">\n                                                <p for class=\"popup__order-heading\">Size</p>\n                                                <div class=\"popup__button-wrap\" id=\"size-buttons\">\n                                                    <button class=\"popup__order-button size-s popup__order-button--active\" type=\"button\" disabled><span class=\"button-inner-circle\">S</span><span class=\"button-text\">").concat(cizeS, "</span></button>\n                                                    <button class=\"popup__order-button size-m\" type=\"button\"><span class=\"button-inner-circle\">M</span><span class=\"button-text\">").concat(sizeM, "</span></button>\n                                                    <button class=\"popup__order-button size-l\" type=\"button\"><span class=\"button-inner-circle\">L</span><span class=\"button-text\">").concat(sizeL, "</span></button>\n                                                </div>\n                                            </div>\n                                            <div class=\"popup__order-additives\">\n                                                <p class=\"popup__order-heading\">Additives</p>\n                                                <div class=\"popup__button-wrap\" id=\"additives-buttons\">\n                                                    <button class=\"popup__order-button first-button\" type=\"button\"><span class=\"button-inner-circle\">1</span><span class=\"button-text\">").concat(addOne, "</span></button>\n                                                    <button class=\"popup__order-button second-button\" type=\"button\"><span class=\"button-inner-circle\">2</span><span class=\"button-text\">").concat(addTwo, "</span></button>\n                                                    <button class=\"popup__order-button third-button\" type=\"button\"><span class=\"button-inner-circle\">3</span><span class=\"button-text\">").concat(addThree, "</span></button>\n                                                </div>\n                                            </div>\n                                        </div>\n                                    </form>\n                                    <div class=\"popup__order-total-wrap\">\n                                        <div class=\"popup__order-total-container\">\n                                            <span class=\"popup__order-total\">Total:</span>\n                                            <span class=\"popup__order-price\">$").concat(price, "</span>\n                                        </div>\n                                        <div class=\"popup__order-total-warning\">\n                                            <div class=\"popup__warning-sign\"></div>\n                                            <p class=\"popup__warning-text\">\n                                                The cost is not final. Download our mobile app to see the final price\n                                                and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.\n                                            </p>\n                                        </div>\n                                    </div>\n                                    <button form=\"order:").concat(name, "\" class=\"popup__order-button submit-button\">Close</button>\n                                </div>\n                            </div>\n                        </div>\n                        ");
+              popUpBox.insertAdjacentHTML('beforeend', popupContentTemplate);
+            };
+            currObj = JSON.parse(JSON.stringify(elem));
+            console.log(elem);
+            console.log(currObj.name);
+            renderContent();
+          }
+        });
+      }
+      findItemObj();
+      if (darkScreen) {
+        darkScreen.addEventListener('click', closePopUp);
+        Array.from(closeBtn).forEach(function (elem) {
+          elem.addEventListener('click', closePopUp);
+          console.log(elem);
+        });
+      }
+    };
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                                         MENU VARIABLES AND CONSTANTS                                       //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var body = document.body;
+
+    //lists of menu items
+    var coffeeList = _products_products__WEBPACK_IMPORTED_MODULE_0__["default"].menuPage.coffee,
+      teaList = _products_products__WEBPACK_IMPORTED_MODULE_0__["default"].menuPage.tea,
+      dessertList = _products_products__WEBPACK_IMPORTED_MODULE_0__["default"].menuPage.dessert;
+
+    //menu controls
+    var categoryBtnsBlock = document.querySelector('.menu-section__buttons'),
+      categoryBtns = document.querySelectorAll('.menu-section__button'),
+      defaultBtn = categoryBtnsBlock.firstElementChild,
+      //shown as active on  page load
+      loadMoreBtn = document.querySelector('.menu-section__refresh');
+
+    //menu elements
+    var menu = document.querySelector('.menu-section__articles');
+
+    //variables;
+    var currentCategory = coffeeList,
+      currentBtn = defaultBtn;
+    var currCard, currItemName, currObj;
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                                         POPUP VARIABLES AND CONSTANTS                                      //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //backdrop blocks
+    var backdrop = document.querySelector('.backdrop');
+    var popUpBox = document.querySelector('.popup');
+    var darkScreen = document.querySelector('.backdrop__dark-screen');
+
+    //popup elements
+    var photoBlock = document.querySelector('.popup__order-photo');
+    var itemName = document.querySelector('.popup__item-name');
+    var itemDescription = document.querySelector('.popup__item-desc');
+    var selectButtonsClasters = document.querySelectorAll('.popup__button-wrap');
+    var sizeBtns = selectButtonsClasters[0];
+    var additivesBtns = selectButtonsClasters[1];
+    var totalPrice = document.querySelector('.popup__order-price');
+    var popupContent = popUpBox.children;
+
+    //buttons
+    var closeBtn = document.getElementsByClassName('submit-button');
+    var sizeSBtn = document.querySelector('.popup__order-button.size-s');
+    var sizeMBtn = document.querySelector('.popup__order-button.size-m');
+    var sizeLBtn = document.querySelector('.popup__order-button.size-l');
+    var additiveOneBtn = document.querySelector('.popup__order-button.first-button');
+    var additiveTwoBtn = document.querySelector('.popup__order-button.second-button');
+    var additiveThreeBtn = document.querySelector('.popup__order-button.third-button');
+    var sizeButtons = document.getElementById('size-buttons');
+    var addButtons = document.getElementById('additive-buttons');
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                                                  MENU HANDLING                                              //
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //event listening:
+    categoryBtnsBlock.addEventListener('click', currentCategoryChange);
+    categoryBtnsBlock.addEventListener('click', currentBtnChange);
+    categoryBtnsBlock.addEventListener('click', colorizeCurrentBtn);
+    categoryBtnsBlock.addEventListener('click', hideMoreItems);
+    categoryBtnsBlock.addEventListener('click', renderItems);
+    categoryBtnsBlock.addEventListener('click', hideLoadMoreBtn);
+    //windoe event
+    window.addEventListener('resize', hideLoadMoreBtn);
+    window.addEventListener('resize', hideMoreItems);
+    window.addEventListener('DOMContentLoaded', renderItems);
+    //load more btn events
+    loadMoreBtn.addEventListener('click', showMoreItems);
+    ;
+    ;
+    ;
+    ;
+    ;
+    ;
+    ;
+    ;
+
+    //order calculations
+  }
+  ;
+}
+;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (menuHandler);
 
 /***/ }),
 
@@ -37,10 +311,72 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _products_products__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../products/products */ \"./coffee-house/js/products/products.js\");\n\nfunction popupHandler() {\n  if (document.querySelector('.menu-section')) {\n    //backdrop blocks\n    var backdrop = document.querySelector('.backdrop');\n    var popUpBox = document.querySelector('.popup');\n    var darkScreen = document.querySelector('.backdrop__dark-screen');\n\n    //popup elements\n    var photoBlock = document.querySelector('.popup__order-photo');\n    var itemName = document.querySelector('.popup__item-name');\n    var itemDescription = document.querySelector('.popup__item-desc');\n    var selectButtonsClasters = document.querySelectorAll('.popup__button-wrap');\n    var sizeBtns = selectButtonsClasters[0];\n    var additivesBtns = selectButtonsClasters[1];\n    var totalPrice = document.querySelector('.popup__order-price');\n\n    //buttons\n    var closeBtn = document.querySelector('.submit-button');\n    var sizeSBtn = document.querySelector('.popup__order-button.size-s');\n    var sizeMBtn = document.querySelector('.popup__order-button.size-m');\n    var sizeLBtn = document.querySelector('.popup__order-button.size-l');\n    var additiveOneBtn = document.querySelector('.popup__order-button.first-button');\n    var additiveTwoBtn = document.querySelector('.popup__order-button.second-button');\n    var additiveThreeBtn = document.querySelector('.popup__order-button.third-button');\n\n    //menu burrons\n    var categoryBtnsBlock = document.querySelector('.menu-section__buttons');\n\n    //menu and cards\n    var menu = document.querySelector('.menu-section__articles');\n    var menuCards = document.getElementsByClassName('menu-section__article');\n\n    //open backdrop block on card click\n    // function openPopUp() {\n\n    //     Array.from(menuCards).forEach((card) => {\n    //             card.addEventListener('click', function clickCard() {\n    //                 backdrop.classList.remove('js-hide');\n    //             })\n    //         });\n\n    // }\n    // togglePopUp();\n\n    //close popup\n    // function closePopUp() {\n    //     const closeElements = [darkScreen, closeBtn];\n\n    //     closeElements.forEach((element) => {\n    //         element.addEventListener('click', (event) => {\n    //             backdrop.classList.add('js-hide');\n    //         });\n    //     });\n    // }\n  }\n}\n;\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (popupHandler);\n\n//# sourceURL=webpack://coffee-house/./coffee-house/js/handlers/popup-handler.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _products_products__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../products/products */ "./coffee-house/js/products/products.js");
+
+function popupHandler() {
+  if (document.querySelector('.menu-section')) {
+    //backdrop blocks
+    var backdrop = document.querySelector('.backdrop');
+    var popUpBox = document.querySelector('.popup');
+    var darkScreen = document.querySelector('.backdrop__dark-screen');
+
+    //popup elements
+    var photoBlock = document.querySelector('.popup__order-photo');
+    var itemName = document.querySelector('.popup__item-name');
+    var itemDescription = document.querySelector('.popup__item-desc');
+    var selectButtonsClasters = document.querySelectorAll('.popup__button-wrap');
+    var sizeBtns = selectButtonsClasters[0];
+    var additivesBtns = selectButtonsClasters[1];
+    var totalPrice = document.querySelector('.popup__order-price');
+
+    //buttons
+    var closeBtn = document.querySelector('.submit-button');
+    var sizeSBtn = document.querySelector('.popup__order-button.size-s');
+    var sizeMBtn = document.querySelector('.popup__order-button.size-m');
+    var sizeLBtn = document.querySelector('.popup__order-button.size-l');
+    var additiveOneBtn = document.querySelector('.popup__order-button.first-button');
+    var additiveTwoBtn = document.querySelector('.popup__order-button.second-button');
+    var additiveThreeBtn = document.querySelector('.popup__order-button.third-button');
+
+    //menu burrons
+    var categoryBtnsBlock = document.querySelector('.menu-section__buttons');
+
+    //menu and cards
+    var menu = document.querySelector('.menu-section__articles');
+    var menuCards = document.getElementsByClassName('menu-section__article');
+
+    //open backdrop block on card click
+    // function openPopUp() {
+
+    //     Array.from(menuCards).forEach((card) => {
+    //             card.addEventListener('click', function clickCard() {
+    //                 backdrop.classList.remove('js-hide');
+    //             })
+    //         });
+
+    // }
+    // togglePopUp();
+
+    //close popup
+    // function closePopUp() {
+    //     const closeElements = [darkScreen, closeBtn];
+
+    //     closeElements.forEach((element) => {
+    //         element.addEventListener('click', (event) => {
+    //             backdrop.classList.add('js-hide');
+    //         });
+    //     });
+    // }
+  }
+}
+;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (popupHandler);
 
 /***/ }),
-
 
 /***/ "./coffee-house/js/handlers/slider-handler.js":
 /*!****************************************************!*\
@@ -48,11 +384,202 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction sliderHandler() {\n  if (document.querySelector('.favorites-coffee-section')) {\n    //slider move \n    var rollSlider = function rollSlider() {\n      sliderLine.style.transform = 'translateX(-' + count * width + 'px)';\n    }; //adaptive slider size -xyeta-\n    var resize = function resize() {\n      width = document.querySelector('.slider__content-wrap').offsetWidth;\n      console.log(width);\n      sliderLine.style.width = \"\".concat(width * articlesArray.length, \"px\");\n      articlesArray.forEach(function (elem) {\n        elem.style.width = \"\".concat(width);\n        elem.style.height = \"auto\";\n      });\n      rollSlider();\n    };\n    //button-switch \n    var buttonClick = function buttonClick() {\n      sliderBtnPrev.addEventListener('click', function (event) {\n        count--;\n        if (count < 0) {\n          count = articlesArray.length - 1;\n        }\n        currentSlide(count);\n        rollSlider();\n        clearInterval(timerId);\n        timerId = setInterval(automatic, 6000);\n        setInterval(timerId);\n      });\n      sliderBtnNext.addEventListener('click', function (event) {\n        count++;\n        if (count >= articlesArray.length) {\n          count = 0;\n        }\n        currentSlide(count);\n        rollSlider();\n        clearInterval(timerId);\n        timerId = setInterval(automatic, 6000);\n        setInterval(timerId);\n      });\n    };\n    //make pagination button colored\n    var currentSlide = function currentSlide(index) {\n      // console.log(`pagination works! now index is at ${index} point`)\n      sliderPaginationPoints.forEach(function (elem) {\n        return elem.classList.remove('js-coloring');\n      });\n      sliderPaginationPoints[index].classList.add('js-coloring');\n    };\n    // nobody controls that, it's totally automatic\n    var automatic = function automatic() {\n      count++;\n      if (count >= articlesArray.length) {\n        count = 0;\n      }\n      currentSlide(count);\n      rollSlider();\n      setInterval(timerId, 0);\n    };\n    //mobile devices swiping \n    var mobileSwipe = function mobileSwipe() {\n      //some usefull variables\n      var posX1 = 0,\n        posInt = 0,\n        posX2 = 0;\n      function getEvent() {\n        return event.type.search('touch') !== -1 ? event.touches[0] : event;\n      }\n      swipeArea.addEventListener('touchstart', swipeStart);\n      swipeArea.addEventListener('touchmove', swipeAction);\n      swipeArea.addEventListener('touchend', swipeEnd);\n\n      //function on touchStart\n      function swipeStart(event) {\n        event.preventDefault();\n        var evt = getEvent();\n        posInt = posX1 = evt.clientX; //initial position of the cursor \n      }\n\n      //function on touchChange\n      function swipeAction(event) {\n        var evt = getEvent();\n        // event.preventDefault();\n\n        posX2 = posX1 - evt.clientX; // difference between touch start point and current finger location\n        posX1 = evt.clientX;\n      }\n\n      //function on touchEnd\n      function swipeEnd(event) {\n        // event.preventDefault();\n\n        if (posX1 !== posInt) {\n          if (posX2 < 0) {\n            count--;\n            if (count < 0) {\n              count = articlesArray.length - 1;\n            }\n            currentSlide(count);\n            rollSlider();\n            clearInterval(timerId);\n            timerId = setInterval(automatic, 6000);\n            setInterval(timerId);\n          }\n          if (posX2 > 0) {\n            count++;\n            if (count >= articlesArray.length) {\n              count = 0;\n            }\n            currentSlide(count);\n            rollSlider();\n            clearInterval(timerId);\n            timerId = setInterval(automatic, 6000);\n            setInterval(timerId);\n          }\n        } else return;\n      }\n    };\n    //slider consts\n    var articlesArray = document.querySelectorAll('.slider__article'),\n      //slides\n      sliderLine = document.querySelector('.slider__articles'),\n      //slider track\n      sliderPaginationPoints = document.querySelectorAll('.pagination-fill'),\n      sliderBtnNext = document.querySelector('.button-right'),\n      //btn next\n      sliderBtnPrev = document.querySelector('.button-left'),\n      //btn prev\n      swipeArea = document.querySelector('.slider__content'),\n      //slider\n      slider = document.querySelector('.slider__content-wrap'); //slider-list\n\n    //timer\n    var timerId = setInterval(automatic, 6000);\n\n    //slider variables\n    var count = 0,\n      width;\n\n    //make slider change with the window resizing\n    window.addEventListener('resize', resize);\n    window.addEventListener('resize', currentSlide(count));\n    resize();\n    buttonClick();\n    currentSlide(count);\n    ;\n    automatic();\n    mobileSwipe();\n  }\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sliderHandler);\n\n//# sourceURL=webpack://coffee-house/./coffee-house/js/handlers/slider-handler.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function sliderHandler() {
+  if (document.querySelector('.favorites-coffee-section')) {
+    //slider move 
+    var rollSlider = function rollSlider() {
+      sliderLine.style.transform = 'translateX(-' + count * width + 'px)';
+    }; //adaptive slider size -xyeta-
+    var resize = function resize() {
+      width = document.querySelector('.slider__content-wrap').offsetWidth;
+      console.log(width);
+      sliderLine.style.width = "".concat(width * articlesArray.length, "px");
+      articlesArray.forEach(function (elem) {
+        elem.style.width = "".concat(width);
+        elem.style.height = "auto";
+      });
+      rollSlider();
+    };
+    //button-switch 
+    var buttonClick = function buttonClick() {
+      sliderBtnPrev.addEventListener('click', function (event) {
+        count--;
+        if (count < 0) {
+          count = articlesArray.length - 1;
+        }
+        currentSlide(count);
+        rollSlider();
+        clearInterval(timerId);
+        timerId = setInterval(automatic, 6000);
+        setInterval(timerId);
+        start = Date.now();
+      });
+      sliderBtnNext.addEventListener('click', function (event) {
+        count++;
+        if (count >= articlesArray.length) {
+          count = 0;
+        }
+        currentSlide(count);
+        rollSlider();
+        clearInterval(timerId);
+        timerId = setInterval(automatic, 6000);
+        setInterval(timerId);
+        start = Date.now();
+      });
+    };
+    //make pagination button colored
+    var currentSlide = function currentSlide(index) {
+      // console.log(`pagination works! now index is at ${index} point`)
+      sliderPaginationPoints.forEach(function (elem) {
+        return elem.classList.remove('js-coloring');
+      });
+      sliderPaginationPoints[index].classList.add('js-coloring');
+    };
+    // nobody controls that, it's totally automatic
+    //automatically change slides with certain interval and change start variable
+    var automatic = function automatic(interval) {
+      count++;
+      if (count >= articlesArray.length) {
+        count = 0;
+      }
+      currentSlide(count);
+      rollSlider();
+      start = Date.now();
+      interval !== null && interval !== void 0 ? interval : setInterval(interval, 0);
+    };
+    // on mouseenter
+    // clear previously set timeout (if any exists) to prevent setting new interval
+    // memorize current element (count index), 
+    // calculate and memorize how much time of the interrupted interval is left
+    // clear previously set interval to pause scrolling
+    //on mouseleave
+    //set new interval equal to the time left
+    //set another interval after the previous one runs once by using set timeout and default 6000ms
+    var automaticWithPause = function automaticWithPause() {
+      var timeLeft = 0;
+      var currCount;
+      slider.addEventListener('mouseenter', function () {
+        clearTimeout(timeOutId);
+        currCount = count;
+        timeLeft = 6000 - (Date.now() - start);
+        clearInterval(timerId);
+        console.log(timeLeft);
+      });
+      slider.addEventListener('mouseleave', function () {
+        timerId = setInterval(automatic, timeLeft);
+        timeOutId = setTimeout(function () {
+          clearInterval(timerId);
+          timerId = setInterval(automatic, 6000);
+        }, timeLeft);
+        console.log(timeLeft);
+      });
+    };
+    //mobile devices swiping 
+    var mobileSwipe = function mobileSwipe() {
+      //some usefull variables
+      var posX1 = 0,
+        posInt = 0,
+        posX2 = 0;
+      function getEvent() {
+        return event.type.search('touch') !== -1 ? event.touches[0] : event;
+      }
+      swipeArea.addEventListener('touchstart', swipeStart);
+      swipeArea.addEventListener('touchmove', swipeAction);
+      swipeArea.addEventListener('touchend', swipeEnd);
 
+      //function on touchStart
+      function swipeStart(event) {
+        event.preventDefault();
+        var evt = getEvent();
+        posInt = posX1 = evt.clientX; //initial position of the cursor 
+      }
+
+      //function on touchChange
+      function swipeAction(event) {
+        var evt = getEvent();
+        // event.preventDefault();
+
+        posX2 = posX1 - evt.clientX; // difference between touch start point and current finger location
+        posX1 = evt.clientX;
+      }
+
+      //function on touchEnd
+      function swipeEnd(event) {
+        // event.preventDefault();
+
+        if (posX1 !== posInt) {
+          if (posX2 < 0) {
+            count--;
+            if (count < 0) {
+              count = articlesArray.length - 1;
+            }
+            currentSlide(count);
+            rollSlider();
+            clearInterval(timerId);
+            timerId = setInterval(automatic, 6000);
+            setInterval(timerId);
+          }
+          if (posX2 > 0) {
+            count++;
+            if (count >= articlesArray.length) {
+              count = 0;
+            }
+            currentSlide(count);
+            rollSlider();
+            clearInterval(timerId);
+            timerId = setInterval(automatic, 6000);
+            setInterval(timerId);
+          }
+        } else return;
+      }
+    };
+    //slider consts
+    var articlesArray = document.querySelectorAll('.slider__article'),
+      //slides
+      sliderLine = document.querySelector('.slider__articles'),
+      //slider track
+      sliderPaginationPoints = document.querySelectorAll('.pagination-fill'),
+      sliderBtnNext = document.querySelector('.button-right'),
+      //btn next
+      sliderBtnPrev = document.querySelector('.button-left'),
+      //btn prev
+      swipeArea = document.querySelector('.slider__content'),
+      //slider
+      slider = document.querySelector('.slider__content-wrap'); //slider-list
+
+    //timer
+    var timerId = setInterval(automatic, 6000);
+
+    //slider variables
+    var count = 0,
+      width;
+
+    //some variables for automatic
+    //start variable for checking when a slide has automatically changed
+    //timeoutId variable for further timeout clearing
+    var start = Date.now();
+    var timeOutId;
+
+    //make slider change with the window resizing
+    window.addEventListener('resize', function () {
+      resize();
+      currentSlide(count);
+    });
+    resize();
+    buttonClick();
+    currentSlide(count);
+    ;
+    automaticWithPause();
+    mobileSwipe();
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sliderHandler);
 
 /***/ }),
-
 
 /***/ "./coffee-house/js/handlers/video-handler.js":
 /*!***************************************************!*\
@@ -60,20 +587,19 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction videoHandler() {\n  if (document.querySelector('.enjoy-section')) {\n    var video = document.querySelector('#background-video');\n    video.addEventListener('contextmenu', function (event) {\n      event.preventDefault();\n    });\n  }\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (videoHandler);\n\n//# sourceURL=webpack://coffee-house/./coffee-house/js/handlers/video-handler.js?");
-
-
-/***/ }),
-
-
-/***/ "./coffee-house/js/index.js":
-/*!**********************************!*\
-  !*** ./coffee-house/js/index.js ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _handlers_burger_menu_handler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./handlers/burger-menu-handler */ \"./coffee-house/js/handlers/burger-menu-handler.js\");\n/* harmony import */ var _handlers_slider_handler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./handlers/slider-handler */ \"./coffee-house/js/handlers/slider-handler.js\");\n/* harmony import */ var _handlers_menu_handler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./handlers/menu-handler */ \"./coffee-house/js/handlers/menu-handler.js\");\n/* harmony import */ var _handlers_video_handler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./handlers/video-handler */ \"./coffee-house/js/handlers/video-handler.js\");\n/* harmony import */ var _handlers_popup_handler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./handlers/popup-handler */ \"./coffee-house/js/handlers/popup-handler.js\");\n\n\n\n\n\n(0,_handlers_burger_menu_handler__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_handlers_slider_handler__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_handlers_menu_handler__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n(0,_handlers_video_handler__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n(0,_handlers_popup_handler__WEBPACK_IMPORTED_MODULE_4__[\"default\"])();\n\n//# sourceURL=webpack://coffee-house/./coffee-house/js/index.js?");
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function videoHandler() {
+  if (document.querySelector('.enjoy-section')) {
+    var video = document.querySelector('#background-video');
+    video.addEventListener('contextmenu', function (event) {
+      event.preventDefault();
+    });
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (videoHandler);
 
 /***/ }),
 
@@ -83,9 +609,618 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _han
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar store = {\n  menuPage: {\n    coffee: [{\n      name: \"Irish coffee\",\n      description: \"Fragrant black coffee with Jameson Irish whiskey and whipped milk\",\n      price: \"7.00\",\n      category: \"coffee\",\n      thumbnail: './images/png/coffee-1.png',\n      sizes: {\n        s: {\n          size: \"200 ml\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"300 ml\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"400 ml\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Sugar\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Cinnamon\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Syrup\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Kahlua coffee\",\n      description: \"Classic coffee with milk and Kahlua liqueur under a cap of frothed milk\",\n      price: \"7.00\",\n      category: \"coffee\",\n      thumbnail: './images/png/coffee-2.png',\n      sizes: {\n        s: {\n          size: \"200 ml\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"300 ml\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"400 ml\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Sugar\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Cinnamon\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Syrup\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Honey raf\",\n      description: \"Espresso with frothed milk, cream and aromatic honey\",\n      price: \"5.50\",\n      category: \"coffee\",\n      thumbnail: './images/png/coffee-3.png',\n      sizes: {\n        s: {\n          size: \"200 ml\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"300 ml\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"400 ml\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Sugar\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Cinnamon\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Syrup\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Ice cappuccino\",\n      description: \"Cappuccino with soft thick foam in summer version with ice\",\n      price: \"5.00\",\n      category: \"coffee\",\n      thumbnail: './images/png/coffee-4.png',\n      sizes: {\n        s: {\n          size: \"200 ml\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"300 ml\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"400 ml\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Sugar\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Cinnamon\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Syrup\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Espresso\",\n      description: \"Classic black coffee\",\n      price: \"4.50\",\n      category: \"coffee\",\n      thumbnail: './images/png/coffee-5.png',\n      sizes: {\n        s: {\n          size: \"200 ml\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"300 ml\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"400 ml\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Sugar\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Cinnamon\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Syrup\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Latte\",\n      description: \"Espresso coffee with the addition of steamed milk and dense milk foam\",\n      price: \"5.50\",\n      category: \"coffee\",\n      thumbnail: './images/png/coffee-6.png',\n      sizes: {\n        s: {\n          size: \"200 ml\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"300 ml\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"400 ml\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Sugar\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Cinnamon\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Syrup\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Latte macchiato\",\n      description: \"Espresso with frothed milk and chocolate\",\n      price: \"5.50\",\n      category: \"coffee\",\n      thumbnail: './images/png/coffee-7.png',\n      sizes: {\n        s: {\n          size: \"200 ml\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"300 ml\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"400 ml\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Sugar\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Cinnamon\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Syrup\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Coffee with cognac\",\n      description: \"Fragrant black coffee with cognac and whipped cream\",\n      price: \"6.50\",\n      category: \"coffee\",\n      thumbnail: './images/png/coffee-8.png',\n      sizes: {\n        s: {\n          size: \"200 ml\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"300 ml\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"400 ml\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Sugar\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Cinnamon\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Syrup\",\n        addPrice: \"0.50\"\n      }]\n    }],\n    tea: [{\n      name: \"Moroccan\",\n      description: \"Fragrant black tea with the addition of tangerine, cinnamon, honey, lemon and mint\",\n      price: \"4.50\",\n      category: \"tea\",\n      thumbnail: './images/png/tea-1.png',\n      sizes: {\n        s: {\n          size: \"200 ml\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"300 ml\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"400 ml\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Sugar\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Lemon\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Syrup\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Ginger\",\n      description: \"Original black tea with fresh ginger, lemon and honey\",\n      price: \"5.00\",\n      category: \"tea\",\n      thumbnail: './images/png/tea-2.png',\n      sizes: {\n        s: {\n          size: \"200 ml\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"300 ml\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"400 ml\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Sugar\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Lemon\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Syrup\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Cranberry\",\n      description: \"Invigorating black tea with cranberry and honey\",\n      price: \"5.00\",\n      category: \"tea\",\n      thumbnail: './images/png/tea-3.png',\n      sizes: {\n        s: {\n          size: \"200 ml\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"300 ml\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"400 ml\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Sugar\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Lemon\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Syrup\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Sea buckthorn\",\n      description: \"Toning sweet black tea with sea buckthorn, fresh thyme and cinnamon\",\n      price: \"5.50\",\n      category: \"tea\",\n      thumbnail: './images/png/tea-4.png',\n      sizes: {\n        s: {\n          size: \"200 ml\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"300 ml\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"400 ml\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Sugar\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Lemon\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Syrup\",\n        addPrice: \"0.50\"\n      }]\n    }],\n    dessert: [{\n      name: \"Marble cheesecake\",\n      description: \"Philadelphia cheese with lemon zest on a light sponge cake and red currant jam\",\n      price: \"3.50\",\n      category: \"dessert\",\n      thumbnail: './images/png/dessert-1.png',\n      sizes: {\n        s: {\n          size: \"50 g\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"100 g\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"200 g\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Berries\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Nuts\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Jam\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Red velvet\",\n      description: \"Layer cake with cream cheese frosting\",\n      price: \"4.00\",\n      category: \"dessert\",\n      thumbnail: './images/png/dessert-2.png',\n      sizes: {\n        s: {\n          size: \"50 g\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"100 g\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"200 g\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Berries\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Nuts\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Jam\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Cheesecakes\",\n      description: \"Soft cottage cheese pancakes with sour cream and fresh berries and sprinkled with powdered sugar\",\n      price: \"4.50\",\n      category: \"dessert\",\n      thumbnail: './images/png/dessert-3.png',\n      sizes: {\n        s: {\n          \"size\": \"50 g\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          \"size\": \"100 g\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          \"size\": \"200 g\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Berries\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Nuts\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Jam\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Creme brulee\",\n      description: \"Delicate creamy dessert in a caramel basket with wild berries\",\n      price: \"4.00\",\n      category: \"dessert\",\n      thumbnail: './images/png/dessert-4.png',\n      sizes: {\n        s: {\n          size: \"50 g\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"100 g\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"200 g\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Berries\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Nuts\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Jam\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Pancakes\",\n      description: \"Tender pancakes with strawberry jam and fresh strawberries\",\n      price: \"4.50\",\n      category: \"dessert\",\n      thumbnail: './images/png/dessert-5.png',\n      sizes: {\n        s: {\n          \"size\": \"50 g\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          \"size\": \"100 g\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          \"size\": \"200 g\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Berries\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Nuts\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Jam\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Honey cake\",\n      description: \"Classic honey cake with delicate custard\",\n      price: \"4.50\",\n      category: \"dessert\",\n      thumbnail: './images/png/dessert-6.png',\n      sizes: {\n        s: {\n          size: \"50 g\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"100 g\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"200 g\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Berries\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Nuts\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Jam\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Chocolate cake\",\n      description: \"Cake with hot chocolate filling and nuts with dried apricots\",\n      price: \"5.50\",\n      category: \"dessert\",\n      thumbnail: './images/png/dessert-7.png',\n      sizes: {\n        s: {\n          size: \"50 g\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"100 g\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"200 g\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Berries\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Nuts\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Jam\",\n        addPrice: \"0.50\"\n      }]\n    }, {\n      name: \"Black forest\",\n      description: \"A combination of thin sponge cake with cherry jam and light chocolate mousse\",\n      price: \"6.50\",\n      category: \"dessert\",\n      thumbnail: './images/png/dessert-8.png',\n      sizes: {\n        s: {\n          size: \"50 g\",\n          addPrice: \"0.00\"\n        },\n        m: {\n          size: \"100 g\",\n          addPrice: \"0.50\"\n        },\n        l: {\n          size: \"200 g\",\n          addPrice: \"1.00\"\n        }\n      },\n      additives: [{\n        name: \"Berries\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Nuts\",\n        addPrice: \"0.50\"\n      }, {\n        name: \"Jam\",\n        addPrice: \"0.50\"\n      }]\n    }]\n  }\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);\n\n//# sourceURL=webpack://coffee-house/./coffee-house/js/products/products.js?");
-
-
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var store = {
+  menuPage: {
+    coffee: [{
+      name: "Irish coffee",
+      description: "Fragrant black coffee with Jameson Irish whiskey and whipped milk",
+      price: "7.00",
+      category: "coffee",
+      thumbnail: './images/png/coffee-1.png',
+      sizes: {
+        s: {
+          size: "200 ml",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "300 ml",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "400 ml",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Sugar",
+        addPrice: "0.50"
+      }, {
+        name: "Cinnamon",
+        addPrice: "0.50"
+      }, {
+        name: "Syrup",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Kahlua coffee",
+      description: "Classic coffee with milk and Kahlua liqueur under a cap of frothed milk",
+      price: "7.00",
+      category: "coffee",
+      thumbnail: './images/png/coffee-2.png',
+      sizes: {
+        s: {
+          size: "200 ml",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "300 ml",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "400 ml",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Sugar",
+        addPrice: "0.50"
+      }, {
+        name: "Cinnamon",
+        addPrice: "0.50"
+      }, {
+        name: "Syrup",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Honey raf",
+      description: "Espresso with frothed milk, cream and aromatic honey",
+      price: "5.50",
+      category: "coffee",
+      thumbnail: './images/png/coffee-3.png',
+      sizes: {
+        s: {
+          size: "200 ml",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "300 ml",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "400 ml",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Sugar",
+        addPrice: "0.50"
+      }, {
+        name: "Cinnamon",
+        addPrice: "0.50"
+      }, {
+        name: "Syrup",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Ice cappuccino",
+      description: "Cappuccino with soft thick foam in summer version with ice",
+      price: "5.00",
+      category: "coffee",
+      thumbnail: './images/png/coffee-4.png',
+      sizes: {
+        s: {
+          size: "200 ml",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "300 ml",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "400 ml",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Sugar",
+        addPrice: "0.50"
+      }, {
+        name: "Cinnamon",
+        addPrice: "0.50"
+      }, {
+        name: "Syrup",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Espresso",
+      description: "Classic black coffee",
+      price: "4.50",
+      category: "coffee",
+      thumbnail: './images/png/coffee-5.png',
+      sizes: {
+        s: {
+          size: "200 ml",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "300 ml",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "400 ml",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Sugar",
+        addPrice: "0.50"
+      }, {
+        name: "Cinnamon",
+        addPrice: "0.50"
+      }, {
+        name: "Syrup",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Latte",
+      description: "Espresso coffee with the addition of steamed milk and dense milk foam",
+      price: "5.50",
+      category: "coffee",
+      thumbnail: './images/png/coffee-6.png',
+      sizes: {
+        s: {
+          size: "200 ml",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "300 ml",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "400 ml",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Sugar",
+        addPrice: "0.50"
+      }, {
+        name: "Cinnamon",
+        addPrice: "0.50"
+      }, {
+        name: "Syrup",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Latte macchiato",
+      description: "Espresso with frothed milk and chocolate",
+      price: "5.50",
+      category: "coffee",
+      thumbnail: './images/png/coffee-7.png',
+      sizes: {
+        s: {
+          size: "200 ml",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "300 ml",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "400 ml",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Sugar",
+        addPrice: "0.50"
+      }, {
+        name: "Cinnamon",
+        addPrice: "0.50"
+      }, {
+        name: "Syrup",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Coffee with cognac",
+      description: "Fragrant black coffee with cognac and whipped cream",
+      price: "6.50",
+      category: "coffee",
+      thumbnail: './images/png/coffee-8.png',
+      sizes: {
+        s: {
+          size: "200 ml",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "300 ml",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "400 ml",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Sugar",
+        addPrice: "0.50"
+      }, {
+        name: "Cinnamon",
+        addPrice: "0.50"
+      }, {
+        name: "Syrup",
+        addPrice: "0.50"
+      }]
+    }],
+    tea: [{
+      name: "Moroccan",
+      description: "Fragrant black tea with the addition of tangerine, cinnamon, honey, lemon and mint",
+      price: "4.50",
+      category: "tea",
+      thumbnail: './images/png/tea-1.png',
+      sizes: {
+        s: {
+          size: "200 ml",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "300 ml",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "400 ml",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Sugar",
+        addPrice: "0.50"
+      }, {
+        name: "Lemon",
+        addPrice: "0.50"
+      }, {
+        name: "Syrup",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Ginger",
+      description: "Original black tea with fresh ginger, lemon and honey",
+      price: "5.00",
+      category: "tea",
+      thumbnail: './images/png/tea-2.png',
+      sizes: {
+        s: {
+          size: "200 ml",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "300 ml",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "400 ml",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Sugar",
+        addPrice: "0.50"
+      }, {
+        name: "Lemon",
+        addPrice: "0.50"
+      }, {
+        name: "Syrup",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Cranberry",
+      description: "Invigorating black tea with cranberry and honey",
+      price: "5.00",
+      category: "tea",
+      thumbnail: './images/png/tea-3.png',
+      sizes: {
+        s: {
+          size: "200 ml",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "300 ml",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "400 ml",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Sugar",
+        addPrice: "0.50"
+      }, {
+        name: "Lemon",
+        addPrice: "0.50"
+      }, {
+        name: "Syrup",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Sea buckthorn",
+      description: "Toning sweet black tea with sea buckthorn, fresh thyme and cinnamon",
+      price: "5.50",
+      category: "tea",
+      thumbnail: './images/png/tea-4.png',
+      sizes: {
+        s: {
+          size: "200 ml",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "300 ml",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "400 ml",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Sugar",
+        addPrice: "0.50"
+      }, {
+        name: "Lemon",
+        addPrice: "0.50"
+      }, {
+        name: "Syrup",
+        addPrice: "0.50"
+      }]
+    }],
+    dessert: [{
+      name: "Marble cheesecake",
+      description: "Philadelphia cheese with lemon zest on a light sponge cake and red currant jam",
+      price: "3.50",
+      category: "dessert",
+      thumbnail: './images/png/dessert-1.png',
+      sizes: {
+        s: {
+          size: "50 g",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "100 g",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "200 g",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Berries",
+        addPrice: "0.50"
+      }, {
+        name: "Nuts",
+        addPrice: "0.50"
+      }, {
+        name: "Jam",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Red velvet",
+      description: "Layer cake with cream cheese frosting",
+      price: "4.00",
+      category: "dessert",
+      thumbnail: './images/png/dessert-2.png',
+      sizes: {
+        s: {
+          size: "50 g",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "100 g",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "200 g",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Berries",
+        addPrice: "0.50"
+      }, {
+        name: "Nuts",
+        addPrice: "0.50"
+      }, {
+        name: "Jam",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Cheesecakes",
+      description: "Soft cottage cheese pancakes with sour cream and fresh berries and sprinkled with powdered sugar",
+      price: "4.50",
+      category: "dessert",
+      thumbnail: './images/png/dessert-3.png',
+      sizes: {
+        s: {
+          "size": "50 g",
+          addPrice: "0.00"
+        },
+        m: {
+          "size": "100 g",
+          addPrice: "0.50"
+        },
+        l: {
+          "size": "200 g",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Berries",
+        addPrice: "0.50"
+      }, {
+        name: "Nuts",
+        addPrice: "0.50"
+      }, {
+        name: "Jam",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Creme brulee",
+      description: "Delicate creamy dessert in a caramel basket with wild berries",
+      price: "4.00",
+      category: "dessert",
+      thumbnail: './images/png/dessert-4.png',
+      sizes: {
+        s: {
+          size: "50 g",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "100 g",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "200 g",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Berries",
+        addPrice: "0.50"
+      }, {
+        name: "Nuts",
+        addPrice: "0.50"
+      }, {
+        name: "Jam",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Pancakes",
+      description: "Tender pancakes with strawberry jam and fresh strawberries",
+      price: "4.50",
+      category: "dessert",
+      thumbnail: './images/png/dessert-5.png',
+      sizes: {
+        s: {
+          "size": "50 g",
+          addPrice: "0.00"
+        },
+        m: {
+          "size": "100 g",
+          addPrice: "0.50"
+        },
+        l: {
+          "size": "200 g",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Berries",
+        addPrice: "0.50"
+      }, {
+        name: "Nuts",
+        addPrice: "0.50"
+      }, {
+        name: "Jam",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Honey cake",
+      description: "Classic honey cake with delicate custard",
+      price: "4.50",
+      category: "dessert",
+      thumbnail: './images/png/dessert-6.png',
+      sizes: {
+        s: {
+          size: "50 g",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "100 g",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "200 g",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Berries",
+        addPrice: "0.50"
+      }, {
+        name: "Nuts",
+        addPrice: "0.50"
+      }, {
+        name: "Jam",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Chocolate cake",
+      description: "Cake with hot chocolate filling and nuts with dried apricots",
+      price: "5.50",
+      category: "dessert",
+      thumbnail: './images/png/dessert-7.png',
+      sizes: {
+        s: {
+          size: "50 g",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "100 g",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "200 g",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Berries",
+        addPrice: "0.50"
+      }, {
+        name: "Nuts",
+        addPrice: "0.50"
+      }, {
+        name: "Jam",
+        addPrice: "0.50"
+      }]
+    }, {
+      name: "Black forest",
+      description: "A combination of thin sponge cake with cherry jam and light chocolate mousse",
+      price: "6.50",
+      category: "dessert",
+      thumbnail: './images/png/dessert-8.png',
+      sizes: {
+        s: {
+          size: "50 g",
+          addPrice: "0.00"
+        },
+        m: {
+          size: "100 g",
+          addPrice: "0.50"
+        },
+        l: {
+          size: "200 g",
+          addPrice: "1.00"
+        }
+      },
+      additives: [{
+        name: "Berries",
+        addPrice: "0.50"
+      }, {
+        name: "Nuts",
+        addPrice: "0.50"
+      }, {
+        name: "Jam",
+        addPrice: "0.50"
+      }]
+    }]
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
 
 /***/ })
 
@@ -145,11 +1280,30 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./coffee-house/js/index.js");
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!**********************************!*\
+  !*** ./coffee-house/js/index.js ***!
+  \**********************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _handlers_burger_menu_handler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./handlers/burger-menu-handler */ "./coffee-house/js/handlers/burger-menu-handler.js");
+/* harmony import */ var _handlers_slider_handler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./handlers/slider-handler */ "./coffee-house/js/handlers/slider-handler.js");
+/* harmony import */ var _handlers_menu_handler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./handlers/menu-handler */ "./coffee-house/js/handlers/menu-handler.js");
+/* harmony import */ var _handlers_video_handler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./handlers/video-handler */ "./coffee-house/js/handlers/video-handler.js");
+/* harmony import */ var _handlers_popup_handler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./handlers/popup-handler */ "./coffee-house/js/handlers/popup-handler.js");
+
+
+
+
+
+(0,_handlers_burger_menu_handler__WEBPACK_IMPORTED_MODULE_0__["default"])();
+(0,_handlers_slider_handler__WEBPACK_IMPORTED_MODULE_1__["default"])();
+(0,_handlers_menu_handler__WEBPACK_IMPORTED_MODULE_2__["default"])();
+(0,_handlers_video_handler__WEBPACK_IMPORTED_MODULE_3__["default"])();
+(0,_handlers_popup_handler__WEBPACK_IMPORTED_MODULE_4__["default"])();
+})();
+
 /******/ })()
 ;
+//# sourceMappingURL=bundle.js.map
