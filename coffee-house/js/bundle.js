@@ -461,22 +461,29 @@ function sliderHandler() {
     //set another interval after the previous one runs once by using set timeout and default 6000ms
     var automaticWithPause = function automaticWithPause() {
       var timeLeft = 0;
-      slider.addEventListener('mouseenter', function () {
+      function pauseSlider() {
         clearTimeout(timeOutId);
         timeLeft = 6000 - (Date.now() - start);
         clearInterval(timerId);
         sliderPaginationPoints[count].classList.add('js-paused');
-        console.log(sliderPaginationPoints[count]);
-      });
-      slider.addEventListener('mouseleave', function () {
+      }
+      function continueSlider() {
         timerId = setInterval(automatic, timeLeft);
         timeOutId = setTimeout(function () {
           clearInterval(timerId);
           timerId = setInterval(automatic, 6000);
         }, timeLeft);
         sliderPaginationPoints[count].classList.remove('js-paused');
-        console.log(sliderPaginationPoints[count]);
+      }
+      slider.addEventListener('mouseenter', function () {
+        pauseSlider();
       });
+      slider.addEventListener('mouseleave', function () {
+        continueSlider();
+      });
+      slider.addEventListener('touchstart', pauseSlider, true);
+      // slider.addEventListener('touchmove', continueSlider, true);
+      slider.addEventListener('touchend', continueSlider, true);
     };
     //mobile devices swiping 
     var mobileSwipe = function mobileSwipe() {
@@ -495,7 +502,8 @@ function sliderHandler() {
       function swipeStart(event) {
         event.preventDefault();
         var evt = getEvent();
-        posInt = posX1 = evt.clientX; //initial position of the cursor 
+        posInt = posX1 = evt.clientX; //initial position of the cursor
+        start = Date.now();
       }
 
       //function on touchChange
@@ -521,7 +529,6 @@ function sliderHandler() {
             rollSlider();
             clearInterval(timerId);
             timerId = setInterval(automatic, 6000);
-            setInterval(timerId);
           }
           if (posX2 > 0) {
             count++;
@@ -532,8 +539,8 @@ function sliderHandler() {
             rollSlider();
             clearInterval(timerId);
             timerId = setInterval(automatic, 6000);
-            setInterval(timerId);
           }
+          clearTimeout(timeOutId);
         } else return;
       }
     };
