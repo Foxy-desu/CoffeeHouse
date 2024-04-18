@@ -416,6 +416,9 @@ function sliderHandler() {
         clearInterval(timerId);
         timerId = setInterval(automatic, 6000);
         setInterval(timerId);
+
+        //clear timeout and set start variable for automatic scrolling proper handling (with pausing)
+        clearTimeout(timeOutId);
         start = Date.now();
       });
       sliderBtnNext.addEventListener('click', function (event) {
@@ -428,6 +431,9 @@ function sliderHandler() {
         clearInterval(timerId);
         timerId = setInterval(automatic, 6000);
         setInterval(timerId);
+
+        //clear timeout and set start variable for automatic scrolling proper handling (with pausing)
+        clearTimeout(timeOutId);
         start = Date.now();
       });
     };
@@ -540,6 +546,7 @@ function sliderHandler() {
             clearInterval(timerId);
             timerId = setInterval(automatic, 6000);
           }
+          //clear time out to prevent encreasing tnterval before next slide (because of pausing handler)
           clearTimeout(timeOutId);
         } else return;
       }

@@ -58,6 +58,9 @@ function sliderHandler() {
                 clearInterval(timerId);
                 timerId = setInterval(automatic, 6000);
                 setInterval(timerId);
+                
+                //clear timeout and set start variable for automatic scrolling proper handling (with pausing)
+                clearTimeout(timeOutId);
                 start = Date.now();
             });
             sliderBtnNext.addEventListener('click', (event) => {
@@ -70,6 +73,9 @@ function sliderHandler() {
                 clearInterval(timerId);
                 timerId = setInterval(automatic, 6000);
                 setInterval(timerId);
+
+                //clear timeout and set start variable for automatic scrolling proper handling (with pausing)
+                clearTimeout(timeOutId);
                 start = Date.now();
             });
         }
