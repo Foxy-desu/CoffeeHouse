@@ -109,24 +109,33 @@ function sliderHandler() {
         function automaticWithPause() {
             let timeLeft = 0;
 
-            slider.addEventListener('mouseenter', ()=> {
+            function pauseSlider() {
                 clearTimeout(timeOutId);
                 timeLeft = 6000 - (Date.now() - start);
                 clearInterval(timerId);
                 sliderPaginationPoints[count].classList.add('js-paused');
-                console.log(sliderPaginationPoints[count]);
-            });
-            
-            slider.addEventListener('mouseleave', ()=> {
+            }
+            function continueSlider() {
                 timerId = setInterval(automatic, timeLeft);
                 timeOutId = setTimeout(()=> {
                     clearInterval(timerId);
                     timerId = setInterval(automatic, 6000);
                 }, timeLeft);
                 sliderPaginationPoints[count].classList.remove('js-paused');
-                console.log(sliderPaginationPoints[count]);
-                
+            }
+
+            slider.addEventListener('mouseenter', ()=> {
+                pauseSlider();
             });
+            
+            slider.addEventListener('mouseleave', ()=> {
+                continueSlider();          
+            });
+
+            slider.addEventListener('touchstart', pauseSlider, true);
+            // slider.addEventListener('touchmove', continueSlider, true);
+            slider.addEventListener('touchend', continueSlider, true);
+
         }
         automaticWithPause();
 
@@ -151,7 +160,8 @@ function sliderHandler() {
             function swipeStart(event) {
                 event.preventDefault();
                 let evt = getEvent();
-                posInt = posX1 = evt.clientX; //initial position of the cursor 
+                posInt = posX1 = evt.clientX; //initial position of the cursor
+                start = Date.now(); 
             }
 
             //function on touchChange
@@ -178,7 +188,6 @@ function sliderHandler() {
                         rollSlider();
                         clearInterval(timerId);
                         timerId = setInterval(automatic, 6000);
-                        setInterval(timerId);
                     }
 
                     if (posX2 > 0) {
@@ -190,8 +199,11 @@ function sliderHandler() {
                         rollSlider();
                         clearInterval(timerId);
                         timerId = setInterval(automatic, 6000);
-                        setInterval(timerId);
+                        
                     }
+                    //clear time out to prevent encreasing tnterval before next slide (because of pausing handler)
+                    clearTimeout(timeOutId);
+                    
                 }
                 else return;
             }
