@@ -18,9 +18,11 @@ function sliderHandler() {
 
 
         //make slider change with the window resizing
-        window.addEventListener('resize', resize);
-        window.addEventListener('resize', currentSlide(count));
-
+        window.addEventListener('resize', ()=> {
+            resize();
+            currentSlide(count);
+        });
+        
         //slider move 
         function rollSlider() {
             sliderLine.style.transform = 'translateX(-' + count * width + 'px)';
