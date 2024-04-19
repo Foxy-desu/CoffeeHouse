@@ -57,12 +57,17 @@ body [hidden] {
     .popup {
         display: block;
         position: absolute;
-        width: 800px;
+        max-width: 800px;
         height: auto;
         padding: 16px;
+        margin: 40px;
         background: $BODY_COLOR;
         border-radius: 40px;
         overflow: hidden;
+
+        @media screen and (max-width: 709px) {
+            margin: 16px
+        }
 
         &__order-wrap {
             display: flex;
@@ -78,6 +83,10 @@ body [hidden] {
             flex-shrink: 0;
             border-radius: 40px;
             overflow: hidden;
+
+            @media screen and (max-width: 646px) {
+                display: none;
+            }
         }
     
         &__order-photo {
@@ -87,7 +96,7 @@ body [hidden] {
 
         &__item-info-wrap {
             max-width: 438px;
-            flex-shrink: 0;  
+            // flex-shrink: 0;  
         }
 
         &__item-name {
@@ -116,6 +125,7 @@ body [hidden] {
 
         &__button-wrap {
             display: flex;
+            flex-wrap: wrap;
             gap: 8px;
         }
 
@@ -158,17 +168,19 @@ body [hidden] {
                  }
             }
 
-            &:hover {
-                cursor: pointer;
-                background-color: $CONTAINER_COLOR;
-                border-color: $CONTAINER_COLOR;
-    
-                .button-inner-circle {
-                    background-color: $BODY_COLOR;
-                }
-    
-                .button-text {
-                    color: $LIGHT_TEXT;
+            @media (hover: hover) {
+                &:hover {
+                    cursor: pointer;
+                    background-color: $CONTAINER_COLOR;
+                    border-color: $CONTAINER_COLOR;
+        
+                    .button-inner-circle {
+                        background-color: $BODY_COLOR;
+                    }
+        
+                    .button-text {
+                        color: $LIGHT_TEXT;
+                    }
                 }
             }
     
@@ -183,9 +195,12 @@ body [hidden] {
                 align-items: center;
                 width: 100%;
 
-                &:hover {
-                    color: $LIGHT_TEXT;
+                @media (hover: hover) {
+                    &:hover {
+                        color: $LIGHT_TEXT;
+                    }
                 }
+                
             }
 
         }
@@ -212,15 +227,17 @@ body [hidden] {
         &__order-total-warning {
             display: flex;
             flex-direction: row;
-            gap: 8px;
+            // gap: 8px;
             padding: 12px 0;
             border-top: 1px solid $LIGHT_BORDER;
         }
 
         &__warning-sign {
             display: block;
-            width: 30px;
+            flex-shrink: 0;
+            width: 16px;
             height: 16px;
+            margin-right: 8px;
             background: url(../../images/svg/ico_info-empty.svg) no-repeat center;
             background-size: cover;
             

@@ -1130,12 +1130,18 @@ body [hidden] {
 .backdrop .popup {
   display: block;
   position: absolute;
-  width: 800px;
+  max-width: 800px;
   height: auto;
   padding: 16px;
+  margin: 40px;
   background: hsl(28, 29%, 84%);
   border-radius: 40px;
   overflow: hidden;
+}
+@media screen and (max-width: 709px) {
+  .backdrop .popup {
+    margin: 16px;
+  }
 }
 .backdrop .popup__order-wrap {
   display: flex;
@@ -1151,13 +1157,17 @@ body [hidden] {
   border-radius: 40px;
   overflow: hidden;
 }
+@media screen and (max-width: 646px) {
+  .backdrop .popup__order-photo-wrap {
+    display: none;
+  }
+}
 .backdrop .popup__order-photo {
   border-radius: inherit;
   transform: scale(115%);
 }
 .backdrop .popup__item-info-wrap {
   max-width: 438px;
-  flex-shrink: 0;
 }
 .backdrop .popup__item-name {
   color: hsl(40, 2%, 25%);
@@ -1193,6 +1203,7 @@ body [hidden] {
 }
 .backdrop .popup__button-wrap {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 .backdrop .popup__order-button {
@@ -1237,16 +1248,18 @@ body [hidden] {
 .backdrop .popup__order-button--active .button-text {
   color: hsl(28, 29%, 84%);
 }
-.backdrop .popup__order-button:hover {
-  cursor: pointer;
-  background-color: hsl(35, 9%, 37%);
-  border-color: hsl(35, 9%, 37%);
-}
-.backdrop .popup__order-button:hover .button-inner-circle {
-  background-color: hsl(28, 29%, 84%);
-}
-.backdrop .popup__order-button:hover .button-text {
-  color: hsl(28, 29%, 84%);
+@media (hover: hover) {
+  .backdrop .popup__order-button:hover {
+    cursor: pointer;
+    background-color: hsl(35, 9%, 37%);
+    border-color: hsl(35, 9%, 37%);
+  }
+  .backdrop .popup__order-button:hover .button-inner-circle {
+    background-color: hsl(28, 29%, 84%);
+  }
+  .backdrop .popup__order-button:hover .button-text {
+    color: hsl(28, 29%, 84%);
+  }
 }
 .backdrop .popup__order-button:disabled,
 .backdrop .popup__order-button button[disabled] {
@@ -1258,8 +1271,10 @@ body [hidden] {
   align-items: center;
   width: 100%;
 }
-.backdrop .popup__order-button.submit-button:hover {
-  color: hsl(28, 29%, 84%);
+@media (hover: hover) {
+  .backdrop .popup__order-button.submit-button:hover {
+    color: hsl(28, 29%, 84%);
+  }
 }
 .backdrop .popup__order-total-wrap {
   display: flex;
@@ -1282,14 +1297,15 @@ body [hidden] {
 .backdrop .popup__order-total-warning {
   display: flex;
   flex-direction: row;
-  gap: 8px;
   padding: 12px 0;
   border-top: 1px solid hsl(27, 14%, 72%);
 }
 .backdrop .popup__warning-sign {
   display: block;
-  width: 30px;
+  flex-shrink: 0;
+  width: 16px;
   height: 16px;
+  margin-right: 8px;
   background: url(../../images/svg/ico_info-empty.svg) no-repeat center;
   background-size: cover;
 }
