@@ -415,7 +415,7 @@ function sliderHandler() {
         rollSlider();
         clearInterval(timerId);
         timerId = setInterval(automatic, 6000);
-        setInterval(timerId);
+        // setInterval(timerId);
 
         //clear timeout and set start variable for automatic scrolling proper handling (with pausing)
         clearTimeout(timeOutId);
@@ -430,7 +430,7 @@ function sliderHandler() {
         rollSlider();
         clearInterval(timerId);
         timerId = setInterval(automatic, 6000);
-        setInterval(timerId);
+        // setInterval(timerId);
 
         //clear timeout and set start variable for automatic scrolling proper handling (with pausing)
         clearTimeout(timeOutId);
@@ -445,7 +445,6 @@ function sliderHandler() {
       });
       sliderPaginationPoints[index].classList.add('js-coloring');
     };
-    // nobody controls that, it's totally automatic
     //automatically change slides with certain interval and change start variable
     var automatic = function automatic(interval) {
       count++;
@@ -454,6 +453,9 @@ function sliderHandler() {
       }
       currentSlide(count);
       rollSlider();
+
+      //reset time left for next slide and reset start time to check when a slide should roll next time
+      timeLeft = 6000;
       start = Date.now();
       interval !== null && interval !== void 0 ? interval : setInterval(interval, 0);
     };
@@ -466,15 +468,16 @@ function sliderHandler() {
     //set new interval equal to the time left
     //set another interval after the previous one runs once by using set timeout and default 6000ms
     var automaticWithPause = function automaticWithPause() {
-      var timeLeft = 0;
       function pauseSlider() {
         clearTimeout(timeOutId);
-        timeLeft = 6000 - (Date.now() - start);
         clearInterval(timerId);
+        timeLeft = timeLeft - (Date.now() - start);
         sliderPaginationPoints[count].classList.add('js-paused');
+        console.log("full time: ".concat(timeLeft, "\ntime diff: ").concat(Date.now() - start, "\ntime left: ").concat(timeLeft));
       }
       function continueSlider() {
         timerId = setInterval(automatic, timeLeft);
+        start = Date.now();
         timeOutId = setTimeout(function () {
           clearInterval(timerId);
           timerId = setInterval(automatic, 6000);
@@ -577,6 +580,9 @@ function sliderHandler() {
     //timeoutId variable for further timeout clearing
     var start = Date.now();
     var timeOutId;
+
+    //time left before next slider roll
+    var timeLeft = 6000;
 
     //make slider change with the window resizing
     window.addEventListener('resize', function () {
