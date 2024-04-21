@@ -94,7 +94,7 @@ function menuHandler() {
         var cards = Array.from(menu.children);
         cards.forEach(function (card) {
           card.addEventListener('click', openPopUp);
-          card.addEventListener('click', renderPopUp);
+          // card.addEventListener('click', renderPopUp);
         });
       });
     };
@@ -134,7 +134,7 @@ function menuHandler() {
         currentBtn = element.closest('button');
       }
     };
-    //colorize btns
+    //colorize category btns
     var colorizeCurrentBtn = function colorizeCurrentBtn() {
       categoryBtns.forEach(function (button) {
         button.classList.remove('menu-section__button--active');
@@ -169,6 +169,10 @@ function menuHandler() {
     var openPopUp = function openPopUp() {
       backdrop.classList.remove('js-hide');
       body.classList.add('js-body_no-scroll');
+      renderPopUp();
+      getButtonGroups();
+      addColorizeHandler();
+      addCalculationHandler();
     };
     //close popup
     var closePopUp = function closePopUp() {
@@ -196,7 +200,7 @@ function menuHandler() {
                 addOne = currObj.additives[0].name,
                 addTwo = currObj.additives[1].name,
                 addThree = currObj.additives[2].name,
-                popupContentTemplate = "\n                        <div class=\"popup__order-wrap\">\n                            <div class=\"popup__order-photo-wrap\">\n                                <img class=\"popup__order-photo\" src=\"".concat(thumbnail, "\" alt=\"").concat(name, " photo\">\n                            </div>\n                            <div class=\"popup__item-info-wrap\">\n                                <h3 class=\"popup__item-name\">\n                                    ").concat(name, "\n                                </h3>\n                                <div class=\"popup__order-info\">\n                                    <p class=\"popup__item-desc\">\n                                    ").concat(description, "\n                                    </p>\n                                    <form name=\"order:").concat(name, "\">\n                                        <div class=\"order-options\">\n                                            <div class=\"popup__order-sizes\">\n                                                <p for class=\"popup__order-heading\">Size</p>\n                                                <div class=\"popup__button-wrap\" id=\"size-buttons\">\n                                                    <button class=\"popup__order-button size-s popup__order-button--active\" type=\"button\" disabled><span class=\"button-inner-circle\">S</span><span class=\"button-text\">").concat(cizeS, "</span></button>\n                                                    <button class=\"popup__order-button size-m\" type=\"button\"><span class=\"button-inner-circle\">M</span><span class=\"button-text\">").concat(sizeM, "</span></button>\n                                                    <button class=\"popup__order-button size-l\" type=\"button\"><span class=\"button-inner-circle\">L</span><span class=\"button-text\">").concat(sizeL, "</span></button>\n                                                </div>\n                                            </div>\n                                            <div class=\"popup__order-additives\">\n                                                <p class=\"popup__order-heading\">Additives</p>\n                                                <div class=\"popup__button-wrap\" id=\"additives-buttons\">\n                                                    <button class=\"popup__order-button first-button\" type=\"button\"><span class=\"button-inner-circle\">1</span><span class=\"button-text\">").concat(addOne, "</span></button>\n                                                    <button class=\"popup__order-button second-button\" type=\"button\"><span class=\"button-inner-circle\">2</span><span class=\"button-text\">").concat(addTwo, "</span></button>\n                                                    <button class=\"popup__order-button third-button\" type=\"button\"><span class=\"button-inner-circle\">3</span><span class=\"button-text\">").concat(addThree, "</span></button>\n                                                </div>\n                                            </div>\n                                        </div>\n                                    </form>\n                                    <div class=\"popup__order-total-wrap\">\n                                        <div class=\"popup__order-total-container\">\n                                            <span class=\"popup__order-total\">Total:</span>\n                                            <span class=\"popup__order-price\">$").concat(price, "</span>\n                                        </div>\n                                        <div class=\"popup__order-total-warning\">\n                                            <div class=\"popup__warning-sign\"></div>\n                                            <p class=\"popup__warning-text\">\n                                                The cost is not final. Download our mobile app to see the final price\n                                                and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.\n                                            </p>\n                                        </div>\n                                    </div>\n                                    <button form=\"order:").concat(name, "\" class=\"popup__order-button submit-button\">Close</button>\n                                </div>\n                            </div>\n                        </div>\n                        ");
+                popupContentTemplate = "\n                        <div class=\"popup__order-wrap\">\n                            <div class=\"popup__order-photo-wrap\">\n                                <img class=\"popup__order-photo\" src=\"".concat(thumbnail, "\" alt=\"").concat(name, " photo\">\n                            </div>\n                            <div class=\"popup__item-info-wrap\">\n                                <h3 class=\"popup__item-name\">\n                                    ").concat(name, "\n                                </h3>\n                                <div class=\"popup__order-info\">\n                                    <p class=\"popup__item-desc\">\n                                    ").concat(description, "\n                                    </p>\n                                    <form name=\"order:").concat(name, "\">\n                                        <div class=\"order-options\">\n                                            <div class=\"popup__order-sizes\">\n                                                <p for class=\"popup__order-heading\">Size</p>\n                                                <div class=\"popup__button-wrap\" id=\"size-buttons\">\n                                                    <button class=\"popup__order-button size-s popup__order-button--active\" type=\"button\" disabled value=\"").concat(cizeS, "\"><span class=\"button-inner-circle\">S</span><span class=\"button-text\">").concat(cizeS, "</span></button>\n                                                    <button class=\"popup__order-button size-m\" type=\"button\" value=\"").concat(sizeM, "\"><span class=\"button-inner-circle\">M</span><span class=\"button-text\">").concat(sizeM, "</span></button>\n                                                    <button class=\"popup__order-button size-l\" type=\"button\" value=\"").concat(sizeL, "\"><span class=\"button-inner-circle\">L</span><span class=\"button-text\">").concat(sizeL, "</span></button>\n                                                </div>\n                                            </div>\n                                            <div class=\"popup__order-additives\">\n                                                <p class=\"popup__order-heading\">Additives</p>\n                                                <div class=\"popup__button-wrap\" id=\"additives-buttons\">\n                                                    <button class=\"popup__order-button first-button\" type=\"button\" value=\"").concat(addOne, "\"><span class=\"button-inner-circle\">1</span><span class=\"button-text\">").concat(addOne, "</span></button>\n                                                    <button class=\"popup__order-button second-button\" type=\"button\" value=\"").concat(addTwo, "\"><span class=\"button-inner-circle\">2</span><span class=\"button-text\">").concat(addTwo, "</span></button>\n                                                    <button class=\"popup__order-button third-button\" type=\"button\" value=\"").concat(addThree, "\"><span class=\"button-inner-circle\">3</span><span class=\"button-text\">").concat(addThree, "</span></button>\n                                                </div>\n                                            </div>\n                                        </div>\n                                    </form>\n                                    <div class=\"popup__order-total-wrap\">\n                                        <div class=\"popup__order-total-container\">\n                                            <span class=\"popup__order-total\">Total:</span>\n                                            <span class=\"popup__order-price\">$").concat(price, "</span>\n                                        </div>\n                                        <div class=\"popup__order-total-warning\">\n                                            <div class=\"popup__warning-sign\"></div>\n                                            <p class=\"popup__warning-text\">\n                                                The cost is not final. Download our mobile app to see the final price\n                                                and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20% discount.\n                                            </p>\n                                        </div>\n                                    </div>\n                                    <button form=\"order:").concat(name, "\" class=\"popup__order-button submit-button\">Close</button>\n                                </div>\n                            </div>\n                        </div>\n                        ");
               popUpBox.insertAdjacentHTML('beforeend', popupContentTemplate);
             };
             currObj = JSON.parse(JSON.stringify(elem));
@@ -214,6 +218,113 @@ function menuHandler() {
           console.log(elem);
         });
       }
+    };
+    var getButtonGroups = function getButtonGroups() {
+      sizeButtons = document.getElementById('size-buttons');
+      addButtons = document.getElementById('additives-buttons');
+      totalPrice = document.querySelector('.popup__order-price');
+    }; //colorize active button
+    var addColorizeHandler = function addColorizeHandler() {
+      // sizeButtons = document.getElementById('size-buttons');
+      // addButtons = document.getElementById('additives-buttons');
+
+      function getActive(e) {
+        var active = e.target.closest('.popup__order-button');
+        return active;
+      }
+      ;
+      function colorizeSize(e) {
+        var parent = e.currentTarget;
+        var active = getActive(e);
+        Array.from(parent.children).forEach(function (button) {
+          if (button === active) {
+            button.classList.add('popup__order-button--active');
+            button.setAttribute('disabled', '');
+          } else {
+            button.classList.remove('popup__order-button--active');
+            button.removeAttribute('disabled');
+          }
+        });
+      }
+      ;
+      function colorizeAdditives(e) {
+        var parent = e.currentTarget;
+        var active = getActive(e);
+        Array.from(parent.children).forEach(function (button) {
+          if (button === active) {
+            button.classList.toggle('popup__order-button--active');
+          }
+        });
+      }
+      sizeButtons.addEventListener('click', colorizeSize);
+      addButtons.addEventListener('click', colorizeAdditives);
+    };
+    //order calculations
+    var addCalculationHandler = function addCalculationHandler() {
+      var currentItem = currObj;
+      var chosenAdditives = [];
+      var sizeCost = Number(currObj.price);
+      function getActive(e) {
+        var active = e.target.closest('.popup__order-button');
+        return active;
+      }
+      ;
+      function getTotal(e) {
+        var parent = e.currentTarget;
+        var currentActiveBtn = getActive(e);
+        function getSizeCost() {
+          Array.from(parent.children).forEach(function (button) {
+            for (var _i = 0, _Object$values = Object.values(currentItem.sizes); _i < _Object$values.length; _i++) {
+              var value = _Object$values[_i];
+              if (button === currentActiveBtn && button.value === value.size) {
+                sizeCost = Number(currentItem.price) + Number(value.addPrice);
+              }
+            }
+          });
+          return sizeCost;
+        }
+        function getAdditivesPrice() {
+          Array.from(parent.children).forEach(function (button) {
+            var _loop = function _loop() {
+                var value = _Object$values2[_i2];
+                if (button === currentActiveBtn && button.value === value.name) {
+                  if (chosenAdditives.length === 0) {
+                    chosenAdditives.push(value);
+                    return {
+                      v: void 0
+                    };
+                  } else {
+                    var delIndex = -1;
+                    chosenAdditives.forEach(function (additive, index) {
+                      if (additive.name === value.name) {
+                        delIndex = index;
+                      }
+                    });
+                    if (delIndex === -1) chosenAdditives.push(value);else chosenAdditives.splice(delIndex, 1);
+                  }
+                }
+              },
+              _ret;
+            for (var _i2 = 0, _Object$values2 = Object.values(currentItem.additives); _i2 < _Object$values2.length; _i2++) {
+              _ret = _loop();
+              if (_ret) return _ret.v;
+            }
+          });
+          var additivesSum = chosenAdditives.length > 0 ? chosenAdditives.map(function (additive) {
+            return Number(additive.addPrice);
+          }).reduce(function (prev, curr) {
+            return Number(prev) + Number(curr);
+          }) : 0;
+          return additivesSum;
+        }
+        return (getSizeCost() + getAdditivesPrice()).toFixed(2);
+      }
+      addButtons.addEventListener('click', function (e) {
+        return totalPrice.textContent = "$".concat(getTotal(e));
+      });
+      sizeButtons.addEventListener('click', function (e) {
+        return totalPrice.textContent = "$".concat(getTotal(e));
+      });
     };
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //                                         MENU VARIABLES AND CONSTANTS                                       //
@@ -256,7 +367,7 @@ function menuHandler() {
     var selectButtonsClasters = document.querySelectorAll('.popup__button-wrap');
     var sizeBtns = selectButtonsClasters[0];
     var additivesBtns = selectButtonsClasters[1];
-    var totalPrice = document.querySelector('.popup__order-price');
+    var totalPrice;
     var popupContent = popUpBox.children;
 
     //buttons
@@ -267,8 +378,8 @@ function menuHandler() {
     var additiveOneBtn = document.querySelector('.popup__order-button.first-button');
     var additiveTwoBtn = document.querySelector('.popup__order-button.second-button');
     var additiveThreeBtn = document.querySelector('.popup__order-button.third-button');
-    var sizeButtons = document.getElementById('size-buttons');
-    var addButtons = document.getElementById('additive-buttons');
+    var sizeButtons;
+    var addButtons;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //                                                  MENU HANDLING                                              //
@@ -279,7 +390,9 @@ function menuHandler() {
     categoryBtnsBlock.addEventListener('click', currentBtnChange);
     categoryBtnsBlock.addEventListener('click', colorizeCurrentBtn);
     categoryBtnsBlock.addEventListener('click', hideMoreItems);
-    categoryBtnsBlock.addEventListener('click', renderItems);
+    categoryBtnsBlock.addEventListener('click', function (e) {
+      renderItems(e);
+    });
     categoryBtnsBlock.addEventListener('click', hideLoadMoreBtn);
     //windoe event
     window.addEventListener('resize', hideLoadMoreBtn);
@@ -295,8 +408,7 @@ function menuHandler() {
     ;
     ;
     ;
-
-    //order calculations
+    ;
   }
   ;
 }

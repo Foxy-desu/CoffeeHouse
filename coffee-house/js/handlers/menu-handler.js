@@ -40,14 +40,14 @@ function menuHandler() {
         const darkScreen = document.querySelector('.backdrop__dark-screen');
 
         //popup elements
-        const photoBlock = document.querySelector('.popup__order-photo');
-        const itemName = document.querySelector('.popup__item-name');
-        const itemDescription = document.querySelector('.popup__item-desc');
-        const selectButtonsClasters = document.querySelectorAll('.popup__button-wrap');
-        const sizeBtns = selectButtonsClasters[0];
-        const additivesBtns = selectButtonsClasters[1];
-        const totalPrice = document.querySelector('.popup__order-price');
-        const popupContent = popUpBox.children;
+        let photoBlock = document.querySelector('.popup__order-photo');
+        let itemName = document.querySelector('.popup__item-name');
+        let itemDescription = document.querySelector('.popup__item-desc');
+        let selectButtonsClasters = document.querySelectorAll('.popup__button-wrap');
+        let sizeBtns = selectButtonsClasters[0];
+        let additivesBtns = selectButtonsClasters[1];
+        let totalPrice
+        let popupContent = popUpBox.children;
         
         //buttons
         const closeBtn = document.getElementsByClassName('submit-button');
@@ -60,8 +60,9 @@ function menuHandler() {
         const additiveTwoBtn = document.querySelector('.popup__order-button.second-button');
         const additiveThreeBtn = document.querySelector('.popup__order-button.third-button');
 
-        const sizeButtons = document.getElementById('size-buttons');
-        const addButtons = document.getElementById('additive-buttons');
+        let sizeButtons;
+        let addButtons;
+
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //                                                  MENU HANDLING                                              //
@@ -72,7 +73,9 @@ function menuHandler() {
         categoryBtnsBlock.addEventListener('click', currentBtnChange);
         categoryBtnsBlock.addEventListener('click', colorizeCurrentBtn);
         categoryBtnsBlock.addEventListener('click', hideMoreItems);
-        categoryBtnsBlock.addEventListener('click', renderItems);
+        categoryBtnsBlock.addEventListener('click', (e) => {
+            renderItems(e);
+        });
         categoryBtnsBlock.addEventListener('click', hideLoadMoreBtn);
         //windoe event
         window.addEventListener('resize', hideLoadMoreBtn);
@@ -115,7 +118,7 @@ function menuHandler() {
                 const cards = Array.from(menu.children);
                 cards.forEach((card) => {
                     card.addEventListener('click', openPopUp);
-                    card.addEventListener('click', renderPopUp);
+                    // card.addEventListener('click', renderPopUp);
                 });
             });
         };
@@ -154,7 +157,7 @@ function menuHandler() {
             }
         };
 
-        //colorize btns
+        //colorize category btns
         function colorizeCurrentBtn() {
             categoryBtns.forEach((button) => {
                 button.classList.remove('menu-section__button--active');
@@ -198,6 +201,11 @@ function menuHandler() {
         function openPopUp() {
             backdrop.classList.remove('js-hide');
             body.classList.add('js-body_no-scroll');
+            renderPopUp();
+            getButtonGroups();
+            addColorizeHandler();
+            addCalculationHandler();
+
         };
 
         //close popup
@@ -212,6 +220,7 @@ function menuHandler() {
 
             currCard = event.target.closest('.menu-section__article');
             currItemName = currCard.dataset.itemName;
+            
             
             function findItemObj() {
 
@@ -251,17 +260,17 @@ function menuHandler() {
                                             <div class="popup__order-sizes">
                                                 <p for class="popup__order-heading">Size</p>
                                                 <div class="popup__button-wrap" id="size-buttons">
-                                                    <button class="popup__order-button size-s popup__order-button--active" type="button" disabled><span class="button-inner-circle">S</span><span class="button-text">${cizeS}</span></button>
-                                                    <button class="popup__order-button size-m" type="button"><span class="button-inner-circle">M</span><span class="button-text">${sizeM}</span></button>
-                                                    <button class="popup__order-button size-l" type="button"><span class="button-inner-circle">L</span><span class="button-text">${sizeL}</span></button>
+                                                    <button class="popup__order-button size-s popup__order-button--active" type="button" disabled value="${cizeS}"><span class="button-inner-circle">S</span><span class="button-text">${cizeS}</span></button>
+                                                    <button class="popup__order-button size-m" type="button" value="${sizeM}"><span class="button-inner-circle">M</span><span class="button-text">${sizeM}</span></button>
+                                                    <button class="popup__order-button size-l" type="button" value="${sizeL}"><span class="button-inner-circle">L</span><span class="button-text">${sizeL}</span></button>
                                                 </div>
                                             </div>
                                             <div class="popup__order-additives">
                                                 <p class="popup__order-heading">Additives</p>
                                                 <div class="popup__button-wrap" id="additives-buttons">
-                                                    <button class="popup__order-button first-button" type="button"><span class="button-inner-circle">1</span><span class="button-text">${addOne}</span></button>
-                                                    <button class="popup__order-button second-button" type="button"><span class="button-inner-circle">2</span><span class="button-text">${addTwo}</span></button>
-                                                    <button class="popup__order-button third-button" type="button"><span class="button-inner-circle">3</span><span class="button-text">${addThree}</span></button>
+                                                    <button class="popup__order-button first-button" type="button" value="${addOne}"><span class="button-inner-circle">1</span><span class="button-text">${addOne}</span></button>
+                                                    <button class="popup__order-button second-button" type="button" value="${addTwo}"><span class="button-inner-circle">2</span><span class="button-text">${addTwo}</span></button>
+                                                    <button class="popup__order-button third-button" type="button" value="${addThree}"><span class="button-inner-circle">3</span><span class="button-text">${addThree}</span></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -292,6 +301,7 @@ function menuHandler() {
             }
             findItemObj();
 
+
             if(darkScreen){
                 darkScreen.addEventListener('click', closePopUp);
             Array.from(closeBtn).forEach((elem) => {
@@ -301,7 +311,121 @@ function menuHandler() {
             }
         };
 
+        function getButtonGroups() {
+            sizeButtons = document.getElementById('size-buttons');
+            addButtons = document.getElementById('additives-buttons');
+            totalPrice = document.querySelector('.popup__order-price');
+        }
+        //colorize active button
+        function addColorizeHandler() {
+            // sizeButtons = document.getElementById('size-buttons');
+            // addButtons = document.getElementById('additives-buttons');
+
+            function getActive(e) {
+                const active = e.target.closest('.popup__order-button');
+                return active; 
+            };
+
+            function colorizeSize(e) {
+                const parent = e.currentTarget;
+                const active = getActive(e);
+                Array.from(parent.children).forEach((button) => {
+                    if (button === active) {
+                        button.classList.add('popup__order-button--active');
+                        button.setAttribute('disabled', '');
+                    }
+                    else {
+                        button.classList.remove('popup__order-button--active');
+                        button.removeAttribute('disabled');
+                    }
+                })
+            };
+
+            function colorizeAdditives(e) {
+                const parent = e.currentTarget;
+                const active = getActive(e);
+                Array.from(parent.children).forEach((button) => {
+                    if (button === active) {
+                        button.classList.toggle('popup__order-button--active');
+                    }
+                })
+            }
+
+            sizeButtons.addEventListener('click', colorizeSize);
+            addButtons.addEventListener('click', colorizeAdditives);
+        };
+
         //order calculations
+        function addCalculationHandler() {
+            const currentItem = currObj;
+            const chosenAdditives = [];
+            let sizeCost = Number(currObj.price);
+
+            function getActive(e) {
+                const active = e.target.closest('.popup__order-button');
+                return active; 
+            };
+
+            function getTotal(e) {
+                
+                const parent = e.currentTarget;
+                const currentActiveBtn = getActive(e);
+                
+                function getSizeCost() {
+                    
+                    
+                    Array.from(parent.children).forEach((button) => {
+                        for (let value of Object.values(currentItem.sizes)) {
+                            if (button === currentActiveBtn && button.value === value.size) {
+                                sizeCost = Number(currentItem.price) + Number(value.addPrice)
+                            }
+                        }
+                    });
+
+                    return sizeCost;
+                }
+
+                function getAdditivesPrice() {
+                    
+                    Array.from(parent.children).forEach((button) => {
+                        for (let value of Object.values(currentItem.additives)) {
+                            if(button === currentActiveBtn && button.value === value.name) {
+                                if (chosenAdditives.length === 0) {
+                                    chosenAdditives.push(value);
+                                    return;
+                                }
+                                else {
+                                    let delIndex = -1;
+
+                                    chosenAdditives.forEach((additive, index) => {
+                                        if(additive.name === value.name) {
+                                            delIndex = index;
+                                        }
+                                    })
+                                    if (delIndex === -1) chosenAdditives.push(value);
+                                    else chosenAdditives.splice(delIndex, 1);
+                                }
+                                
+                            }
+                        }
+                    })
+
+                    const additivesSum = chosenAdditives.length > 0
+                    ? chosenAdditives.map((additive) => {
+                        return Number(additive.addPrice);
+                      }).reduce((prev, curr) => Number(prev) + Number(curr))
+                    : 0;
+
+                    return additivesSum;
+                }
+                
+                return (getSizeCost() + getAdditivesPrice()).toFixed(2);
+            }
+
+            
+            addButtons.addEventListener('click', (e)=> totalPrice.textContent = `$${getTotal(e)}`);
+            sizeButtons.addEventListener('click', (e)=> totalPrice.textContent = `$${getTotal(e)}`);
+        }
         
     };
 };
