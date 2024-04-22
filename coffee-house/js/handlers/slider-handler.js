@@ -166,9 +166,9 @@ function sliderHandler() {
                 return event.type.search('touch') !== -1 ? event.touches[0] : event;
             }
 
-            swipeArea.addEventListener('touchstart', swipeStart);
-            swipeArea.addEventListener('touchmove', swipeAction);
-            swipeArea.addEventListener('touchend', swipeEnd);
+            slider.addEventListener('touchstart', swipeStart);
+            slider.addEventListener('touchmove', swipeAction);
+            slider.addEventListener('touchend', swipeEnd);
 
             //function on touchStart
             function swipeStart(event) {
